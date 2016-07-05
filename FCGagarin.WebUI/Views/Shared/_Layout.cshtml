@@ -9,37 +9,43 @@
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("FCGagarin", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Главная", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Тренеровки", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Матчи", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Информация", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Галерея", "Index", "Home")</li>
-                </ul>
+    <div id="wrapper">
+        <header>
+            @Html.ActionLink("ФК ГАГАРИН", "Index", "Home", new { area = "" }, new { @class = "logo" })
+            <div id="registerArea">
                 @Html.Partial("_LoginPartial")
             </div>
-        </div>
-    </div>
+        </header>
+        <nav>
+            <ul class="top-menu">
+                <li>@Html.ActionLink("Главная", "Index", "Home")</li>
+                <li>@Html.ActionLink("Тренеровки", "Index", "Training")</li>
+                <li>@Html.ActionLink("Информация", "Index", "Info")</li>
+                <li>@Html.ActionLink("Галерея", "Index", "Gallery")</li>
+            </ul>
+        </nav>
+        <aside>
+            <h2>Panel 1</h2>
+            <div class="panel">
 
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
+            </div>
+            <h2>Panel 2</h2>
+            <div class="panel">
+
+            </div>
+        </aside>
+        <section id="content">
+            @RenderBody()
+        </section>  
         <footer>
-            <p>footer</p>
+            <div id="footer">
+                <div id="twitter"></div>
+                <div id="sitemap"></div>
+                <div id="social"></div>
+                <div id="footer-logo"></div>
+            </div>
         </footer>
     </div>
-
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)

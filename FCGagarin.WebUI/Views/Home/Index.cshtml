@@ -1,7 +1,12 @@
 ﻿@{
     ViewBag.Title = "Главная";
 }
-
+<div>
+    <ul class="top-menu sub-menu"> @* TODO:Landead придумать, как сделать по другому стили *@
+        <li>@Html.ActionLink("Новости", "Index", "Home")</li>
+        <li>@Html.ActionLink("Анонсы", "Index", "Training")</li>
+    </ul>
+</div>
 <div class="row">
     <div class="col-md-4">
         <h2>Новость</h2>

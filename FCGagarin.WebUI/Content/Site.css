@@ -1,14 +1,4 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
-}
-
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
-}
-
+﻿
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
 */
@@ -16,9 +6,121 @@
     white-space: normal;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+body {
+	color: #8f8f8f;
+	font: 12px Tahoma, sans-serif;
+	background-color: #f8f8f8;
+	border-top: 5px solid #7e7e7e;
+	margin: 0;
+    background-color:#e7e7e7;
+}
+
+#wrapper {
+	max-width: 1200px;
+	margin: auto;
+   height:100px;
+}
+
+header {
+	padding: 20px 0;
+    background: #7e7e7e;
+}
+
+.logo {
+    font-size:25px;
+    color:white;
+    text-decoration: none;
+}
+
+#registerArea {
+    float:right;
+}
+
+/*top menu styles*/
+/*begin*/
+
+nav a {
+	text-decoration: none;
+}
+
+nav ul {
+	margin: 0;
+	padding: 0;
+}
+
+nav li {
+	list-style-position: inside;
+	font: 14px 'Oswald', sans-serif;
+	padding: 10px;
+}
+
+.top-menu li {
+	display: inline-block;
+	padding: 10px 30px;
+	margin: 0;
+}
+
+.top-menu li.active {
+	background: #29c5e6;
+	color: #fff;
+}
+
+.top-menu a {
+	color: #b2b2b2;
+}
+
+/*end*/
+
+
+/*aside styles*/
+/*begin*/
+
+aside > h2 {
+	background: #b2b2b2;
+	font: 14px 'Oswald', sans-serif;
+	color: #fff;
+	padding: 10px;
+	margin: 30px 0 0 0;
+    text-align:center;
+}
+
+aside > .panel {
+    height:250px;
+}
+
+aside {
+	float: right;
+	width: 250px;
+}
+
+aside > div {
+	background: #f3f3f3;
+	border: 1px solid #e7e7e7;
+	padding: 10px;
+	margin: 0;
+}
+
+section {
+	padding-bottom: 50px;
+}
+/*end*/
+
+/*footer styles*/
+/*begin*/
+
+footer {
+	background: #7e7e7e;
+	color: #dbdbdb;
+	font-size: 11px;
+}
+
+#footer {
+	margin: auto;
+	padding: 10px 0;
+	height: 90px;
+}
+/*end*/
+
+#content {
+    padding:0px 20px 0px 20px;
 }
