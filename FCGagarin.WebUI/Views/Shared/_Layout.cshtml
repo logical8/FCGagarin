@@ -9,43 +9,40 @@
 
 </head>
 <body>
-    <div id="wrapper">
+    <div class="wrapper container">
         <header>
-            @Html.ActionLink("ФК ГАГАРИН", "Index", "Home", new { area = "" }, new { @class = "logo" })
+            @Html.ActionLink("ФК ГАГАРИН", "Index", "Home", new { @class = "logo" })
             <div id="registerArea">
                 @Html.Partial("_LoginPartial")
             </div>
         </header>
-        <nav>
-            <ul class="top-menu">
+        <nav class="navbar navbar-default">
+            <ul class="nav navbar-nav menu">
                 <li>@Html.ActionLink("Главная", "Index", "Home")</li>
                 <li>@Html.ActionLink("Тренеровки", "Index", "Training")</li>
                 <li>@Html.ActionLink("Информация", "Index", "Info")</li>
                 <li>@Html.ActionLink("Галерея", "Index", "Gallery")</li>
             </ul>
         </nav>
-        <aside>
-            <h2>Panel 1</h2>
-            <div class="panel">
+        <div class="heading"></div>
+        <div class="row">
+            <section class="col-md-9">
+                @RenderBody()
+            </section>
+            <aside class="col-md-3">
+                <h3>Panel 1</h3>    
+                <div class="panel">
 
-            </div>
-            <h2>Panel 2</h2>
-            <div class="panel">
+                </div>
+                <h3>Panel 2</h3>
+                <div class="panel">
 
-            </div>
-        </aside>
-        <section id="content">
-            @RenderBody()
-        </section>  
-        <footer>
-            <div id="footer">
-                <div id="twitter"></div>
-                <div id="sitemap"></div>
-                <div id="social"></div>
-                <div id="footer-logo"></div>
-            </div>
-        </footer>
+                </div>
+            </aside>
+        </div>
     </div>
+    <footer></footer>
+
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
