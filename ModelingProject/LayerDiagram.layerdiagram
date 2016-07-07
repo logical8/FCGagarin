@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<layerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="e96aeb50-fd98-4ef6-80af-337c2c66c6d4" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/LayerDesigner">
+  <layers>
+    <layer Id="38883edd-1dcc-4ec5-a916-a3fd48366041" name="Presentation Layer">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="d1483174-6d98-4ab3-9ff7-b9dc0fa80c52" direction="Forward">
+          <layerMoniker Id="f245d2ae-ca2e-409c-95e4-3f0448590621" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="e4c2c87a-d80e-4f1e-937f-b36e390ca686" direction="Forward">
+          <layerMoniker Id="f9ef6bfb-3959-4f86-a546-107b188af41f" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+    </layer>
+    <layer Id="f245d2ae-ca2e-409c-95e4-3f0448590621" name="Domain Layer">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="11a60844-deb7-48d2-9d7a-fa619b499fe4" direction="Forward">
+          <layerMoniker Id="a9a51a5f-b2cb-453e-a70e-7f48f043e14e" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="1bc8a344-1243-4c53-9468-054565fe5364" direction="Forward">
+          <layerMoniker Id="f9ef6bfb-3959-4f86-a546-107b188af41f" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+      <childLayers>
+        <layer Id="fe4a13d6-51b5-4ce2-bf2d-6ab955732ad1" name="Domain Model" />
+        <layer Id="69cc8f95-ac91-4921-875f-d048bf26b698" name="Repositories Contracts" />
+        <layer Id="2d1bcff8-add0-4ea1-b3d5-8b43bee0303d" name="Domain Services" />
+      </childLayers>
+    </layer>
+    <layer Id="a9a51a5f-b2cb-453e-a70e-7f48f043e14e" name="Data Access Layer">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="23af7152-5538-44b0-a324-51a52bc75c20" direction="Forward">
+          <layerMoniker Id="f9ef6bfb-3959-4f86-a546-107b188af41f" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+      <childLayers>
+        <layer Id="4b4b1993-77e7-43f9-9491-55dc6aca1efc" name="Repositories (Implementation)" />
+      </childLayers>
+    </layer>
+    <layer Id="f9ef6bfb-3959-4f86-a546-107b188af41f" name="Cross-Cutting" />
+  </layers>
+</layerModel>
