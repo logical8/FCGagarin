@@ -56,4 +56,22 @@ aside > div {
 .menu li {
     font-size:25px;
     text-align:center;
+    width:300px;
+}
+
+.menu {
+    width:100%;
+}
+
+.menu tr td {
+    font-size:25px;
+    text-align:center;
+    color: #777777;
+    text-decoration: none;
+    width:100%;
+}
+
+.menu tr td a{
+    color: #777777;
+    text-decoration: none;
 }

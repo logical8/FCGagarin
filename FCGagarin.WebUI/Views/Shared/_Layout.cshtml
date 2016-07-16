@@ -16,14 +16,24 @@
                 @Html.Partial("_LoginPartial")
             </div>
         </header>
-        <nav class="navbar navbar-default">
+        <div>
+            <table class="navbar navbar-default menu">
+                <tr class="nav navbar-nav">
+                    <td>@Html.ActionLink("Главная", "Index", "Home")</td>
+                    <td>@Html.ActionLink("Тренеровки", "Index", "Training")</td>
+                    <td>@Html.ActionLink("Информация", "Index", "Info")</td>
+                    <td>@Html.ActionLink("Галерея", "Index", "Gallery")</td>
+                </tr>
+            </table>
+        </div>
+        @*<nav class="navbar navbar-default">
             <ul class="nav navbar-nav menu">
                 <li>@Html.ActionLink("Главная", "Index", "Home")</li>
                 <li>@Html.ActionLink("Тренировки", "Index", "Training")</li>
                 <li>@Html.ActionLink("Информация", "Index", "Info")</li>
                 <li>@Html.ActionLink("Галерея", "Index", "Gallery")</li>
             </ul>
-        </nav>
+        </nav>*@
         <div class="heading"></div>
         <div class="row">
             <section class="col-md-9">
