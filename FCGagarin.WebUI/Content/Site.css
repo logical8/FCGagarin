@@ -6,9 +6,31 @@
     white-space: normal;
 }
 
+body{
+    background-color:#f3f3f3;
+}
+
 header {
-	padding: 20px 0;
-    background: #7e7e7e;
+    background: #484646;
+    height:120px;
+    padding-top:20px;
+}
+
+header .row {
+    margin: 0 22% 0 22%;
+}
+
+header div{
+    /*height:80%;*/
+}
+
+#registerArea {
+    /*margin-top:30px;*/
+}
+
+.content {
+    margin-top:-20px;
+    background-color:#ffffff;
 }
 
 .logo {
@@ -33,12 +55,8 @@ header {
     text-decoration: none;
 }
 
-#registerArea {
-    float:right;
-}
-
 aside > h3 {
-	background: #7e7e7e;
+	background: #dcdbdb;
 	font: 14px 'Oswald', sans-serif;
 	color: #fff;
 	padding: 10px;
@@ -53,25 +71,15 @@ aside > div {
     height:250px;
 }
 
-.menu li {
-    font-size:25px;
+.menu div {
     text-align:center;
-    width:300px;
+    background-color:#f8f2d0;
+    height:60px;
 }
 
-.menu {
-    width:100%;
-}
-
-.menu tr td {
+.menu a {
     font-size:25px;
-    text-align:center;
     color: #777777;
     text-decoration: none;
     width:100%;
-}
-
-.menu tr td a{
-    color: #777777;
-    text-decoration: none;
 }
