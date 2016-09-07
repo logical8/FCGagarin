@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+/// <remarks>Место тренировки</remarks>
 public class TrainingLocation
 {
 	public virtual object Coordinates
@@ -17,7 +18,7 @@ public class TrainingLocation
 		set;
 	}
 
-	public virtual object NearestMetro
+	public virtual object NearestUndergroundStation
 	{
 		get;
 		set;

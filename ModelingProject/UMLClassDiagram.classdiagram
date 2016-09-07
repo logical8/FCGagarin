@@ -900,10 +900,10 @@
             <elementDefinition Id="0dccb950-1fa3-4abe-b0ec-0c0c40a67f12" />
             <ownedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="2ee5c7bc-9f42-48be-8987-161bf46b755a" name="Id" direction="In" isUnique="false">
-                  <elementDefinition Id="12a29ef6-c491-4c2a-b175-306d0b671b69" />
+                <parameter Id="ea49a58a-02da-404f-adac-785b055e07d0" name="Id" direction="In" isUnique="false">
+                  <elementDefinition Id="c7ddbb0c-bb82-4758-b6c4-5041d987272e" />
                   <type_NamedElement>
-                    <referencedTypeMoniker Id="d79966be-e044-4bfb-9de5-0d2b20f819aa" LastKnownName="Int" />
+                    <referencedTypeMoniker Id="aa909c8d-ce23-470a-8277-c93d36cb1f04" LastKnownName="int" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
@@ -1626,7 +1626,7 @@
             </appliedStereotypesInternal>
             <elementDefinition Id="b95144d9-ebf9-4699-a8cd-b4aa97701b23" />
             <type_NamedElement>
-              <referencedTypeMoniker Id="d79966be-e044-4bfb-9de5-0d2b20f819aa" LastKnownName="Int" />
+              <referencedTypeMoniker Id="62edbf41-91f1-4818-bd5c-822a3043abbe" LastKnownName="int" />
             </type_NamedElement>
           </property>
         </ownedAttributesInternal>
@@ -1688,11 +1688,6 @@
     <packageHasNamedElement>
       <referencedType Id="389dcaf7-fe04-4bc7-b6e6-a90d5893aad4" name="String" isAbstract="false" isLeaf="false" cachedFullName="String">
         <elementDefinition Id="59259974-6d55-42c6-b7bd-763d77ac8ef9" />
-      </referencedType>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <referencedType Id="d79966be-e044-4bfb-9de5-0d2b20f819aa" name="Int" isAbstract="false" isLeaf="false" cachedFullName="Int">
-        <elementDefinition Id="3465bd27-9d06-4f83-a4c6-80573671bcf1" />
       </referencedType>
     </packageHasNamedElement>
     <logicalClassDesignerModelHasTypes>
@@ -1823,10 +1818,10 @@
             <elementDefinition Id="0dbef6e3-8a23-483c-bcd9-0611a843f508" />
             <ownedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="ee55ee88-0ba1-4935-9097-17df40fd5059" name="Id" direction="In" isUnique="false">
-                  <elementDefinition Id="6ce85ce7-c047-40bd-ab0f-3124fb391651" />
+                <parameter Id="150da008-1090-4e74-83ba-b1674e734239" name="Id" direction="In" isUnique="false">
+                  <elementDefinition Id="0d9b459c-ed0c-4334-aaf1-cce08777485b" />
                   <type_NamedElement>
-                    <referencedTypeMoniker Id="439dc5a0-7f05-4341-ac9a-08d2cc7ce6c5" LastKnownName="Int" />
+                    <referencedTypeMoniker Id="aa909c8d-ce23-470a-8277-c93d36cb1f04" LastKnownName="int" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
@@ -1835,11 +1830,6 @@
         </ownedOperations>
       </Interface>
     </logicalClassDesignerModelHasTypes>
-    <packageHasNamedElement>
-      <referencedType Id="439dc5a0-7f05-4341-ac9a-08d2cc7ce6c5" name="Int" isAbstract="false" isLeaf="false" cachedFullName="Int">
-        <elementDefinition Id="3465bd27-9d06-4f83-a4c6-80573671bcf1" />
-      </referencedType>
-    </packageHasNamedElement>
     <logicalClassDesignerModelHasTypes>
       <class Id="06846cb5-7f55-4fd6-9be2-c2dbcf399951" name="Training" isAbstract="false" isLeaf="false" isActiveClass="false">
         <appliedStereotypesInternal>
@@ -2556,7 +2546,7 @@
             </appliedStereotypesInternal>
             <elementDefinition Id="c44d3c00-7b88-4c99-9bb1-8f5fb3e4fab8" />
             <type_NamedElement>
-              <referencedTypeMoniker Id="d79966be-e044-4bfb-9de5-0d2b20f819aa" LastKnownName="Int" />
+              <referencedTypeMoniker Id="3963908c-1799-4785-9a77-441e5ca20e3c" LastKnownName="int" />
             </type_NamedElement>
           </property>
           <property Id="984da606-77e5-400e-8e61-52096c0c59de" name="TotalGames" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
@@ -2611,7 +2601,7 @@
             </appliedStereotypesInternal>
             <elementDefinition Id="6de1e672-1eff-4c45-9c62-73e734abc807" />
             <type_NamedElement>
-              <referencedTypeMoniker Id="0fc93e9f-eae5-4c8f-889c-3134d7f59f3e" LastKnownName="Int" />
+              <referencedTypeMoniker Id="274d24e8-9e3f-4041-a8bd-721d3edb3407" LastKnownName="int" />
             </type_NamedElement>
           </property>
           <property Id="264886db-b603-4fb2-9358-9a4c4f07cf4d" name="TotalPasses" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
@@ -2666,7 +2656,7 @@
             </appliedStereotypesInternal>
             <elementDefinition Id="867b40a7-9ffe-4228-aac8-d24beb7a5466" />
             <type_NamedElement>
-              <referencedTypeMoniker Id="d79966be-e044-4bfb-9de5-0d2b20f819aa" LastKnownName="Int" />
+              <referencedTypeMoniker Id="151364f8-5e16-4785-a89c-fe70cca72595" LastKnownName="int" />
             </type_NamedElement>
           </property>
           <property Id="5b793b22-e641-4605-9ec7-79340feb4232" name="TotalTrainings" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
@@ -2721,17 +2711,12 @@
             </appliedStereotypesInternal>
             <elementDefinition Id="0c305c3a-e284-4df7-bcf2-3007667d038a" />
             <type_NamedElement>
-              <referencedTypeMoniker Id="d79966be-e044-4bfb-9de5-0d2b20f819aa" LastKnownName="Int" />
+              <referencedTypeMoniker Id="28cadbfb-e0e3-4eaf-8eae-68f581aaeb5d" LastKnownName="int" />
             </type_NamedElement>
           </property>
         </ownedAttributesInternal>
       </class>
     </logicalClassDesignerModelHasTypes>
-    <packageHasNamedElement>
-      <referencedType Id="0fc93e9f-eae5-4c8f-889c-3134d7f59f3e" name="Int" isAbstract="false" isLeaf="false" cachedFullName="Int">
-        <elementDefinition Id="3465bd27-9d06-4f83-a4c6-80573671bcf1" />
-      </referencedType>
-    </packageHasNamedElement>
     <packageHasNamedElement>
       <referencedType Id="699f3083-581b-48fd-ba2b-5a3969a029b5" name="DateTime" isAbstract="false" isLeaf="false" cachedFullName="DateTime">
         <elementDefinition Id="b26ee003-9fb3-4560-827f-1e4ce774ee70" />
@@ -2740,6 +2725,36 @@
     <packageHasNamedElement>
       <referencedType Id="14c2adb6-a74a-441f-be96-26529d8ed86e" name="DateTime" isAbstract="false" isLeaf="false" cachedFullName="DateTime">
         <elementDefinition Id="b26ee003-9fb3-4560-827f-1e4ce774ee70" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="aa909c8d-ce23-470a-8277-c93d36cb1f04" name="int" isAbstract="false" isLeaf="false" cachedFullName="int">
+        <elementDefinition Id="a64ae00a-623e-4dd2-b948-e1c5b0b81b45" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="62edbf41-91f1-4818-bd5c-822a3043abbe" name="int" isAbstract="false" isLeaf="false" cachedFullName="int">
+        <elementDefinition Id="a64ae00a-623e-4dd2-b948-e1c5b0b81b45" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="274d24e8-9e3f-4041-a8bd-721d3edb3407" name="int" isAbstract="false" isLeaf="false" cachedFullName="int">
+        <elementDefinition Id="a64ae00a-623e-4dd2-b948-e1c5b0b81b45" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="3963908c-1799-4785-9a77-441e5ca20e3c" name="int" isAbstract="false" isLeaf="false" cachedFullName="int">
+        <elementDefinition Id="a64ae00a-623e-4dd2-b948-e1c5b0b81b45" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="151364f8-5e16-4785-a89c-fe70cca72595" name="int" isAbstract="false" isLeaf="false" cachedFullName="int">
+        <elementDefinition Id="a64ae00a-623e-4dd2-b948-e1c5b0b81b45" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="28cadbfb-e0e3-4eaf-8eae-68f581aaeb5d" name="int" isAbstract="false" isLeaf="false" cachedFullName="int">
+        <elementDefinition Id="a64ae00a-623e-4dd2-b948-e1c5b0b81b45" />
       </referencedType>
     </packageHasNamedElement>
   </packagedElements>

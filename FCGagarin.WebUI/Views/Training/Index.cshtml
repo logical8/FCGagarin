@@ -1,7 +1,14 @@
-﻿
-@{
-    ViewBag.Title = "Index";
+﻿@{
+    ViewBag.Title = "Тренировки";
 }
 
-<h2>Index</h2>
+<div class="col-lg-12">
+    <div class="navbar navbar-default">
+        <ul class="nav navbar-nav">
+            <li>@Ajax.ActionLink("Сбор на тренировки", "Collection", "Training", new AjaxOptions { UpdateTargetId = "info" })</li>
+            <li>@Ajax.ActionLink("Статистика посещений", "Statistics", "Training", new AjaxOptions { UpdateTargetId = "info" })</li>
+        </ul>
+    </div>
+</div>
+<div id="info"></div>
 

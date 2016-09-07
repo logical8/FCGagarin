@@ -19,7 +19,7 @@ public class News : Component, INews
 		throw new System.NotImplementedException();
 	}
 
-	public virtual void GetAnnouncement(Int Id)
+	public virtual void GetAnnouncement(int Id)
 	{
 		throw new System.NotImplementedException();
 	}

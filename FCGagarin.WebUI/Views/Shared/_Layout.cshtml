@@ -11,25 +11,73 @@
 <body>
     <header>
         <div class="row">
-            <div  class="col-md-8">
-                @Html.ActionLink("ФК ГАГАРИН", "Index", "Home", new { @class = "logo" })
+            <div class="col-md-8">
+                @Html.ActionLink("ФК ГАГАРИН", "Index", "Home", null, new { @class = "logo" })
             </div>
             <div id="registerArea" class="col-md-4">
                @Html.Partial("_LoginPartial")
             </div>
         </div>
     </header>
+    <div class="container">
+        <ul class="nav nav-pills nav-justified">
+            <li role="presentation" class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="test">Новости и анонсы</a>
+                <ul class="dropdown-menu">
+                    <li>@Html.ActionLink("Новости", "News", "News")</li>
+                    <li>@Html.ActionLink("Анонсы", "Announcements", "News")</li>
+                </ul>
+            </li>
+            <li role="presentation" class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Тренировки</a>
+                <ul class="dropdown-menu">
+                    <li>@Html.ActionLink("Сбор на тренировки", "Collection", "Training")</li>
+                    <li>@Html.ActionLink("Статистика посещений", "Statistics", "Training")</li>
+                </ul>
+            </li>
+            <li role="presentation" class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Информация</a>
+                <ul class="dropdown-menu">
+                    <li>@Html.ActionLink("Новости", "Index", "News")</li>
+                    <li>@Html.ActionLink("Анонсы", "Index", "News")</li>
+                </ul>
+            </li>
+            <li role="presentation" class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Галерея</a>
+                <ul class="dropdown-menu">
+                    <li>@Html.ActionLink("Новости", "Index", "News")</li>
+                    <li>@Html.ActionLink("Анонсы", "Index", "News")</li>
+                </ul>
+            </li>
+        </ul>
 
-    <div class="wrapper container content">
+        <section class="col-md-9">
+            <h3>@ViewBag.Title</h3>
+            @RenderBody()
+        </section>
+        <aside class="col-md-3">
+            <h3>Panel 1</h3>
+            <div class="panel">
+
+            </div>
+            <h3>Panel 2</h3>
+            <div class="panel">
+
+            </div>
+        </aside>
+    </div>
+
+    @*<div class="wrapper container content">
         <div class="row menu">
-            <div class="col-md-3">@Html.ActionLink("Главная", "Index", "Home")</div>
-            <div class="col-md-3">@Html.ActionLink("Тренеровки", "Index", "Training")</div>
+            <div class="col-md-3">@Html.ActionLink("Новости", "Index", "News")</div>
+            <div class="col-md-3">@Html.ActionLink("Тренировки", "Index", "Training")</div>
             <div class="col-md-3">@Html.ActionLink("Информация", "Index", "Info")</div>
             <div class="col-md-3">@Html.ActionLink("Галерея", "Index", "Gallery")</div>
         </div>
 
         <div class="row">
             <section class="col-md-9">
+                <h3>@ViewBag.Title</h3>
                 @RenderBody()
             </section>
             <aside class="col-md-3">
@@ -43,12 +91,14 @@
                 </div>
             </aside>
         </div>
-    </div>
+    </div>*@
 
     <footer></footer>
 
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jquery.unobtrusive-ajax")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/activatingNavs")
     @RenderSection("scripts", required: false)
 </body>
 </html>

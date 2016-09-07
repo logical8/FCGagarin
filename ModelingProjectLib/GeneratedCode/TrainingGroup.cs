@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+/// <remarks>Группа тренирующихся</remarks>
 public class TrainingGroup
 {
 	public virtual IEnumerable<User> Players

@@ -13,5 +13,15 @@ namespace FCGagarin.WebUI.Controllers
         {
             return View();
         }
+
+        public ActionResult Collection()
+        {
+            return View();
+        }
+
+        public ActionResult Statistics()
+        {
+            return View();
+        }
     }
 }

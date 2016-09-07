@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+/// <remarks>Новость или анонс</remarks>
 public class Announcement : IDiscussable
 {
 	public virtual DateTime CreateDate
@@ -29,7 +30,7 @@ public class Announcement : IDiscussable
 		set;
 	}
 
-	public virtual Int Id
+	public virtual int Id
 	{
 		get;
 		set;

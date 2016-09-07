@@ -13,7 +13,7 @@ public interface INews
 {
 	void GetAllAnnouncements();
 
-	void GetAnnouncement(Int Id);
+	void GetAnnouncement(int Id);
 
 }
 

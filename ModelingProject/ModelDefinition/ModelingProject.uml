@@ -1269,14 +1269,14 @@
             <ownedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="12a29ef6-c491-4c2a-b175-306d0b671b69"
+                  Id="c7ddbb0c-bb82-4758-b6c4-5041d987272e"
                   name="Id"
                   direction="In"
                   isUnique="false">
                   <type_NamedElement>
                     <undefinedTypeMoniker
-                      Id="3465bd27-9d06-4f83-a4c6-80573671bcf1"
-                      LastKnownName="Int"
+                      Id="a64ae00a-623e-4dd2-b948-e1c5b0b81b45"
+                      LastKnownName="int"
                       LastKnownLocation="ModelingProject.uml" />
                   </type_NamedElement>
                 </parameter>
@@ -2343,8 +2343,8 @@
             </appliedStereotypesInternal>
             <type_NamedElement>
               <undefinedTypeMoniker
-                Id="3465bd27-9d06-4f83-a4c6-80573671bcf1"
-                LastKnownName="Int"
+                Id="a64ae00a-623e-4dd2-b948-e1c5b0b81b45"
+                LastKnownName="int"
                 LastKnownLocation="ModelingProject.uml" />
             </type_NamedElement>
           </property>
@@ -2580,14 +2580,14 @@
             <ownedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="6ce85ce7-c047-40bd-ab0f-3124fb391651"
+                  Id="0d9b459c-ed0c-4334-aaf1-cce08777485b"
                   name="Id"
                   direction="In"
                   isUnique="false">
                   <type_NamedElement>
                     <undefinedTypeMoniker
-                      Id="3465bd27-9d06-4f83-a4c6-80573671bcf1"
-                      LastKnownName="Int"
+                      Id="a64ae00a-623e-4dd2-b948-e1c5b0b81b45"
+                      LastKnownName="int"
                       LastKnownLocation="ModelingProject.uml" />
                   </type_NamedElement>
                 </parameter>
@@ -3685,8 +3685,8 @@
             </appliedStereotypesInternal>
             <type_NamedElement>
               <undefinedTypeMoniker
-                Id="3465bd27-9d06-4f83-a4c6-80573671bcf1"
-                LastKnownName="Int"
+                Id="a64ae00a-623e-4dd2-b948-e1c5b0b81b45"
+                LastKnownName="int"
                 LastKnownLocation="ModelingProject.uml" />
             </type_NamedElement>
           </property>
@@ -3760,8 +3760,8 @@
             </appliedStereotypesInternal>
             <type_NamedElement>
               <undefinedTypeMoniker
-                Id="3465bd27-9d06-4f83-a4c6-80573671bcf1"
-                LastKnownName="Int"
+                Id="a64ae00a-623e-4dd2-b948-e1c5b0b81b45"
+                LastKnownName="int"
                 LastKnownLocation="ModelingProject.uml" />
             </type_NamedElement>
           </property>
@@ -3835,8 +3835,8 @@
             </appliedStereotypesInternal>
             <type_NamedElement>
               <undefinedTypeMoniker
-                Id="3465bd27-9d06-4f83-a4c6-80573671bcf1"
-                LastKnownName="Int"
+                Id="a64ae00a-623e-4dd2-b948-e1c5b0b81b45"
+                LastKnownName="int"
                 LastKnownLocation="ModelingProject.uml" />
             </type_NamedElement>
           </property>
@@ -3910,13 +3910,18 @@
             </appliedStereotypesInternal>
             <type_NamedElement>
               <undefinedTypeMoniker
-                Id="3465bd27-9d06-4f83-a4c6-80573671bcf1"
-                LastKnownName="Int"
+                Id="a64ae00a-623e-4dd2-b948-e1c5b0b81b45"
+                LastKnownName="int"
                 LastKnownLocation="ModelingProject.uml" />
             </type_NamedElement>
           </property>
         </ownedAttributesInternal>
       </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="a64ae00a-623e-4dd2-b948-e1c5b0b81b45"
+        name="int" />
     </packageHasNamedElement>
   </packagedElements>
   <primitiveType

@@ -1,7 +1,22 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Новости и анонсы";
 }
 
-<h2>Index</h2>
+<div class="col-lg-12">
+    <div class="navbar navbar-default">
+        <ul class="nav navbar-nav">
+            <li>@Ajax.ActionLink("Новости", "News", new AjaxOptions { UpdateTargetId = "info"})</li>
+            <li>@Ajax.ActionLink("Анонсы", "Announcements", new AjaxOptions { UpdateTargetId = "info" })</li>
+        </ul>
+    </div>
+</div>
+<div id="info"></div>
+
+@section Scripts{
+    <script>
+    </script>
+    }
+
+
 

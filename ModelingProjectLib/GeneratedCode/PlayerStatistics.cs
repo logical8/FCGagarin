@@ -11,25 +11,25 @@ using System.Text;
 
 public class PlayerStatistics
 {
-	public virtual Int TotalGoals
+	public virtual int TotalGoals
 	{
 		get;
 		set;
 	}
 
-	public virtual Int TotalGames
+	public virtual int TotalGames
 	{
 		get;
 		set;
 	}
 
-	public virtual Int TotalPasses
+	public virtual int TotalPasses
 	{
 		get;
 		set;
 	}
 
-	public virtual Int TotalTrainings
+	public virtual int TotalTrainings
 	{
 		get;
 		set;

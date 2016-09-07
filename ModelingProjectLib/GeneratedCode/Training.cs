@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+/// <remarks>Тренировка</remarks>
 public class Training : IDiscussable
 {
 	public virtual DateTime Date

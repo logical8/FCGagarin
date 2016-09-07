@@ -9,7 +9,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-public abstract class Discussion
+/// <remarks>Дискуссия</remarks>
+public class Discussion
 {
 	public virtual IEnumerable<Comment> Comments
 	{
