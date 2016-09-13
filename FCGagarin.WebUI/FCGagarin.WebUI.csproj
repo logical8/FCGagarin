@@ -44,6 +44,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=5.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.5.1.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.0.1011, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.0\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -196,6 +200,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Helpers\LinkPrepare.cs" />
+    <Compile Include="Mappings\AutoMappingConfiguration.cs" />
+    <Compile Include="Mappings\DomainToViewModelMappingProfile.cs" />
+    <Compile Include="Mappings\ViewModelToDomainMappingProfile.cs" />
     <Compile Include="ViewModels\AnnouncementViewModel.cs" />
     <Compile Include="Controllers\GalleryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -217,6 +225,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Slate\bootstrap.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -242,7 +251,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -279,10 +290,12 @@
     <Content Include="Views\News\Index.cshtml" />
     <Content Include="Views\Info\Index.cshtml" />
     <Content Include="Views\News\News.cshtml" />
-    <Content Include="Views\News\Announcements.cshtml" />
     <Content Include="Views\Training\Collection.cshtml" />
     <Content Include="Views\Training\Statistics.cshtml" />
     <Content Include="Views\News\AddAnnouncement.cshtml" />
+    <Content Include="Views\News\Announcements.cshtml" />
+    <Content Include="Views\News\EditAnnouncement.cshtml" />
+    <Content Include="Views\News\DeleteAnnouncement.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -297,6 +310,10 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\FCGagarin.DAL\FCGagarin.DAL.csproj">
+      <Project>{65D849AC-DED1-46DC-ABB5-FE6DBE0F286D}</Project>
+      <Name>FCGagarin.DAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FCGagarin.Domain\FCGagarin.Domain.csproj">
       <Project>{1634d2e4-53c3-411e-bfa6-aa0a9cc72331}</Project>
       <Name>FCGagarin.Domain</Name>

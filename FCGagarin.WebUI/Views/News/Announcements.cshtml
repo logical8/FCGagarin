@@ -1,26 +1,36 @@
-﻿@{
+﻿@model IEnumerable<FCGagarin.WebUI.ViewModels.AnnouncementViewModel>
+
+@{
     ViewBag.Title = "Анонсы";
 }
-@Html.ActionLink("Добавить анонс", "AddAnnouncement")
 
+@if (User.Identity.IsAuthenticated) //TODO: заменить на проверку роли
+{
+    @Html.ActionLink(" ", "AddAnnouncement", null, new { @class = "btn btn-default fa fa-plus fa-lg" })
+}
 
-<div class="jumbotron">
-        <h2>Анонс1</h2>
-        <p>
-            Текст анонса
+@foreach (var item in Model)
+{
+    <div class="jumbotron">
+        <h2 class="well well-lg">@Html.DisplayFor(modelItem => item.Title)</h2>
+        <p class="h5">
+            @Html.Raw(item.Text)
         </p>
-</div>
+        <div class="pull-right text-muted h6">
+            <div>
+                @Html.DisplayNameFor(m => m.CreateDate):  @Html.DisplayFor(modelItem => item.CreateDate)
+            </div>
+            <div>
+                @Html.DisplayNameFor(m => m.AnnouncemetCreator):  @Html.DisplayFor(modelItem => item.AnnouncemetCreator)
+            </div>
+        </div>
+        @if (User.Identity.IsAuthenticated) //TODO: заменить на проверку роли
+        {
+            <p>
+                @Html.ActionLink(" ", "EditAnnouncement", new { id = item.Id }, new { @class = "btn btn-default fa fa-pencil fa-lg" }) |
+                @Html.ActionLink(" ", "DeleteAnnouncement", new { id = item.Id }, new { @class = "btn btn-default fa fa-trash-o fa-lg" })
+            </p>
+        }
+    </div>
+}
 
-<div class="jumbotron">
-    <h2>Анонс2</h2>
-    <p>
-        Текст анонса
-    </p>
-</div>
-
-<div class="jumbotron">
-    <h2>Анонс3</h2>
-    <p>
-        Текст анонса
-    </p>
-</div>

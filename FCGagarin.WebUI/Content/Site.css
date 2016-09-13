@@ -2,7 +2,7 @@
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
 */
-.dl-horizontal dt {
+/*.dl-horizontal dt {
     white-space: normal;
 }
 
@@ -18,7 +18,7 @@ header {
 
 header .row {
     margin: 0 22% 0 22%;
-}
+}*/
 
 header div{
     /*height:80%;*/
@@ -28,7 +28,7 @@ header div{
     /*margin-top:30px;*/
 }
 
-.content {
+/*.content {
     margin-top:-20px;
     background-color:#ffffff;
 }
@@ -82,4 +82,12 @@ aside > div {
     color: #777777;
     text-decoration: none;
     width:100%;
+}*/
+body {
+    /*padding-top: 55px;*/
+    padding-bottom: 20px;
+}
+
+textarea{
+    resize:vertical;
 }
