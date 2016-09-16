@@ -27,7 +27,7 @@ namespace FCGagarin.WebUI
                       "~/Content/Slate/bootstrap.min.css",
                       "~/Content/site.css"));
 
-            bundles.Add(new ScriptBundle("~/bundles/jquery.unobtrusive-ajax").Include(
+            bundles.Add(new ScriptBundle("~/bundles/unobtrusive-ajax").Include(
                       "~/Scripts/jquery.unobtrusive-ajax.min.js"));
         }
     }

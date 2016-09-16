@@ -6,17 +6,17 @@
 
 @if (User.Identity.IsAuthenticated) //TODO: заменить на проверку роли
 {
-    @Html.ActionLink(" ", "AddAnnouncement", null, new { @class = "btn btn-default fa fa-plus fa-lg" })
+    @Html.ActionLink(" ", "AddAnnouncement", null, new { @class = "btn btn-default fa fa-plus fa-lg plus" }) //TODO: заменить класс .plus, который отодвигает кнопку xD
 }
 
 @foreach (var item in Model)
 {
     <div class="jumbotron">
-        <h2 class="well well-lg">@Html.DisplayFor(modelItem => item.Title)</h2>
-        <p class="h5">
+        <h4 class="well well-lg">@Html.DisplayFor(modelItem => item.Title)</h4>
+        <div class="h5">
             @Html.Raw(item.Text)
-        </p>
-        <div class="pull-right text-muted h6">
+        </div>
+        <div class="text-muted h6">
             <div>
                 @Html.DisplayNameFor(m => m.CreateDate):  @Html.DisplayFor(modelItem => item.CreateDate)
             </div>

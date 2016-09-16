@@ -10,8 +10,12 @@ namespace FCGagarin.DAL.Concrete
 {
     public class FCGagarinContext : DbContext
     {
-        public FCGagarinContext() : base("Name=FCGagarinContext") { }
+        public FCGagarinContext()
+        {
+            Database.SetInitializer<FCGagarinContext>(null);
+        }
         
+
         public DbSet<Announcement> Announcements { get; set; }
         public DbSet<UserProfile> UserProfiles { get; set; }
         public DbSet<Training> Trainings { get; set; }

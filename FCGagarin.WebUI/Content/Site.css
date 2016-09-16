@@ -91,3 +91,7 @@ body {
 textarea{
     resize:vertical;
 }
+
+.plus{ 
+    margin-bottom: 10px;
+}

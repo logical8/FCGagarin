@@ -11,11 +11,14 @@ namespace FCGagarin.WebUI.ViewModels
         {
             CreateDate = DateTime.Now;
         }
+        
         public int Id { get; set; }
+        [Required]
         [Display(Name ="Заголовок")]
         public string Title { get; set; }
         [Display(Name ="Текст")]
         [AllowHtml]
+        [Required]
         [DataType(DataType.MultilineText)]
         public string Text { get; set; }
         [Display(Name = "Дата публикации/редактирования")]
