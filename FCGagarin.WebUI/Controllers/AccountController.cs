@@ -9,6 +9,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using FCGagarin.WebUI.Models;
+using FCGagarin.Domain.Model;
+using FCGagarin.DAL.Concrete;
 
 namespace FCGagarin.WebUI.Controllers
 {
@@ -155,6 +157,15 @@ namespace FCGagarin.WebUI.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    //Возможно имеет смысл сделать по-другому 
+                    var userProfile = new UserProfile { Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, GUID = user.Id };
+                    using (var db = new FCGagarinContext())
+                    {
+                        db.UserProfiles.Add(userProfile);
+                        db.SaveChanges();
+                    }
+
+
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771

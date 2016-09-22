@@ -5,9 +5,9 @@ using System.Web.Mvc;
 
 namespace FCGagarin.WebUI.ViewModels
 {
-    public class AnnouncementViewModel
+    public class AnnouncementFormModel
     {
-        public AnnouncementViewModel()
+        public AnnouncementFormModel()
         {
             CreateDate = DateTime.Now;
         }
@@ -23,7 +23,7 @@ namespace FCGagarin.WebUI.ViewModels
         public string Text { get; set; }
         [Display(Name = "Дата публикации/редактирования")]
         public DateTime CreateDate { get; set; }
-        [Display(Name = "Автор")]
-        public string Author { get; set; }
+        [HiddenInput]
+        public int AuthorId { get; set; }
     }
 }

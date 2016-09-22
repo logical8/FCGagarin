@@ -1,10 +1,8 @@
-﻿@model FCGagarin.WebUI.ViewModels.AnnouncementViewModel
+﻿@model FCGagarin.WebUI.ViewModels.NewsViewModel
 
 @{
-    ViewBag.Title = "Удаление анонса";
+    ViewBag.Title = "Удаление новости";
 }
-
-
 
 <div class="jumbotron">
     <h4 class="well">@Html.DisplayFor(modelItem => Model.Title)</h4>
@@ -19,8 +17,9 @@
             @Html.DisplayNameFor(m => m.Author):  @Html.DisplayFor(modelItem => Model.Author)
         </div>
     </div>
-    <h5><span class="label label-danger">Удаляем этот анонс, вы уверены?</span></h5>
-    @using (Html.BeginForm()) {
+    <h5><span class="label label-danger">Удаляем эту новость, вы уверены?</span></h5>
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
@@ -31,5 +30,5 @@
     }
 </div>
 <div>
-    @Html.ActionLink(" ", "Announcements", null, new { @class = "btn btn-default fa fa-arrow-left fa-lg" })
+    @Html.ActionLink(" ", "News", null, new { @class = "btn btn-default fa fa-arrow-left fa-lg" })
 </div>

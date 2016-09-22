@@ -1,7 +1,7 @@
-﻿@model FCGagarin.WebUI.ViewModels.AnnouncementViewModel
+﻿@model FCGagarin.WebUI.ViewModels.NewsFormModel
 
 @{
-    ViewBag.Title = "Редактирование анонса";
+    ViewBag.Title = "Редактирование новости";
 }
 
 @using (Html.BeginForm())
@@ -45,5 +45,5 @@
 }
 
 <div>
-    @Html.ActionLink(" ", "Announcements", null, new { @class= "btn btn-default fa fa-arrow-left fa-lg" })
+    @Html.ActionLink(" ", "News", null, new { @class = "btn btn-default fa fa-arrow-left fa-lg" })
 </div>

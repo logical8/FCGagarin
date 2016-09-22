@@ -1,7 +1,7 @@
-﻿@model FCGagarin.WebUI.ViewModels.AnnouncementViewModel
+﻿@model FCGagarin.WebUI.ViewModels.NewsFormModel
 
 @{
-    ViewBag.Title = "Редактирование анонса";
+    ViewBag.Title = "Добавление новости";
 }
 
 @using (Html.BeginForm())
@@ -33,10 +33,10 @@
                     @Html.ValidationMessageFor(model => model.CreateDate, "", new { @class = "text-danger" })
                 </div>
             </div>*@
-        @Html.HiddenFor(model => model.AuthorId)
+
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <button type="submit" class="btn btn-default">
+                <button type="submit" class="btn btn-default btn-lg">
                     <i class="fa fa-check fa-lg"></i>
                 </button>
             </div>
@@ -45,5 +45,7 @@
 }
 
 <div>
-    @Html.ActionLink(" ", "Announcements", null, new { @class= "btn btn-default fa fa-arrow-left fa-lg" })
+    @Html.ActionLink(" ", "News", null, new { @class = "btn btn-default btn-lg fa fa-arrow-left fa-lg" })
 </div>
+
+

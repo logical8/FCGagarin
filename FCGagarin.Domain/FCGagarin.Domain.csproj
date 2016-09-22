@@ -41,9 +41,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\AbstractAlbum.cs" />
+    <Compile Include="Abstract\AbstractNews.cs" />
     <Compile Include="Model\Announcement.cs" />
+    <Compile Include="Model\News.cs" />
+    <Compile Include="Model\Photo.cs" />
+    <Compile Include="Model\PhotoAlbum.cs" />
     <Compile Include="Model\Training.cs" />
     <Compile Include="Model\UserProfile.cs" />
+    <Compile Include="Model\VideoAlbum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

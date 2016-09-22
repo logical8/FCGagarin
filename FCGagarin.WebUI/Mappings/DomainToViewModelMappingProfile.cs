@@ -16,7 +16,10 @@ namespace FCGagarin.WebUI.Mappings
 
         public DomainToViewModelMappingProfile()
         {
-            CreateMap<Announcement, AnnouncementViewModel>();
+            CreateMap<Announcement, AnnouncementViewModel>().ForMember(x => x.Author, opt => opt.MapFrom(source => source.Author.ToString()));
+            CreateMap<Announcement, AnnouncementFormModel>();
+            CreateMap<News, NewsViewModel>().ForMember(x => x.Author, opt => opt.MapFrom(source => source.Author.ToString()));
+            CreateMap<News, NewsFormModel>();
         }
     }
 }

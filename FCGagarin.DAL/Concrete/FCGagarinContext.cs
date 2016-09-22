@@ -17,7 +17,10 @@ namespace FCGagarin.DAL.Concrete
         
 
         public DbSet<Announcement> Announcements { get; set; }
+        public DbSet<News> News { get; set; }
         public DbSet<UserProfile> UserProfiles { get; set; }
         public DbSet<Training> Trainings { get; set; }
+        public DbSet<Photo> Photos { get; set; }
+        public DbSet<PhotoAlbum> PhotoAlbums { get; set; }
     }
 }

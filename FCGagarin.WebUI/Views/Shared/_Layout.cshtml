@@ -54,22 +54,26 @@
                     <li role="presentation" class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Тренировки</a>
                         <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Сбор на тренировки", "Collection", "Training")</li>
-                            <li>@Html.ActionLink("Статистика посещений", "Statistics", "Training")</li>
+                            <li class="disabled">@Html.ActionLink("Сбор на тренировки", "Collection", "Training")</li>
+                            <li class="disabled">@Html.ActionLink("Статистика посещений", "Statistics", "Training")</li>
                         </ul>
                     </li>
                     <li role="presentation" class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Информация</a>
                         <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Новости", "Index", "News")</li>
-                            <li>@Html.ActionLink("Анонсы", "Index", "News")</li>
+                            <li class="disabled">@Html.ActionLink("Таблица", "Index", "Table")</li>
+                            <li class="disabled">@Html.ActionLink("Календарь", "Index", "Calendar")</li>
+                            <li class="disabled">@Html.ActionLink("Результаты игр", "Index", "Results")</li>
+                            <li class="disabled">@Html.ActionLink("Шахматка", "Index", "Chess")</li>
+                            <li class="disabled">@Html.ActionLink("Игроки команды", "Index", "Players")</li>
+                            <li class="disabled">@Html.ActionLink("Статистика игроков", "Index", "Statistics")</li>
                         </ul>
                     </li>
                     <li role="presentation" class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Галерея</a>
                         <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Новости", "Index", "News")</li>
-                            <li>@Html.ActionLink("Анонсы", "Index", "News")</li>
+                            <li class="disabled">@Html.ActionLink("Фото", "Index", "Photo")</li>
+                            <li class="disabled">@Html.ActionLink("Видео", "Index", "Video")</li>
                         </ul>
                     </li>
                 </ul>
