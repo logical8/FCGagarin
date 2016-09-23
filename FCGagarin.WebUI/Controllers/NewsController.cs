@@ -28,7 +28,7 @@ namespace FCGagarin.WebUI.Controllers
         {
             using (var db = new FCGagarinContext())
             {
-                var all_news = db.News.Include(x=>x.Author);
+                var all_news = db.News.Include(x=>x.Author).ToList().OrderByDescending(x=>x.CreateDate);
                 var model = Mapper.Map<IEnumerable<News>, IEnumerable<NewsViewModel>>(all_news);
                 foreach (var item in model)
                 {

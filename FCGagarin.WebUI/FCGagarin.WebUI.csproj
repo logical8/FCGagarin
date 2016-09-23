@@ -231,8 +231,10 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\FCG.ico" />
+    <Content Include="Content\Images\FCG.png" />
     <Content Include="Content\Images\fcgagarin.jpg" />
-    <Content Include="Content\Images\FCG_ico_16x16.ico" />
+    <Content Include="Content\Images\prspct5-white.png" />
     <Content Include="Content\Slate\bootstrap.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -246,6 +248,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Properties\PublishProfiles\correctpresent.pubxml" />
+    <None Include="Properties\PublishProfiles\Reg.ru fcgagarin.ru release.pubxml" />
     <None Include="Properties\PublishProfiles\Reg.ru.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />

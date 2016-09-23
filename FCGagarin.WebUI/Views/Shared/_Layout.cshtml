@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <link rel="shortcut icon" href="~/Content/Images/FCG_ico_16x16.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="~/Content/Images/FCG.ico" type="image/x-icon">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewBag.Title</title>
@@ -12,7 +12,7 @@
 <body>
     <div id="page">
         <header>
-            <div class="navbar navbar-default navbar-static-top">
+            <div class="navbar navbar-default navbar-fixed-top">
                 <div class="container">
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -20,69 +20,63 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
+                        <a class="navbar-brand hidden-lg hidden-md" href="@Url.Action("Index", "Home")">
+                            <img src="~/Content/Images/FCG.png" height="25" />
+                        </a>
                         @Html.ActionLink("ФК ГАГАРИН", "Index", "Home", null, new { @class = "navbar-brand" })
                     </div>
                     <div class="navbar-collapse collapse">
-                        @*<ul class="nav navbar-nav">
-                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                            <li>@Html.ActionLink("About", "About", "Home")</li>
-                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                        </ul>*@
+                        <ul class="nav navbar-nav">
+                            <li>@Html.ActionLink("Новости", "News", "News")</li>
+                            @*<li role="presentation" class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="test">Новости</a>
+                                <ul class="dropdown-menu">
+                                    <li>@Html.ActionLink("Новости", "News", "News")</li>
+                                    <li>@Html.ActionLink("Анонсы", "Announcements", "News")</li>
+                                </ul>
+                            </li>*@
+                            <li role="presentation" class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Информация</a>
+                                <ul class="dropdown-menu">
+                                    <li class="disabled">@Html.ActionLink("Таблица", "Index", "Table")</li>
+                                    <li class="disabled">@Html.ActionLink("Календарь", "Index", "Calendar")</li>
+                                    <li class="disabled">@Html.ActionLink("Результаты игр", "Index", "Results")</li>
+                                    <li class="disabled">@Html.ActionLink("Шахматка", "Index", "Chess")</li>
+                                    <li class="disabled">@Html.ActionLink("Игроки команды", "Index", "Players")</li>
+                                    <li class="disabled">@Html.ActionLink("Статистика игроков", "Players", "Statistics")</li>
+                                    <li class="disabled">@Html.ActionLink("Статистика посещений", "Visitings", "Statistics")</li>
+                                    <li class="disabled">@Html.ActionLink("Расписание тренировок", "Sсhedule", "Training")</li>
+                                </ul>
+                            </li>
+                            <li role="presentation" class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Галерея</a>
+                                <ul class="dropdown-menu">
+                                    <li class="disabled">@Html.ActionLink("Фото", "Index", "Photo")</li>
+                                    <li class="disabled">@Html.ActionLink("Видео", "Index", "Video")</li>
+                                </ul>
+                            </li>
+                        </ul>
                         @Html.Partial("_LoginPartial")
                     </div>
                 </div>
             </div>
             @*<div class="row">
-                <div class="col-md-8">
-                    @Html.ActionLink("ФК ГАГАРИН", "Index", "Home", null, new { @class = "logo" })
-                </div>
-                <div id="registerArea" class="col-md-4">
-                   @Html.Partial("_LoginPartial")
-                </div>
-            </div>*@
+                    <div class="col-md-8">
+                        @Html.ActionLink("ФК ГАГАРИН", "Index", "Home", null, new { @class = "logo" })
+                    </div>
+                    <div id="registerArea" class="col-md-4">
+                       @Html.Partial("_LoginPartial")
+                    </div>
+                </div>*@
         </header>
         <section id="body" class="container">
-            <section id="menu">
-                <ul class="nav nav-pills nav-justified">
-                    <li role="presentation" class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="test">Новости и анонсы</a>
-                        <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Новости", "News", "News")</li>
-                            <li>@Html.ActionLink("Анонсы", "Announcements", "News")</li>
-                        </ul>
-                    </li>
-                    <li role="presentation" class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Тренировки</a>
-                        <ul class="dropdown-menu">
-                            <li class="disabled">@Html.ActionLink("Сбор на тренировки", "Collection", "Training")</li>
-                            <li class="disabled">@Html.ActionLink("Статистика посещений", "Statistics", "Training")</li>
-                        </ul>
-                    </li>
-                    <li role="presentation" class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Информация</a>
-                        <ul class="dropdown-menu">
-                            <li class="disabled">@Html.ActionLink("Таблица", "Index", "Table")</li>
-                            <li class="disabled">@Html.ActionLink("Календарь", "Index", "Calendar")</li>
-                            <li class="disabled">@Html.ActionLink("Результаты игр", "Index", "Results")</li>
-                            <li class="disabled">@Html.ActionLink("Шахматка", "Index", "Chess")</li>
-                            <li class="disabled">@Html.ActionLink("Игроки команды", "Index", "Players")</li>
-                            <li class="disabled">@Html.ActionLink("Статистика игроков", "Index", "Statistics")</li>
-                        </ul>
-                    </li>
-                    <li role="presentation" class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Галерея</a>
-                        <ul class="dropdown-menu">
-                            <li class="disabled">@Html.ActionLink("Фото", "Index", "Photo")</li>
-                            <li class="disabled">@Html.ActionLink("Видео", "Index", "Video")</li>
-                        </ul>
-                    </li>
-                </ul>
-            </section>
             <section id="main" class="col-md-9">
                 <h2>@ViewBag.Title</h2>
                 @RenderBody()
             </section>
             <section id="sidebar" class="col-md-3 hidden-sm hidden-xs">
+                @*<img src="~/Content/Images/fcgagarin.jpg" alt="FCGagarin" class="col-md-12 img-thumbnail" />*@
+                <img src="~/Content/Images/FCG.png" alt="FCGagarin_logo" class="img-responsive" />
                 <h3>Краткая сводка</h3>
                 <div class="panel panel-default">
                     <div class="panel-heading">Panel 1</div>
@@ -94,12 +88,36 @@
                 </div>
             </section>
         </section>
-        <hr />
-        <footer class="container">
-            <p>ФК Гагарин. Поехали!</p>
-        </footer>
+        @*<footer class="footer">
+                <div class="container">
+                    <section class="col-md-4 col-sm-4 hidden-xs"><p class="text-muted">&copy; ФК Гагарин. Поехали!</p></section>
+                    <section class="col-md-4 col-sm-4 col-xs-6"><a href="http://sea-prospect.ru/"><img alt="sponsor" src="~/Content/Images/prspct5-white.png" style="width: 110px" /></a></section>
+                    <section class="col-md-4 col-sm-4 col-xs-6">
+                        <p class="text-muted">
+                            <span class="visible-xs">&copy; ФК Гагарин</span>
+                            <span class="hidden-xs">Email: </span><a href="mailto:fcgagarin@mail.ru">fcgagarin&#064;mail.ru</a>
+                            <br />
+                            <span class="hidden-xs">ЛФЛ: </span><a class="hidden-xs" href="http://lfl.ru/club915">www.lfl.ru</a>
+                        </p>
+                    </section>
+                </div>
+            </footer>*@
+        <div class="navbar navbar-fixed-bottom footer">
+            <div class="container">
+                <section class="col-md-4 col-sm-5 hidden-xs text-right"><p class="text-muted" id="copyright">&copy;&nbsp;ФК&nbsp;Гагарин.&nbsp;Поехали!</p></section>
+                <section class="col-md-4 col-sm-2 col-xs-6 text-center"><a href="http://sea-prospect.ru/"><img alt="sponsor" src="~/Content/Images/prspct5-white.png" style="width: 110px" /></a></section>
+                <section class="col-md-4 col-sm-5 col-xs-6 text-left">
+                    <p class="text-muted">
+                        <span class="visible-xs">&copy; ФК&nbsp;Гагарин</span>
+                        <span class="hidden-xs">Email: </span><a href="mailto:fcgagarin@mail.ru">fcgagarin&#064;mail.ru</a>
+                        <br />
+                        <span class="hidden-xs">ЛФЛ: </span><a class="hidden-xs" href="http://lfl.ru/club915">www.lfl.ru</a>
+                    </p>
+                </section>
+            </div>
+        </div>
     </div>
-    
+
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/unobtrusive-ajax")
     @Scripts.Render("~/bundles/bootstrap")
