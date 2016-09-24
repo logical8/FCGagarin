@@ -1,22 +1,43 @@
-﻿
+﻿@model IEnumerable<FCGagarin.WebUI.ViewModels.NewsViewModel>
+
 @{
     ViewBag.Title = "Новости и анонсы";
 }
 
-<div class="col-lg-12">
-    <div class="navbar navbar-default">
-        <ul class="nav navbar-nav">
-            <li>@Ajax.ActionLink("Новости", "News", new AjaxOptions { UpdateTargetId = "info"})</li>
-            <li>@Ajax.ActionLink("Анонсы", "Announcements", new AjaxOptions { UpdateTargetId = "info" })</li>
-        </ul>
-    </div>
-</div>
-<div id="info"></div>
+@if (User.IsInRole("Moderator"))
+{
+    @Html.ActionLink(" ", "AddNews", null, new { @class = "btn btn-default fa fa-plus fa-lg plus" }) //TODO: заменить класс .plus, который отодвигает кнопку xD
+}
 
-@section Scripts{
-    <script>
-    </script>
-    }
+@foreach (var item in Model)
+{
+    <div class="jumbotron">
+        <h4 class="well well-lg">@Html.DisplayFor(modelItem => item.Title)</h4>
+        <div class="h5">
+            @Html.Raw(item.Text)
+        </div>
+        <div class="text-muted h6">
+            <div>
+                @Html.DisplayNameFor(m => m.CreateDate):  @Html.DisplayFor(modelItem => item.CreateDate)
+            </div>
+            <div>
+                @Html.DisplayNameFor(m => m.Author):  @Html.DisplayFor(modelItem => item.Author)
+            </div>
+        </div>
+        @if (User.IsInRole("Moderator"))
+        {
+            <p>
+                @Html.ActionLink(" ", "EditNews", new { id = item.Id }, new { @class = "btn btn-default fa fa-pencil fa-lg" }) |
+                @Html.ActionLink(" ", "DeleteNews", new { id = item.Id }, new { @class = "btn btn-default fa fa-trash-o fa-lg" })
+            </p>
+        }
+    </div>
+}
+
+
+
+
+
 
 
 

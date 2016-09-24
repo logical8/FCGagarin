@@ -15,8 +15,6 @@ namespace FCGagarin.DAL.Concrete
             Database.SetInitializer<FCGagarinContext>(null);
         }
         
-
-        public DbSet<Announcement> Announcements { get; set; }
         public DbSet<News> News { get; set; }
         public DbSet<UserProfile> UserProfiles { get; set; }
         public DbSet<Training> Trainings { get; set; }

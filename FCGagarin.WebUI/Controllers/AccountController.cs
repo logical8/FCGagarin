@@ -162,7 +162,7 @@ namespace FCGagarin.WebUI.Controllers
                     using (var db = new FCGagarinContext())
                     {
                         db.UserProfiles.Add(userProfile);
-                        db.SaveChanges();
+                        await db.SaveChangesAsync();
                     }
 
 

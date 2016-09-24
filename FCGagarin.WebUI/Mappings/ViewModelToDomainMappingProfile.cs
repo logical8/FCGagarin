@@ -16,8 +16,6 @@ namespace FCGagarin.WebUI.Mappings
 
         public ViewModelToDomainMappingProfile()
         {
-            CreateMap<AnnouncementViewModel, Announcement>().ForMember(x => x.Author, opt => opt.Ignore());
-            CreateMap<AnnouncementFormModel, Announcement>();
             CreateMap<NewsViewModel, News>().ForMember(x => x.Author, opt => opt.Ignore());
             CreateMap<NewsFormModel, News>();//.ForMember(x => x.AuthorId, opt => opt.MapFrom(source=>source.AuthorId));
         }

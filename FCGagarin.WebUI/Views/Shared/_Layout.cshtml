@@ -27,7 +27,7 @@
                     </div>
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav">
-                            <li>@Html.ActionLink("Новости", "News", "News")</li>
+                            <li>@Html.ActionLink("Новости", "Index", "News")</li>
                             @*<li role="presentation" class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="test">Новости</a>
                                 <ul class="dropdown-menu">
@@ -102,11 +102,12 @@
                     </section>
                 </div>
             </footer>*@
-        <div class="navbar navbar-fixed-bottom footer">
+        <div class="footer">
             <div class="container">
                 <section class="col-md-4 col-sm-5 hidden-xs text-right"><p class="text-muted" id="copyright">&copy;&nbsp;ФК&nbsp;Гагарин.&nbsp;Поехали!</p></section>
-                <section class="col-md-4 col-sm-2 col-xs-6 text-center"><a href="http://sea-prospect.ru/"><img alt="sponsor" src="~/Content/Images/prspct5-white.png" style="width: 110px" /></a></section>
-                <section class="col-md-4 col-sm-5 col-xs-6 text-left">
+                <section class="col-md-4 col-sm-2 hidden-xs text-center"><a href="http://sea-prospect.ru/"><img alt="sponsor" src="~/Content/Images/prspct5-white.png" style="width: 110px" /></a></section>
+                <section class="visible-xs col-xs-5 text-right"><a href="http://sea-prospect.ru/"><img alt="sponsor" src="~/Content/Images/prspct5-white.png" style="width: 50px" /></a></section>
+                <section class="col-md-4 col-sm-5 col-xs-7 text-left">
                     <p class="text-muted">
                         <span class="visible-xs">&copy; ФК&nbsp;Гагарин</span>
                         <span class="hidden-xs">Email: </span><a href="mailto:fcgagarin@mail.ru">fcgagarin&#064;mail.ru</a>
@@ -121,6 +122,7 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/unobtrusive-ajax")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jquery-file-upload")
 
     @RenderSection("scripts", required: false)
 </body>

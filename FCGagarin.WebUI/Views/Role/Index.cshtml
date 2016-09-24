@@ -1,0 +1,31 @@
+﻿@model IEnumerable<FCGagarin.WebUI.Models.ApplicationRole>
+
+@{
+    ViewBag.Title = "Роли";
+}
+
+@if (User.Identity.IsAuthenticated) //TODO: заменить на проверку роли
+{
+    @Html.ActionLink(" ", "Create", null, new { @class = "btn btn-default fa fa-plus fa-lg plus" }) //TODO: заменить класс .plus, который отодвигает кнопку xD
+}
+
+<table class="table">
+    <tr>
+        <th>Название</th>
+        <th>Описание</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Name</td>
+            <td>@item.Description</td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+</table>
+

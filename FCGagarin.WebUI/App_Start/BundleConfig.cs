@@ -21,14 +21,28 @@ namespace FCGagarin.WebUI
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
+                      "~/Scripts/bootstrap-multiselect.js", 
+                      "~/Scripts/Custom/multiselect.js",
+                      "~/Scripts/bootstrap-datepicker.js",
+                      "~/Scripts/locales/bootstrap-datepicker.ru.min.js",
+                      "~/Scripts/Custom/datepicker.js",
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/Slate/bootstrap.min.css",
+                      "~/Content/bootstrap-multiselect.css",
+                      "~/Content/bootstrap-datepicker.css",
+                      "~/Content/jquery.fileupload-ui-noscript.css",
+                      "~/Content/jquery.fileupload-ui.css",
                       "~/Content/site.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/unobtrusive-ajax").Include(
                       "~/Scripts/jquery.unobtrusive-ajax.min.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/jquery-file-upload").Include(
+                      "~/Scripts/jquery-file-upload/jquery.ui.widget.js",
+                      "~/Scripts/jquery-file-upload/jquery.fileupload.js",
+                      "~/Scripts/jquery-file-upload/jquery.iframe-transport.js"));
         }
     }
 }

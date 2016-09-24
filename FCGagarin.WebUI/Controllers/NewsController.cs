@@ -16,15 +16,7 @@ namespace FCGagarin.WebUI.Controllers
 {
     public class NewsController : Controller
     {
-        // GET: News
         public ActionResult Index()
-        {
-            return View();
-        }
-
-        #region News Новости
-
-        public ActionResult News()
         {
             using (var db = new FCGagarinContext())
             {
@@ -38,13 +30,13 @@ namespace FCGagarin.WebUI.Controllers
             }
         }
 
-        [Authorize]//TODO: заменить на проверку роли
+        [Authorize(Roles = "Admin, Moderator")]
         public ActionResult AddNews()
         {
             return View();
         }
 
-        [Authorize]//TODO: заменить на проверку роли
+        [Authorize(Roles = "Admin, Moderator")]
         [HttpPost]
         public ActionResult AddNews(NewsFormModel formModel)
         {
@@ -57,13 +49,13 @@ namespace FCGagarin.WebUI.Controllers
                     db.News.Add(newNews);
                     db.SaveChanges();
                 }
-                return RedirectToAction("News");
+                return RedirectToAction("Index");
             }
 
             return View(formModel);
         }
 
-        [Authorize]//TODO: заменить на проверку роли
+        [Authorize(Roles = "Admin, Moderator")]
         public ActionResult EditNews(int id)
         {
             using (var db = new FCGagarinContext())
@@ -81,7 +73,7 @@ namespace FCGagarin.WebUI.Controllers
             }
         }
 
-        [Authorize]//TODO: заменить на проверку роли
+        [Authorize(Roles = "Admin, Moderator")]
         [HttpPost]
         public ActionResult EditNews(NewsFormModel formModel)
         {
@@ -92,7 +84,7 @@ namespace FCGagarin.WebUI.Controllers
                     var model = Mapper.Map<NewsFormModel, News>(formModel);
                     db.Entry(model).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
-                    return RedirectToAction("News");
+                    return RedirectToAction("Index");
                 }
             }
             else
@@ -101,7 +93,7 @@ namespace FCGagarin.WebUI.Controllers
             }
         }
 
-        [Authorize]//TODO: заменить на проверку роли
+        [Authorize(Roles = "Admin, Moderator")]
         public ActionResult DeleteNews(int id)
         {
             using (var db = new FCGagarinContext())
@@ -120,8 +112,7 @@ namespace FCGagarin.WebUI.Controllers
                 }
             }
         }
-
-        [Authorize]//TODO: заменить на проверку роли
+        [Authorize(Roles = "Admin, Moderator")]
         [HttpPost]
         [ActionName("DeleteNews")]
         public ActionResult DeleteNewsConfirmed(int id)
@@ -135,126 +126,8 @@ namespace FCGagarin.WebUI.Controllers
                 }
                 db.News.Remove(news);
                 db.SaveChanges();
-                return RedirectToAction("News");
+                return RedirectToAction("Index");
             }
         }
-        #endregion
-
-        #region Announcement Анонсы
-        public ActionResult Announcements()
-        {
-            using (var db = new FCGagarinContext())
-            {
-                var all_announcements = db.Announcements.Include(x=>x.Author);
-                var model = Mapper.Map<IEnumerable<Announcement>, IEnumerable<AnnouncementViewModel>>(all_announcements);
-                foreach (var item in model)
-                {
-                    item.Text = LinkPrepare.RawTextToDB(item.Text);
-                }
-                return View(model);
-            }
-        }
-
-        [Authorize]//TODO: заменить на проверку роли
-        public ActionResult AddAnnouncement()
-        {
-            return View();
-        }
-
-        [Authorize]//TODO: заменить на проверку роли
-        [HttpPost]
-        public ActionResult AddAnnouncement(AnnouncementFormModel formModel)
-        {
-            formModel.AuthorId = User.Identity.GetUserProfile().Id;
-            if (ModelState.IsValid)
-            {
-                var newAnnouncement = Mapper.Map<AnnouncementFormModel, Announcement>(formModel);
-                using (var db = new FCGagarinContext())
-                {
-                    db.Announcements.Add(newAnnouncement);
-                    db.SaveChanges();
-                }
-                return RedirectToAction("Announcements");
-            }
-
-            return View(formModel);
-        }
-
-        [Authorize]//TODO: заменить на проверку роли
-        public ActionResult EditAnnouncement(int id)
-        {
-            using (var db = new FCGagarinContext())
-            {
-                var model = db.Announcements.Find(id);
-                if (model != null)
-                {
-                    var viewModel = Mapper.Map<Announcement, AnnouncementFormModel>(model);
-                    return View(viewModel);
-                }
-                else
-                {
-                    return HttpNotFound();
-                }
-            }
-        }
-
-        [Authorize]//TODO: заменить на проверку роли
-        [HttpPost]
-        public ActionResult EditAnnouncement(AnnouncementFormModel formModel)
-        {
-            if (ModelState.IsValid)
-            {
-                using (var db = new FCGagarinContext())
-                {
-                    var model = Mapper.Map<AnnouncementFormModel, Announcement>(formModel);
-                    db.Entry(model).State = System.Data.Entity.EntityState.Modified;
-                    db.SaveChanges();
-                    return RedirectToAction("Announcements");
-                }
-            }
-            else
-            {
-                return View(formModel);
-            }
-        }
-
-        [Authorize]//TODO: заменить на проверку роли
-        public ActionResult DeleteAnnouncement(int id)
-        {
-            using (var db = new FCGagarinContext())
-            {
-                var model = db.Announcements.Include(x=>x.Author)
-                    .FirstOrDefault(x=>x.Id == id);
-                if (model != null)
-                {
-                    var viewModel = Mapper.Map<Announcement, AnnouncementViewModel>(model);
-                    viewModel.Text = LinkPrepare.RawTextToDB(viewModel.Text);
-                    return View(viewModel);
-                }
-                else
-                {
-                    return HttpNotFound();
-                }
-            }
-        }
-
-        [Authorize]//TODO: заменить на проверку роли
-        [HttpPost]
-        [ActionName("DeleteAnnouncement")]
-        public ActionResult DeleteAnnouncementConfirmed(int id)
-        {
-            using (var db = new FCGagarinContext())
-            {
-                var announsement = db.Announcements.Find(id);
-                if (announsement == null)
-                {
-                    return HttpNotFound();
-                }
-                db.Announcements.Remove(announsement);
-                db.SaveChanges();
-                return RedirectToAction("Announcements");
-            }
-        }
-        #endregion
     }
 }
