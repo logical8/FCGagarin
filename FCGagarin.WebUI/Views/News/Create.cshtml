@@ -26,14 +26,9 @@
             </div>
         </div>
 
-        @*<div class="form-group">
-                @Html.LabelFor(model => model.CreateDate, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.CreateDate, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.CreateDate, "", new { @class = "text-danger" })
-                </div>
-            </div>*@
-        <form action="/api/upload" enctype="multipart/form-data">
+        @* TODO: закончить с заливкой фотографий для новостей *@
+
+        @*<form action="/api/upload" enctype="multipart/form-data">
             <div class="row fileupload-buttonbar">
                 <div class="panel panel-default">
                     <div class="panel-body">
@@ -55,7 +50,7 @@
                     <div class="well hide" id="filelistholder">
                     </div>
             </div>
-        </form>
+        </form>*@
 
 
 
@@ -76,7 +71,7 @@
 </div>
 
 
-@section scripts
+@*@section scripts
 {
     <script type="text/javascript">
         $(function () {
@@ -110,5 +105,5 @@
             });
         });
     </script>
-}
+}*@
 

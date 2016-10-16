@@ -3,29 +3,24 @@ using FCGagarin.DAL.Concrete;
 using FCGagarin.Domain.Model;
 using FCGagarin.WebUI.Helpers;
 using FCGagarin.WebUI.ViewModels;
-using FCGagarin.WebUI.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
-using System.Data.Entity;
 
 namespace FCGagarin.WebUI.Controllers
 {
-    public class NewsController : Controller
+    public class VideoAlbumController : Controller
     {
         public ActionResult Index()
         {
             using (var db = new FCGagarinContext())
             {
-                var all_news = db.News.Include(x=>x.Author).ToList().OrderByDescending(x=>x.CreateDate);
-                var model = Mapper.Map<IEnumerable<News>, IEnumerable<NewsViewModel>>(all_news);
-                foreach (var item in model)
-                {
-                    item.Text = LinkPrepare.RawTextToDB(item.Text);
-                }
+                var all_albums = db.VideoAlbums
+                    .Include("Videos");
+                var model = Mapper.Map<IEnumerable<VideoAlbum>, IEnumerable<VideoAlbumViewModel>>(all_albums);
+
                 return View(model);
             }
         }
@@ -38,15 +33,14 @@ namespace FCGagarin.WebUI.Controllers
 
         [Authorize(Roles = "Moderator")]
         [HttpPost]
-        public ActionResult Create(NewsFormModel formModel)
+        public ActionResult Create(VideoAlbumFormModel formModel)
         {
-            formModel.AuthorId = User.Identity.GetUserProfile().Id;
             if (ModelState.IsValid)
             {
-                var newNews = Mapper.Map<NewsFormModel, News>(formModel);
+                var newAlbum = Mapper.Map<VideoAlbumFormModel, VideoAlbum>(formModel);
                 using (var db = new FCGagarinContext())
                 {
-                    db.News.Add(newNews);
+                    db.VideoAlbums.Add(newAlbum);
                     db.SaveChanges();
                 }
                 return RedirectToAction("Index");
@@ -55,15 +49,38 @@ namespace FCGagarin.WebUI.Controllers
             return View(formModel);
         }
 
+        public ActionResult Details(int id)
+        {
+            using (var db = new FCGagarinContext())
+            {
+                var album = db.VideoAlbums
+                    .Include("Videos")
+                    .Include("Videos.Author")
+                    .FirstOrDefault(va=>va.Id == id);
+                if (album == null)
+                {
+                    return HttpNotFound();
+                }
+                var viewModel = Mapper.Map<VideoAlbum, VideoAlbumDetailsViewModel>(album);
+                foreach (var item in viewModel.VideoViewModelList)
+                {
+                    item.AlbumId = id;
+                    item.Url = LinkPrepare.YoutubeUrlToEmbedUrl(item.Url);
+                }
+                return View(viewModel);
+            }
+            
+        }
+
         [Authorize(Roles = "Moderator")]
         public ActionResult Edit(int id)
         {
             using (var db = new FCGagarinContext())
             {
-                var model = db.News.Find(id);
+                var model = db.VideoAlbums.Find(id);
                 if (model != null)
                 {
-                    var formModel = Mapper.Map<News, NewsFormModel>(model);
+                    var formModel = Mapper.Map<VideoAlbum, VideoAlbumFormModel>(model);
                     return View(formModel);
                 }
                 else
@@ -75,13 +92,13 @@ namespace FCGagarin.WebUI.Controllers
 
         [Authorize(Roles = "Moderator")]
         [HttpPost]
-        public ActionResult Edit(NewsFormModel formModel)
+        public ActionResult Edit(VideoAlbumFormModel formModel)
         {
             if (ModelState.IsValid)
             {
                 using (var db = new FCGagarinContext())
                 {
-                    var model = Mapper.Map<NewsFormModel, News>(formModel);
+                    var model = Mapper.Map<VideoAlbumFormModel, VideoAlbum>(formModel);
                     db.Entry(model).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                     return RedirectToAction("Index");
@@ -98,12 +115,13 @@ namespace FCGagarin.WebUI.Controllers
         {
             using (var db = new FCGagarinContext())
             {
-                var model = db.News.Include(x=>x.Author)
-                    .FirstOrDefault(x=>x.Id == id);
+                var model = db.VideoAlbums
+                    .Include("Videos")
+                    .Include("Videos.Author")
+                    .FirstOrDefault(x => x.Id == id);
                 if (model != null)
                 {
-                    var viewModel = Mapper.Map<News, NewsViewModel>(model);
-                    viewModel.Text = LinkPrepare.RawTextToDB(viewModel.Text);
+                    var viewModel = Mapper.Map<VideoAlbum, VideoAlbumViewModel>(model);
                     return View(viewModel);
                 }
                 else
@@ -119,12 +137,16 @@ namespace FCGagarin.WebUI.Controllers
         {
             using (var db = new FCGagarinContext())
             {
-                var news = db.News.Find(id);
-                if (news == null)
+                var model = db.VideoAlbums.Find(id);
+                if (model == null)
                 {
                     return HttpNotFound();
                 }
-                db.News.Remove(news);
+                var videos = db.Videos
+                    .Where(v => v.AlbumId == id)
+                    .AsEnumerable();
+                db.Videos.RemoveRange(videos);
+                db.VideoAlbums.Remove(model);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

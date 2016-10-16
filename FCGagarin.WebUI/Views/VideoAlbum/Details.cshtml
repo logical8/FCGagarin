@@ -1,0 +1,35 @@
+﻿@model FCGagarin.WebUI.ViewModels.VideoAlbumDetailsViewModel
+
+@{
+    ViewBag.Title = string.Format("Видеоальбом \"{0}\"", Model.VideoAlbumViewModel.Name);
+}
+
+@if (User.IsInRole("Moderator"))
+{
+    @Html.ActionLink(" ", "Create", "Video", new { albumId = Model.VideoAlbumViewModel.Id }, new { @class = "btn btn-default fa fa-plus fa-lg plus" }) //TODO: заменить класс .plus, который отодвигает кнопку xD
+}
+
+@if (Model.VideoViewModelList.Count == 0)
+{
+    <div class="well">
+        <div class="h4">
+            Видео еще нет
+        </div>
+    </div>
+
+}
+else
+{
+    foreach (var vvm in Model.VideoViewModelList.OrderByDescending(vvm => vvm.UploadDate))
+    {
+        @Html.Partial("_VideoSummary", vvm)
+    }
+}
+
+<div>
+    @Html.ActionLink(" ", "Index", null, new { @class = "btn btn-default btn-lg fa fa-arrow-left fa-lg" })
+</div>
+
+@*<div class="pager">
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action("Index", new { page = x }))
+</div>*@

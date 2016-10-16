@@ -216,6 +216,7 @@
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\PhotoController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\VideoAlbumController.cs" />
     <Compile Include="Controllers\VideoController.cs" />
     <Compile Include="Controllers\WebApi\UploadController.cs" />
     <Compile Include="Extensions\IdentityExtensions.cs" />
@@ -244,6 +245,11 @@
     <Compile Include="ViewModels\RoleModels.cs" />
     <Compile Include="ViewModels\UsersRolesFormModel.cs" />
     <Compile Include="ViewModels\UsersRolesViewModel.cs" />
+    <Compile Include="ViewModels\VideoAlbumDetailsViewModel.cs" />
+    <Compile Include="ViewModels\VideoAlbumFormModel.cs" />
+    <Compile Include="ViewModels\VideoAlbumViewModel.cs" />
+    <Compile Include="ViewModels\VideoFormModel.cs" />
+    <Compile Include="ViewModels\VideoViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-datepicker.css" />
@@ -371,6 +377,7 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="_app_offline.htm" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -413,20 +420,28 @@
     <Content Include="Views\Info\Index.cshtml" />
     <Content Include="Views\Training\Collection.cshtml" />
     <Content Include="Views\Training\Statistics.cshtml" />
-    <Content Include="Views\News\AddNews.cshtml" />
-    <Content Include="Views\News\EditNews.cshtml" />
-    <Content Include="Views\News\DeleteNews.cshtml" />
+    <Content Include="Views\News\Create.cshtml" />
+    <Content Include="Views\News\Edit.cshtml" />
+    <Content Include="Views\News\Delete.cshtml" />
     <Content Include="Views\Role\Index.cshtml" />
     <Content Include="Views\Role\Create.cshtml" />
     <Content Include="Views\Role\Edit.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\User\Edit.cshtml" />
+    <Content Include="Views\VideoAlbum\Create.cshtml" />
+    <Content Include="Views\Video\Create.cshtml" />
+    <Content Include="Views\VideoAlbum\Index.cshtml" />
+    <Content Include="Views\VideoAlbum\Details.cshtml" />
+    <Content Include="Views\Shared\_VideoSummary.cshtml" />
+    <Content Include="Views\Video\Edit.cshtml" />
+    <Content Include="Views\Video\Delete.cshtml" />
+    <Content Include="Views\VideoAlbum\Edit.cshtml" />
+    <Content Include="Views\VideoAlbum\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\uploads\" />
     <Folder Include="Views\Default\" />
     <Folder Include="Views\Photo\" />
-    <Folder Include="Views\Video\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

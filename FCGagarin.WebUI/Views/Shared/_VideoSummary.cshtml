@@ -1,0 +1,31 @@
+﻿@model FCGagarin.WebUI.ViewModels.VideoViewModel
+
+<div class="well">
+    <div class="h4">
+        @Html.DisplayFor(m => m.Name)
+    </div>
+        <div class="embed-responsive embed-responsive-16by9 ">
+            @*<img class="img-thumbnail" width="75" height="75" src="@Url.Action("GetImage", "Wish", new{Model.Id, area=""})" />*@
+            <iframe class="embed-responsive-item"
+                    src='@Model.Url'
+                    allowfullscreen></iframe>
+        </div>
+    <div class="text-muted h6">
+        <div>
+            @Html.DisplayNameFor(m => m.Author):  @Html.DisplayFor(m => m.Author)
+        </div>
+        <div>
+            @Html.DisplayNameFor(m => m.UploadDate):  @Html.DisplayFor(m => m.UploadDate)
+        </div>
+        <div>
+            @Html.DisplayNameFor(m => m.VideoDate):  @Html.DisplayFor(m => m.VideoDate)
+        </div>
+    </div>
+        @if (User.IsInRole("Moderator"))
+        {
+            <span>
+                @Html.ActionLink(" ", "Edit", "Video", new { id = Model.Id }, new { @class = "btn btn-default fa fa-pencil fa-lg" }) |
+                @Html.ActionLink(" ", "Delete", "Video", new { id = Model.Id }, new { @class = "btn btn-default fa fa-trash-o fa-lg" })
+            </span>
+        }
+</div>

@@ -18,6 +18,15 @@ namespace FCGagarin.WebUI.Mappings
         {
             CreateMap<News, NewsViewModel>().ForMember(x => x.Author, opt => opt.MapFrom(source => source.Author.ToString()));
             CreateMap<News, NewsFormModel>();
+
+            CreateMap<VideoAlbum, VideoAlbumViewModel>();
+            CreateMap<VideoAlbum, VideoAlbumFormModel>();
+            CreateMap<VideoAlbum, VideoAlbumDetailsViewModel>()
+                .ForMember(vadbm => vadbm.VideoAlbumViewModel, opt => opt.MapFrom(source => source))
+                .ForMember(vadbm => vadbm.VideoViewModelList, opt => opt.MapFrom(source => source.Videos));
+
+            CreateMap<Video, VideoViewModel>().ForMember(x => x.Author, opt => opt.MapFrom(source => source.Author.ToString()));
+            CreateMap<Video, VideoFormModel>();
         }
     }
 }
