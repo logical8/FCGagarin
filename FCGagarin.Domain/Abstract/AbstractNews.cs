@@ -15,5 +15,6 @@ namespace FCGagarin.Domain.Abstract
         public DateTime CreateDate { get; set; }
         public int AuthorId { get; set; }
         public UserProfile Author { get; set; }
+        public string PathToImage { get; set; }
     }
 }

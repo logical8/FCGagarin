@@ -1,0 +1,30 @@
+﻿@model IEnumerable<FCGagarin.WebUI.ViewModels.NewsViewModel>
+
+@foreach (var item in Model)
+{
+    <div class="jumbotron">
+        <h4 class="well well-lg">@Html.DisplayFor(modelItem => item.Title)</h4>
+        @if (!string.IsNullOrEmpty(item.PathToImage))
+        {
+            <img src="@Url.Content(item.PathToImage)" alt="pic" class="img-thumbnail center-block" />
+        }
+        <div class="h5">
+            @Html.Raw(item.Text)
+        </div>
+        <div class="text-muted h6">
+            <div>
+                @Html.DisplayNameFor(m => m.CreateDate):  @Html.DisplayFor(modelItem => item.CreateDate)
+            </div>
+            <div>
+                @Html.DisplayNameFor(m => m.Author):  @Html.DisplayFor(modelItem => item.Author)
+            </div>
+        </div>
+        @if (User.IsInRole("Moderator"))
+        {
+            <p>
+                @Html.ActionLink(" ", "Edit", new { id = item.Id }, new { @class = "btn btn-default fa fa-pencil fa-lg" }) |
+                @Html.ActionLink(" ", "Delete", new { id = item.Id }, new { @class = "btn btn-default fa fa-trash-o fa-lg" })
+            </p>
+        }
+    </div>
+}

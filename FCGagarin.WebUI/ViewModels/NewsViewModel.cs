@@ -1,4 +1,5 @@
 ﻿using FCGagarin.Domain.Model;
+using FCGagarin.WebUI.Validators;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -28,5 +29,7 @@ namespace FCGagarin.WebUI.ViewModels
         public DateTime CreateDate { get; set; }
         [Display(Name = "Автор")]
         public string Author { get; set; }
+        public string PathToImage { get; set; }
+        
     }
 }

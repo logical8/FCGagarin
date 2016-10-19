@@ -240,6 +240,8 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Validators\FileSizeAttribute.cs" />
+    <Compile Include="Validators\FileTypesAttribute.cs" />
     <Compile Include="ViewModels\NewsFormModel.cs" />
     <Compile Include="ViewModels\NewsViewModel.cs" />
     <Compile Include="ViewModels\RoleModels.cs" />
@@ -266,7 +268,9 @@
     <Content Include="Content\Images\FCG.ico" />
     <Content Include="Content\Images\FCG.png" />
     <Content Include="Content\Images\fcgagarin.jpg" />
+    <Content Include="Content\Images\loading_spinner.gif" />
     <Content Include="Content\Images\prspct5-white.png" />
+    <Content Include="Content\Images\SoccerBall.gif" />
     <Content Include="Content\Slate\bootstrap.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -437,9 +441,11 @@
     <Content Include="Views\Video\Delete.cshtml" />
     <Content Include="Views\VideoAlbum\Edit.cshtml" />
     <Content Include="Views\VideoAlbum\Delete.cshtml" />
+    <Content Include="Views\News\_News.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\uploads\" />
+    <Folder Include="App_Data\" />
+    <Folder Include="Data\uploads\images_news\" />
     <Folder Include="Views\Default\" />
     <Folder Include="Views\Photo\" />
   </ItemGroup>

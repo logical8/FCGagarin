@@ -9,31 +9,52 @@
     @Html.ActionLink(" ", "Create", null, new { @class = "btn btn-default fa fa-plus fa-lg plus" }) //TODO: заменить класс .plus, который отодвигает кнопку xD
 }
 
-@foreach (var item in Model)
-{
-    <div class="jumbotron">
-        <h4 class="well well-lg">@Html.DisplayFor(modelItem => item.Title)</h4>
-        <div class="h5">
-            @Html.Raw(item.Text)
-        </div>
-        <div class="text-muted h6">
-            <div>
-                @Html.DisplayNameFor(m => m.CreateDate):  @Html.DisplayFor(modelItem => item.CreateDate)
-            </div>
-            <div>
-                @Html.DisplayNameFor(m => m.Author):  @Html.DisplayFor(modelItem => item.Author)
-            </div>
-        </div>
-        @if (User.IsInRole("Moderator"))
-        {
-            <p>
-                @Html.ActionLink(" ", "Edit", new { id = item.Id }, new { @class = "btn btn-default fa fa-pencil fa-lg" }) |
-                @Html.ActionLink(" ", "Delete", new { id = item.Id }, new { @class = "btn btn-default fa fa-trash-o fa-lg" })
-            </p>
-        }
-    </div>
-}
+<div id="scrollList">
+    @Html.Partial("_News")
+</div>
 
+<div id="loading"><img src='@Url.Content("~/Content/Images/SoccerBall.gif")' class="img-thumbnail center-block"></div>
+
+@section scripts{
+    <script type="text/javascript">
+        $(function () {
+
+            $('div#loading').hide();
+
+            var page = 0;
+            var _inCallback = false;
+            function loadItems() {
+                if (page > -1 && !_inCallback) {
+                    _inCallback = true;
+                    page++;
+                    $('div#loading').show();
+
+                    $.ajax({
+                        type: 'GET',
+                        url: '/News/Index/' + page,
+                        success: function (data, textstatus) {
+                            if (data != '') {
+                                $("#scrollList").append(data);
+                            }
+                            else {
+                                page = -1;
+                            }
+                            _inCallback = false;
+                            $("div#loading").hide();
+                        }
+                    });
+                }
+            }
+            // обработка события скроллинга
+            $(window).scroll(function () {
+                if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+
+                    loadItems();
+                }
+            });
+        })
+    </script>
+}
 
 
 

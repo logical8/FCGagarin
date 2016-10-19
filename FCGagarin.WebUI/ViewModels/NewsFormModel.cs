@@ -1,4 +1,5 @@
 ﻿using FCGagarin.Domain.Model;
+using FCGagarin.WebUI.Validators;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -28,5 +29,10 @@ namespace FCGagarin.WebUI.ViewModels
         public DateTime CreateDate { get; set; }
         [HiddenInput]
         public int AuthorId { get; set; }
+        [FileSize(2097152)] //2мб
+        [FileTypes("jpg,jpeg,png")]
+        [Display(Name = "Изображение")]
+        public HttpPostedFileBase Image { get; set; }
+
     }
 }
