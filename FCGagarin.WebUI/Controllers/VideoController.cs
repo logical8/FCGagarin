@@ -40,7 +40,7 @@ namespace FCGagarin.WebUI.Controllers
                 {
                     return HttpNotFound();
                 }
-                return View(new VideoFormModel { AlbumId = albumId.GetValueOrDefault() });
+                return View(new VideoFormModel { AlbumId = albumId.GetValueOrDefault(), AlbumName = album.Name });
             }
         }
 

@@ -26,7 +26,16 @@ namespace FCGagarin.WebUI.Mappings
                 .ForMember(vadbm => vadbm.VideoViewModelList, opt => opt.MapFrom(source => source.Videos));
 
             CreateMap<Video, VideoViewModel>().ForMember(x => x.Author, opt => opt.MapFrom(source => source.Author.ToString()));
-            CreateMap<Video, VideoFormModel>();
+            CreateMap<Video, VideoFormModel>().ForMember(x=>x.AlbumName, opt => opt.MapFrom(source => source.Album.Name));
+
+            CreateMap<PhotoAlbum, PhotoAlbumViewModel>();
+            CreateMap<PhotoAlbum, PhotoAlbumFormModel>();
+            CreateMap<PhotoAlbum, PhotoAlbumDetailsViewModel>()
+                .ForMember(padbm => padbm.PhotoAlbumViewModel, opt => opt.MapFrom(source => source))
+                .ForMember(padbm => padbm.PhotoViewModelList, opt => opt.MapFrom(source => source.Photos));
+
+            CreateMap<Photo, PhotoViewModel>().ForMember(x => x.Author, opt => opt.MapFrom(source => source.Author.ToString()));
+            CreateMap<Photo, PhotoFormModel>().ForMember(x => x.AlbumName, opt => opt.MapFrom(source => source.Album.Name));
         }
     }
 }

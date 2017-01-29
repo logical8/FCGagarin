@@ -1,0 +1,36 @@
+﻿@model FCGagarin.WebUI.ViewModels.PhotoAlbumDetailsViewModel
+
+@{
+    ViewBag.Title = string.Format("Фотоальбом \"{0}\"", Model.PhotoAlbumViewModel.Name);
+}
+
+@if (User.IsInRole("Moderator"))
+{
+    @Html.ActionLink(" ", "Create", "Photo", new { albumId = Model.PhotoAlbumViewModel.Id }, new { @class = "btn btn-default fa fa-plus fa-lg plus" }) //TODO: заменить класс .plus, который отодвигает кнопку xD
+}
+
+@if (Model.PhotoViewModelList.Count == 0)
+{
+    <div class="well">
+        <div class="h4">
+            Фото еще нет
+        </div>
+    </div>
+
+}
+else
+{
+    foreach (var pvm in Model.PhotoViewModelList.OrderByDescending(pvm => pvm.UploadDate))
+    {
+        @Html.Partial("_PhotoSummary", pvm)
+    }
+}
+
+<div>
+    @Html.ActionLink(" ", "Index", null, new { @class = "btn btn-default btn-lg fa fa-arrow-left fa-lg" })
+</div>
+
+@*<div class="pager">
+        @Html.PageLinks(Model.PagingInfo, x => Url.Action("Index", new { page = x }))
+    </div>*@
+

@@ -7,23 +7,25 @@ using System.Web.Mvc;
 
 namespace FCGagarin.WebUI.ViewModels
 {
-    public class VideoFormModel
+    public class PhotoFormModel
     {
-        public VideoFormModel()
+        public PhotoFormModel()
         {
-            VideoDate = DateTime.Now.Date;
+            PhotoDate = DateTime.Now.Date;
+            UploadDate = DateTime.Now.Date;
         }
 
         public int Id { get; set; }
         [Required]
-        [Display(Name = "Название видео")]
+        [Display(Name = "Название фото")]
         public string Name { get; set; }
-        [Display(Name = "Ссылка на видео (youtube)")]
         [Required]
-        public string Url { get; set; }
-        [Display(Name = "Дата видео")]
+        public string PathToImage { get; set; }
+        [Display(Name = "Дата фото")]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
-        public DateTime VideoDate { get; set; }
+        public DateTime PhotoDate { get; set; }
+        [HiddenInput]
+        public DateTime UploadDate { get; set; }
         [HiddenInput]
         public int AlbumId { get; set; }
         public string AlbumName { get; set; }

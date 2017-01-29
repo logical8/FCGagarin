@@ -17,7 +17,7 @@ namespace FCGagarin.WebUI.Controllers.WebApi
         {
             HttpPostedFile file = HttpContext.Current.Request.Files[0];
             var fileName = Path.GetFileName(file.FileName);
-            var path = Path.Combine(HttpContext.Current.Server.MapPath("~/App_Data/uploads"), fileName);
+            var path = Path.Combine(HttpContext.Current.Server.MapPath("~/Data/uploads/images_gallery"), fileName);
 
             if (File.Exists(path))
             {
@@ -35,6 +35,11 @@ namespace FCGagarin.WebUI.Controllers.WebApi
             else
             {
                 file.SaveAs(path);
+            }
+            FileInfo file1 = new FileInfo(path);
+            if (file.ContentLength == file1.Length)
+            {
+
             }
 
 

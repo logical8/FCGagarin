@@ -213,6 +213,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\PhotoAlbumController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\PhotoController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -244,6 +245,11 @@
     <Compile Include="Validators\FileTypesAttribute.cs" />
     <Compile Include="ViewModels\NewsFormModel.cs" />
     <Compile Include="ViewModels\NewsViewModel.cs" />
+    <Compile Include="ViewModels\PhotoAlbumDetailsViewModel.cs" />
+    <Compile Include="ViewModels\PhotoAlbumFormModel.cs" />
+    <Compile Include="ViewModels\PhotoAlbumViewModel.cs" />
+    <Compile Include="ViewModels\PhotoFormModel.cs" />
+    <Compile Include="ViewModels\PhotoViewModel.cs" />
     <Compile Include="ViewModels\RoleModels.cs" />
     <Compile Include="ViewModels\UsersRolesFormModel.cs" />
     <Compile Include="ViewModels\UsersRolesViewModel.cs" />
@@ -296,6 +302,7 @@
     <Content Include="Content\bootstrap-datepicker.css.map" />
     <None Include="Properties\PublishProfiles\Reg.ru fcgagarin.ru release.pubxml" />
     <None Include="Properties\PublishProfiles\Reg.ru fcgagarin.ru debug.pubxml" />
+    <None Include="Properties\PublishProfiles\test smarterasp.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Custom\datepicker.js" />
     <Content Include="Scripts\Custom\multiselect.js" />
@@ -442,12 +449,21 @@
     <Content Include="Views\VideoAlbum\Edit.cshtml" />
     <Content Include="Views\VideoAlbum\Delete.cshtml" />
     <Content Include="Views\News\_News.cshtml" />
+    <Content Include="Views\PhotoAlbum\Index.cshtml" />
+    <Content Include="Views\PhotoAlbum\Create.cshtml" />
+    <Content Include="Views\PhotoAlbum\Details.cshtml" />
+    <Content Include="Views\PhotoAlbum\Edit.cshtml" />
+    <Content Include="Views\PhotoAlbum\Delete.cshtml" />
+    <Content Include="Views\Photo\Create.cshtml" />
+    <Content Include="Views\Photo\Edit.cshtml" />
+    <Content Include="Views\Photo\Delete.cshtml" />
+    <Content Include="Views\Shared\_PhotoSummary.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Data\uploads\images_gallery\" />
     <Folder Include="Data\uploads\images_news\" />
     <Folder Include="Views\Default\" />
-    <Folder Include="Views\Photo\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

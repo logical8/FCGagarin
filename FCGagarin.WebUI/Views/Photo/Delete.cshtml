@@ -1,0 +1,39 @@
+﻿@model FCGagarin.WebUI.ViewModels.PhotoViewModel
+
+@{
+    ViewBag.Title = "Удаление фото";
+}
+
+<div class="well">
+    <div class="h5">
+        @Html.DisplayNameFor(m => m.Name): @Html.DisplayFor(m => m.Name)
+    </div>
+    <div class="h5">
+        @Html.DisplayNameFor(m => m.PathToImage): @Html.DisplayFor(m => m.PathToImage)
+    </div>
+    <div class="text-muted h6">
+        <div>
+            @Html.DisplayNameFor(m => m.Author):  @Html.DisplayFor(m => m.Author)
+        </div>
+        <div>
+            @Html.DisplayNameFor(m => m.UploadDate):  @Html.DisplayFor(m => m.UploadDate)
+        </div>
+    </div>
+    <h5><span class="label label-danger">Удаляем фото, уверены?</span></h5>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <button type="submit" class="btn btn-default">
+                <i class="fa fa-check fa-lg"></i>
+            </button>
+        </div>
+    }
+</div>
+<div>
+    @Html.ActionLink(" ", "Details", "PhotoAlbum", new { id = Model.AlbumId }, new { @class = "btn btn-default fa fa-arrow-left fa-lg" })
+</div>
+
+
+
