@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using FCGagarin.Domain.Model;
 using FCGagarin.WebUI.ViewModels;
 
 namespace FCGagarin.WebUI.Mappings

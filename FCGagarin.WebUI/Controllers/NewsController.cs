@@ -1,26 +1,20 @@
 ﻿using AutoMapper;
-using FCGagarin.DAL.Concrete;
-using FCGagarin.Domain.Model;
 using FCGagarin.WebUI.Helpers;
 using FCGagarin.WebUI.ViewModels;
 using FCGagarin.WebUI.Extensions;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text.RegularExpressions;
-using System.Web;
 using System.Web.Mvc;
-using System.Data.Entity;
 using System.IO;
 
 namespace FCGagarin.WebUI.Controllers
 {
     public class NewsController : Controller
     {
-        private const int pageSize = 10; 
-        public ActionResult Index(int? Id)
+        private const int PageSize = 10; 
+        public ActionResult Index(int? id)
         {
-            int page = Id ?? 0;
+            int page = id ?? 0;
 
             if (Request.IsAjaxRequest())
             {
@@ -31,16 +25,16 @@ namespace FCGagarin.WebUI.Controllers
 
         private IEnumerable<NewsViewModel> GetNewsPage(int page = 1)
         {
-            var newsToSkip = page * pageSize;
+            var newsToSkip = page * PageSize;
             using (var db = new FCGagarinContext())
             {
-                var all_news = db.News.Include(x => x.Author).ToList().OrderByDescending(x => x.CreateDate);
-                var model = Mapper.Map<IEnumerable<News>, IEnumerable<NewsViewModel>>(all_news);
+                var allNews = db.News.Include(x => x.Author).ToList().OrderByDescending(x => x.CreateDate);
+                var model = Mapper.Map<IEnumerable<News>, IEnumerable<NewsViewModel>>(allNews);
                 foreach (var item in model)
                 {
                     item.Text = LinkPrepare.RawTextToDB(item.Text);
                 }
-                return model.Skip(newsToSkip).Take(pageSize);
+                return model.Skip(newsToSkip).Take(PageSize);
             }
         }
 

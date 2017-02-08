@@ -1,12 +1,6 @@
 ﻿using AutoMapper;
-using FCGagarin.DAL.Concrete;
-using FCGagarin.Domain.Model;
 using FCGagarin.WebUI.Extensions;
 using FCGagarin.WebUI.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace FCGagarin.WebUI.Controllers

@@ -49,18 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Concrete\FCGagarinContext.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FCGagarin.Domain\FCGagarin.Domain.csproj">
-      <Project>{1634d2e4-53c3-411e-bfa6-aa0a9cc72331}</Project>
-      <Name>FCGagarin.Domain</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="Abstract\" />
+    <Folder Include="Concrete\" />
     <Folder Include="Configuration\" />
   </ItemGroup>
   <ItemGroup>

@@ -22,10 +22,10 @@
             $('div#loading').hide();
 
             var page = 0;
-            var _inCallback = false;
+            var inCallback = false;
             function loadItems() {
-                if (page > -1 && !_inCallback) {
-                    _inCallback = true;
+                if (page > -1 && !inCallback) {
+                    inCallback = true;
                     page++;
                     $('div#loading').show();
 
@@ -39,7 +39,7 @@
                             else {
                                 page = -1;
                             }
-                            _inCallback = false;
+                            inCallback = false;
                             $("div#loading").hide();
                         }
                     });

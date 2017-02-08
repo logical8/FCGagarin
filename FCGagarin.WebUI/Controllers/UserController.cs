@@ -1,15 +1,11 @@
 ﻿using FCGagarin.WebUI.ViewModels;
 using Microsoft.AspNet.Identity.Owin;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using FCGagarin.WebUI.Extensions;
-using FCGagarin.Domain.Model;
-using FCGagarin.DAL.Concrete;
 using System.Threading.Tasks;
-using Microsoft.AspNet.Identity;
 using FCGagarin.WebUI.Models;
 
 namespace FCGagarin.WebUI.Controllers

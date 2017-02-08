@@ -1,5 +1,4 @@
-﻿@using Microsoft.AspNet.Identity
-@using FCGagarin.WebUI.Extensions
+﻿@using FCGagarin.WebUI.Extensions
 @if (Request.IsAuthenticated)
 {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))

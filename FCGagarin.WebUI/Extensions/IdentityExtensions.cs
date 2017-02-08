@@ -1,13 +1,9 @@
-﻿using FCGagarin.DAL.Concrete;
-using FCGagarin.Domain.Model;
-using FCGagarin.WebUI.Models;
-using Microsoft.AspNet.Identity;
+﻿using FCGagarin.WebUI.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Principal;
-using System.Web;
 
 namespace FCGagarin.WebUI.Extensions
 {
