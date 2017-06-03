@@ -1,9 +1,10 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using FCGagarin.DAL.Entities.Abstract;
 
 namespace FCGagarin.DAL.Entities
 {
-    public class UserProfile
+    public class UserProfile : BaseEntity
     {
         public int Id { get; set; }
         public string Email { get; set; }

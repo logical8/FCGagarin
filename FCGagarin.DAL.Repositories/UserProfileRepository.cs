@@ -7,11 +7,11 @@ using FCGagarin.DAL.Entities;
 
 namespace FCGagarin.DAL.Repositories
 {
-    public class UserProfileRepository : IUserProfileRepository
+    public class UserProfileRepository : GenericRepository<UserProfile>, IUserProfileRepository
     {
         private readonly FCGagarinContext _context;
 
-        public UserProfileRepository(FCGagarinContext context)
+        public UserProfileRepository(FCGagarinContext context) : base(context)
         {
             _context = context;
         }
