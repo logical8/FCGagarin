@@ -1,6 +1,6 @@
 ﻿using System.Web.Http;
 
-namespace FCGagarin.WebUI
+namespace FCGagarin.PL.WebUI
 {
     public static class WebApiConfig
     {

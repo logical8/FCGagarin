@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FCGagarin.BLL.DTO
+namespace FCGagarin.DAL.DTO
 {
     public class PhotoItemDTO
     {

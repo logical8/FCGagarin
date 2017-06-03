@@ -1,13 +1,13 @@
-﻿using Autofac.Integration.Mvc;
-using FCGagarin.WebUI.Mappings;
-using System.Web.Http;
+﻿using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using Autofac;
-using FCGagarin.WebUI.Modules;
+using Autofac.Integration.Mvc;
+using FCGagarin.PL.WebUI.Mappings;
+using FCGagarin.PL.WebUI.Modules;
 
-namespace FCGagarin.WebUI
+namespace FCGagarin.PL.WebUI
 {
     public class MvcApplication : System.Web.HttpApplication
     {
@@ -21,7 +21,7 @@ namespace FCGagarin.WebUI
             AutoMappingConfiguration.Configure();
 
             //Autofac Configuration
-            var builder = new Autofac.ContainerBuilder();
+            var builder = new ContainerBuilder();
 
             builder.RegisterControllers(typeof(MvcApplication).Assembly).PropertiesAutowired();
             builder.RegisterModule(new RepositoryModule());

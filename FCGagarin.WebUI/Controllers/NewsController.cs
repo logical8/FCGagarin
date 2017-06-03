@@ -1,13 +1,16 @@
-﻿using AutoMapper;
-using FCGagarin.WebUI.Helpers;
-using FCGagarin.WebUI.ViewModels;
-using FCGagarin.WebUI.Extensions;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Web.Mvc;
-using System.IO;
+using AutoMapper;
+using FCGagarin.DAL.EF;
+using FCGagarin.DAL.Entities;
+using FCGagarin.PL.ViewModels;
+using FCGagarin.PL.WebUI.Extensions;
+using FCGagarin.PL.WebUI.Helpers;
 
-namespace FCGagarin.WebUI.Controllers
+namespace FCGagarin.PL.WebUI.Controllers
 {
     public class NewsController : Controller
     {

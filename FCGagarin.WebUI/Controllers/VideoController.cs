@@ -1,9 +1,12 @@
-﻿using AutoMapper;
-using FCGagarin.WebUI.Extensions;
-using FCGagarin.WebUI.ViewModels;
+﻿using System.Linq;
 using System.Web.Mvc;
+using AutoMapper;
+using FCGagarin.DAL.EF;
+using FCGagarin.DAL.Entities;
+using FCGagarin.PL.ViewModels;
+using FCGagarin.PL.WebUI.Extensions;
 
-namespace FCGagarin.WebUI.Controllers
+namespace FCGagarin.PL.WebUI.Controllers
 {
     public class VideoController : Controller
     {

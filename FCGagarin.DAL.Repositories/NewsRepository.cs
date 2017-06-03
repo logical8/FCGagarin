@@ -1,20 +1,21 @@
 ﻿using System.Data.Entity;
+using System.Linq;
+using FCGagarin.DAL.EF;
+using FCGagarin.DAL.Entities;
 using FCGagarin.DAL.Repositories.Interfaces;
 
 namespace FCGagarin.DAL.Repositories
 {
-    public class NewsRepository : INewsRepository
+    public class NewsRepository : GenericRepository<News>, INewsRepository
     {
-        private readonly DbContext _context;
-
-        public NewsRepository(DbContext context)
+        public NewsRepository(FCGagarinContext context) : base(context)
         {
-            _context = context;
         }
 
-        public NewsRepository()
+
+        public News GetById(int id)
         {
-            _context.
+            return _dbSet.FirstOrDefault(x => x.Id == id);
         }
     }
 }

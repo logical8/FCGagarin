@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace FCGagarin.WebUI.Controllers
+namespace FCGagarin.PL.WebUI.Controllers
 {
     public class HomeController : Controller
     {

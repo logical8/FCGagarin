@@ -1,25 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using FCGagarin.BLL.Interfaces;
-using FCGagarin.PL.ViewModels;
+﻿using FCGagarin.BLL.Services.Interfaces;
+using FCGagarin.DAL.Entities;
+using FCGagarin.DAL.Repositories.Interfaces;
+using FCGagarin.DAL.EF;
 
 namespace FCGagarin.BLL.Services
 {
-    public class NewsService : INewsService
+    public class NewsService : EntityService<News>, INewsService
     {
-        private readonly DbContext _context;
+        private INewsRepository _newsRepository;
+        private IContext _context;
 
-        public NewsService(DbContext context)
+        public NewsService(INewsRepository newsRepository, IContext context) : base (newsRepository, context)
         {
+            _newsRepository = newsRepository;
             _context = context;
-        }
-
-        public IEnumerable<NewsItemViewModel> GetAllNews()
-        {
-            
-            _context.
-            throw new NotImplementedException();
         }
     }
 }

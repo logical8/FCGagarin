@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using Autofac;
 
-namespace FCGagarin.WebUI.Modules
+namespace FCGagarin.PL.WebUI.Modules
 {
     public class ServiceModule : Autofac.Module
     {

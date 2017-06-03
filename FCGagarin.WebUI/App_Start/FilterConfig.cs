@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace FCGagarin.WebUI
+namespace FCGagarin.PL.WebUI
 {
     public class FilterConfig
     {

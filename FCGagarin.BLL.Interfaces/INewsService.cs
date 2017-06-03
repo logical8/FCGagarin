@@ -1,10 +1,9 @@
-﻿using FCGagarin.PL.ViewModels;
-using System.Collections.Generic;
+﻿using FCGagarin.DAL.Entities;
 
-namespace FCGagarin.BLL.Interfaces
+namespace FCGagarin.BLL.Services.Interfaces
 {
-    public interface INewsService
+    public interface INewsService : IEntityService<News>
     {
-        IEnumerable<NewsItemViewModel> GetAllNews();
+
     }
 }

@@ -2,7 +2,7 @@
 
 namespace FCGagarin.DAL.Entities.Abstract
 {
-    public abstract class AbstractNews
+    public abstract class AbstractNews : BaseEntity
     {
         public int Id { get; set; }
         public string Title { get; set; }

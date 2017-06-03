@@ -1,15 +1,17 @@
+using FCGagarin.DAL.EF;
+
 namespace FCGagarin.DAL.Migrations
 {
     using System.Data.Entity.Migrations;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<FCGagarin.DAL.Concrete.FCGagarinContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<FCGagarinContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
         }
 
-        protected override void Seed(FCGagarin.DAL.Concrete.FCGagarinContext context)
+        protected override void Seed(FCGagarin.DAL.EF.FCGagarinContext context)
         {
             //  This method will be called after migrating to the latest version.
 

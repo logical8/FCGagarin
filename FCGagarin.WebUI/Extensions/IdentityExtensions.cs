@@ -1,11 +1,13 @@
-﻿using FCGagarin.WebUI.Models;
-using Microsoft.AspNet.Identity.EntityFramework;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Principal;
+using FCGagarin.DAL.EF;
+using FCGagarin.DAL.Entities;
+using FCGagarin.PL.WebUI.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 
-namespace FCGagarin.WebUI.Extensions
+namespace FCGagarin.PL.WebUI.Extensions
 {
     public static class IdentityExtensions
     {
@@ -13,10 +15,9 @@ namespace FCGagarin.WebUI.Extensions
         {
             using (var db = new FCGagarinContext())
             {
-                string firstName;
                 try
                 {
-                    firstName = db.UserProfiles.Where(x => x.Email == identity.Name).First().FirstName;
+                    var firstName = db.UserProfiles.First(x => x.Email == identity.Name).FirstName;
                     return firstName;
                 }
                 catch (Exception)
@@ -30,7 +31,7 @@ namespace FCGagarin.WebUI.Extensions
         {
             using (var db = new FCGagarinContext())
             {
-                UserProfile userProfile = db.UserProfiles.Where(x => x.Email == identity.Name).FirstOrDefault();
+                UserProfile userProfile = db.UserProfiles.FirstOrDefault(x => x.Email == identity.Name);
                 if (userProfile != null)
                 {
                     return userProfile;
@@ -46,7 +47,7 @@ namespace FCGagarin.WebUI.Extensions
         {
             using (var db = new FCGagarinContext())
             {
-                UserProfile userProfile = db.UserProfiles.Where(x => x.Email == applicationUser.Email).FirstOrDefault();
+                UserProfile userProfile = db.UserProfiles.FirstOrDefault(x => x.Email == applicationUser.Email);
                 if (userProfile != null)
                 {
                     return userProfile;
@@ -58,17 +59,16 @@ namespace FCGagarin.WebUI.Extensions
             }
         }
 
-
         public static List<ApplicationRole> GetRolesByUserId(this ApplicationRoleManager manager, string userId)
         {
-            List<IdentityRole> identityRoles = new List<IdentityRole>();
+            List<IdentityRole> identityRoles;
             using (var db = new ApplicationDbContext())
             {
                 var user = db.Users.Find(userId);
                 identityRoles = db.Roles.Where(x => x.Users.Select(y => y.UserId).Contains(user.Id)).ToList();
                 
             }
-            List<ApplicationRole> result = identityRoles.SelectMany(x => manager.Roles.Where(z => z.Id == x.Id)).ToList();
+            var result = identityRoles.SelectMany(x => manager.Roles.Where(z => z.Id == x.Id)).ToList();
             return result;
         }
     }

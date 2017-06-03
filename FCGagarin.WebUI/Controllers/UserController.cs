@@ -1,27 +1,23 @@
-﻿using FCGagarin.WebUI.ViewModels;
-using Microsoft.AspNet.Identity.Owin;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using FCGagarin.WebUI.Extensions;
-using System.Threading.Tasks;
-using FCGagarin.WebUI.Models;
+using FCGagarin.DAL.EF;
+using FCGagarin.PL.ViewModels;
+using FCGagarin.PL.WebUI.Extensions;
+using FCGagarin.PL.WebUI.Models;
+using Microsoft.AspNet.Identity.Owin;
+using FCGagarin.DAL.Entities;
 
-namespace FCGagarin.WebUI.Controllers
+namespace FCGagarin.PL.WebUI.Controllers
 {
     [Authorize(Roles = "Admin")]
     public class UserController : Controller
     {
-        private ApplicationRoleManager RoleManager
-        {
-            get { return HttpContext.GetOwinContext().GetUserManager<ApplicationRoleManager>(); }
-        }
+        private ApplicationRoleManager RoleManager => HttpContext.GetOwinContext().GetUserManager<ApplicationRoleManager>();
 
-        private ApplicationUserManager UserManager
-        {
-            get { return HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>(); }
-        }
+        private ApplicationUserManager UserManager => HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
 
         public ActionResult Index()
         {
@@ -37,7 +33,7 @@ namespace FCGagarin.WebUI.Controllers
                     FirstName = userProfile.FirstName,
                     LastName = userProfile.LastName,
                     GUID = userProfile.GUID,
-                    Roles = RoleManager.GetRolesByUserId(item.Id)
+                    Roles = ConvertToRoleViewModelList(RoleManager.GetRolesByUserId(item.Id))
                 });
             }
             return View(model);
@@ -61,7 +57,7 @@ namespace FCGagarin.WebUI.Controllers
                     LastName = userProfile.LastName,
                     GUID = userProfile.GUID,
                     SelectedRoleIds = RoleManager.GetRolesByUserId(userProfile.GUID).Select(x=>x.Id),
-                    Roles = RoleManager.Roles
+                    Roles = ConvertToRoleViewModelList(RoleManager.Roles.ToList())
                 };
                 return View(viewModel);
             }
@@ -69,6 +65,11 @@ namespace FCGagarin.WebUI.Controllers
             {
                 return HttpNotFound();
             }
+        }
+
+        private List<ApplicationRoleViewModel> ConvertToRoleViewModelList(List<ApplicationRole> roleManagerRoles)
+        {
+            throw new System.NotImplementedException();
         }
 
         [HttpPost]

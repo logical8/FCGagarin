@@ -1,15 +1,14 @@
-﻿using System.Data.Entity;
-using Autofac;
+﻿using Autofac;
 using FCGagarin.DAL.EF;
 
-namespace FCGagarin.WebUI.Modules
+namespace FCGagarin.PL.WebUI.Modules
 {
-    public class EFModule : Autofac.Module
+    public class EFModule : Module
     {
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterModule(new RepositoryModule());
-            builder.RegisterType(typeof(FCGagarinContext)).As(typeof(DbContext)).InstancePerLifetimeScope();
+            builder.RegisterType(typeof(FCGagarinContext)).As(typeof(IContext)).InstancePerLifetimeScope();
         }
     }
 }

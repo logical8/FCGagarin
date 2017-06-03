@@ -1,15 +1,17 @@
-namespace FCGagarin.WebUI.Migrations
-{
-    using System.Data.Entity.Migrations;
+using System.Data.Entity.Migrations;
+using FCGagarin.DAL.EF;
+using FCGagarin.PL.WebUI.Models;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<FCGagarin.WebUI.Models.ApplicationDbContext>
+namespace FCGagarin.PL.WebUI.Migrations
+{
+    internal sealed class Configuration : DbMigrationsConfiguration<ApplicationDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
         }
 
-        protected override void Seed(FCGagarin.WebUI.Models.ApplicationDbContext context)
+        protected override void Seed(ApplicationDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 

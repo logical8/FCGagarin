@@ -1,25 +1,32 @@
-﻿using AutoMapper;
-using FCGagarin.WebUI.Extensions;
-using FCGagarin.WebUI.ViewModels;
+﻿using System.Linq;
 using System.Web.Mvc;
+using AutoMapper;
+using FCGagarin.BLL.Services.Interfaces;
+using FCGagarin.DAL.EF;
+using FCGagarin.DAL.Entities;
+using FCGagarin.PL.ViewModels;
+using FCGagarin.PL.WebUI.Extensions;
 
-namespace FCGagarin.WebUI.Controllers
+namespace FCGagarin.PL.WebUI.Controllers
 {
     public class PhotoController : Controller
     {
+        private readonly IPhotoAlbumService _photoAlbumService;
+
+        public PhotoController(IPhotoAlbumService photoAlbumService)
+        {
+            _photoAlbumService = photoAlbumService;
+        }
+
         [Authorize(Roles = "Moderator")]
         public ActionResult Create(int? albumId)
         {
-            using (var db = new FCGagarinContext())
+            var album = _photoAlbumService.GetById(albumId.GetValueOrDefault());
+            if (album == null)
             {
-                var album = db.PhotoAlbums
-                    .FirstOrDefault(v => v.Id == albumId);
-                if (albumId == null)
-                {
-                    return HttpNotFound();
-                }
-                return View(new PhotoFormModel { AlbumId = albumId.GetValueOrDefault(), AlbumName = album.Name });
+                return HttpNotFound();
             }
+            return View(new PhotoFormModel { AlbumId = albumId.GetValueOrDefault(), AlbumName = album.Name });
         }
 
         [Authorize(Roles = "Moderator")]

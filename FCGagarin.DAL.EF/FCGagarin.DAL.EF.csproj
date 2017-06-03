@@ -38,6 +38,12 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\FCGagarin.WebUI\Bin\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\FCGagarin.WebUI\Bin\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -49,7 +55,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Context.cs" />
     <Compile Include="FCGagarinContext.cs" />
+    <Compile Include="IContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -60,10 +68,6 @@
     <ProjectReference Include="..\FCGagarin.DAL.Entities\FCGagarin.DAL.Entities.csproj">
       <Project>{b9360a37-67fe-425d-8df0-f18aaabb2fdb}</Project>
       <Name>FCGagarin.DAL.Entities</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\FCGagarin.DAL.Repositories.Interfaces\FCGagarin.DAL.Interfaces.csproj">
-      <Project>{8F97F7BE-278B-488F-87AF-E583569B914C}</Project>
-      <Name>FCGagarin.DAL.Interfaces</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

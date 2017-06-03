@@ -1,25 +1,19 @@
-﻿using FCGagarin.WebUI.Models;
-using FCGagarin.WebUI.ViewModels;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using FCGagarin.PL.ViewModels;
+using FCGagarin.PL.WebUI.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 
-namespace FCGagarin.WebUI.Controllers
+namespace FCGagarin.PL.WebUI.Controllers
 {
     [Authorize(Roles = "Admin")]
     public class RoleController : Controller
     {
-        private ApplicationRoleManager RoleManager
-        {
-            get { return HttpContext.GetOwinContext().GetUserManager<ApplicationRoleManager>(); }
-        }
+        private ApplicationRoleManager RoleManager => HttpContext.GetOwinContext().GetUserManager<ApplicationRoleManager>();
 
-        private ApplicationUserManager UserManager
-        {
-            get { return HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>(); }
-        }
+        private ApplicationUserManager UserManager => HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
 
         public ActionResult Index()
         {
@@ -36,7 +30,7 @@ namespace FCGagarin.WebUI.Controllers
         {
             if (ModelState.IsValid)
             {
-                IdentityResult result = await RoleManager.CreateAsync(new Models.ApplicationRole
+                IdentityResult result = await RoleManager.CreateAsync(new ApplicationRole
                 {
                     Name = model.Name,
                     Description = model.Description

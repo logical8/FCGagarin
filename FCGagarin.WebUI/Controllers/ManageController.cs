@@ -2,12 +2,12 @@
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using FCGagarin.PL.ViewModels;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using FCGagarin.WebUI.Models;
 
-namespace FCGagarin.WebUI.Controllers
+namespace FCGagarin.PL.WebUI.Controllers
 {
     [Authorize]
     public class ManageController : Controller

@@ -4,7 +4,7 @@ using System.Net.Http;
 using System.Web;
 using System.Web.Http;
 
-namespace FCGagarin.WebUI.Controllers.WebApi
+namespace FCGagarin.PL.WebUI.Controllers.WebApi
 {
     public class UploadController : ApiController
     {

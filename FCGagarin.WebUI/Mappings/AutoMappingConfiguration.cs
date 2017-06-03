@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 
-namespace FCGagarin.WebUI.Mappings
+namespace FCGagarin.PL.WebUI.Mappings
 {
     public class AutoMappingConfiguration
     {

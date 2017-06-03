@@ -1,6 +1,6 @@
 ﻿using System.Web.Optimization;
 
-namespace FCGagarin.WebUI
+namespace FCGagarin.PL.WebUI
 {
     public class BundleConfig
     {

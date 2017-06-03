@@ -43,6 +43,10 @@
   <ItemGroup>
     <Compile Include="Abstract\AbstractAlbum.cs" />
     <Compile Include="Abstract\AbstractNews.cs" />
+    <Compile Include="Abstract\AuditableEntity.cs" />
+    <Compile Include="Abstract\BaseEntity.cs" />
+    <Compile Include="Abstract\IAuditableEntity.cs" />
+    <Compile Include="Abstract\IEntity.cs" />
     <Compile Include="News.cs" />
     <Compile Include="Photo.cs" />
     <Compile Include="PhotoAlbum.cs" />

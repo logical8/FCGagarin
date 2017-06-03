@@ -1,8 +1,9 @@
-﻿using Microsoft.Owin;
+﻿using FCGagarin.PL.WebUI;
+using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartupAttribute(typeof(FCGagarin.WebUI.Startup))]
-namespace FCGagarin.WebUI
+[assembly: OwinStartup(typeof(Startup))]
+namespace FCGagarin.PL.WebUI
 {
     public partial class Startup
     {

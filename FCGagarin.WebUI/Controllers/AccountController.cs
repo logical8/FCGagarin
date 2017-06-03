@@ -2,27 +2,33 @@
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using FCGagarin.BLL.Models;
+using FCGagarin.BLL.Services.Interfaces;
+using FCGagarin.PL.ViewModels;
+using FCGagarin.PL.WebUI.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using FCGagarin.WebUI.Models;
 
-namespace FCGagarin.WebUI.Controllers
+namespace FCGagarin.PL.WebUI.Controllers
 {
     [Authorize]
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private readonly IUserProfileService _userProfileService;
 
-        public AccountController()
+        public AccountController(IUserProfileService userProfileService)
         {
+            _userProfileService = userProfileService;
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, IUserProfileService userProfileService)
         {
             UserManager = userManager;
             SignInManager = signInManager;
+            _userProfileService = userProfileService;
         }
 
         public ApplicationSignInManager SignInManager
@@ -152,14 +158,7 @@ namespace FCGagarin.WebUI.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    //Возможно имеет смысл сделать по-другому 
-                    var userProfile = new UserProfile { Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, GUID = user.Id };
-                    using (var db = new FCGagarinContext())
-                    {
-                        db.UserProfiles.Add(userProfile);
-                        await db.SaveChangesAsync();
-                    }
-
+                    _userProfileService.CreateUserProfile(ConvertToUserProfileModel(model, user.Id));
 
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
@@ -176,6 +175,17 @@ namespace FCGagarin.WebUI.Controllers
 
             // If we got this far, something failed, redisplay form
             return View(model);
+        }
+
+        private UserProfileModel ConvertToUserProfileModel(RegisterViewModel model, string userGUID)
+        {
+            return new UserProfileModel
+            {
+                Email = model.Email,
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                GUID = userGUID
+            };
         }
 
         //

@@ -38,6 +38,12 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\FCGagarin.WebUI\Bin\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\FCGagarin.WebUI\Bin\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -49,13 +55,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GenericRepository.cs" />
     <Compile Include="NewsRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserProfileRepository.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FCGagarin.DAL.Repositories.Interfaces\FCGagarin.DAL.Interfaces.csproj">
+    <ProjectReference Include="..\FCGagarin.BLL.DTO\FCGagarin.DAL.DTO.csproj">
+      <Project>{21854C6B-342F-488C-AD42-450A2F328E5D}</Project>
+      <Name>FCGagarin.DAL.DTO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FCGagarin.DAL.EF\FCGagarin.DAL.EF.csproj">
+      <Project>{2F824976-F82F-4ACC-B7CF-4543FB37BC16}</Project>
+      <Name>FCGagarin.DAL.EF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FCGagarin.DAL.Entities\FCGagarin.DAL.Entities.csproj">
+      <Project>{B9360A37-67FE-425D-8DF0-F18AAABB2FDB}</Project>
+      <Name>FCGagarin.DAL.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FCGagarin.DAL.Repositories.Interfaces\FCGagarin.DAL.Repositories.Interfaces.csproj">
       <Project>{8F97F7BE-278B-488F-87AF-E583569B914C}</Project>
-      <Name>FCGagarin.DAL.Interfaces</Name>
+      <Name>FCGagarin.DAL.Repositories.Interfaces</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

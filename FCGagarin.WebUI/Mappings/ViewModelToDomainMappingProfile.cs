@@ -1,7 +1,8 @@
 ﻿using AutoMapper;
-using FCGagarin.WebUI.ViewModels;
+using FCGagarin.DAL.Entities;
+using FCGagarin.PL.ViewModels;
 
-namespace FCGagarin.WebUI.Mappings
+namespace FCGagarin.PL.WebUI.Mappings
 {
     public class ViewModelToDomainMappingProfile : Profile
     {

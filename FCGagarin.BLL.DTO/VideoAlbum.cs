@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace FCGagarin.BLL.DTO
+namespace FCGagarin.DAL.DTO
 {
     public class VideoAlbumDTO
     {

@@ -1,10 +1,13 @@
-﻿using AutoMapper;
-using FCGagarin.WebUI.Helpers;
-using FCGagarin.WebUI.ViewModels;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
+using AutoMapper;
+using FCGagarin.DAL.EF;
+using FCGagarin.PL.WebUI.Helpers;
+using FCGagarin.DAL.Entities;
+using FCGagarin.PL.ViewModels;
 
-namespace FCGagarin.WebUI.Controllers
+namespace FCGagarin.PL.WebUI.Controllers
 {
     public class VideoAlbumController : Controller
     {

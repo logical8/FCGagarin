@@ -1,22 +1,27 @@
-﻿using AutoMapper;
-using FCGagarin.WebUI.ViewModels;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Web.Mvc;
+using AutoMapper;
+using FCGagarin.BLL.Services.Interfaces;
+using FCGagarin.DAL.Entities;
+using FCGagarin.PL.ViewModels;
 
-namespace FCGagarin.WebUI.Controllers
+namespace FCGagarin.PL.WebUI.Controllers
 {
     public class PhotoAlbumController : Controller
     {
+        private IPhotoAlbumService _photoAlbumService;
+
+        public PhotoAlbumController(IPhotoAlbumService photoAlbumService)
+        {
+            _photoAlbumService = photoAlbumService;
+        }
+
         public ActionResult Index()
         {
-            using (var db = new FCGagarinContext())
-            {
-                var allAlbums = db.PhotoAlbums
-                    .Include("Photos");
-                var model = Mapper.Map<IEnumerable<PhotoAlbum>, IEnumerable<PhotoAlbumViewModel>>(allAlbums);
+            var allAlbums = _photoAlbumService.GetAll();
+            var model = Mapper.Map<IEnumerable<PhotoAlbum>, IEnumerable<PhotoAlbumViewModel>>(allAlbums);
 
-                return View(model);
-            }
+            return View(model);
         }
 
         [Authorize(Roles = "Moderator")]
@@ -32,11 +37,7 @@ namespace FCGagarin.WebUI.Controllers
             if (ModelState.IsValid)
             {
                 var newAlbum = Mapper.Map<PhotoAlbumFormModel, PhotoAlbum>(formModel);
-                using (var db = new FCGagarinContext())
-                {
-                    db.PhotoAlbums.Add(newAlbum);
-                    db.SaveChanges();
-                }
+                _photoAlbumService.Create(newAlbum);
                 return RedirectToAction("Index");
             }
 
@@ -45,43 +46,31 @@ namespace FCGagarin.WebUI.Controllers
 
         public ActionResult Details(int id)
         {
-            using (var db = new FCGagarinContext())
+            var album = _photoAlbumService.GetById(id);
+            if (album == null)
             {
-                var album = db.PhotoAlbums
-                    .Include("Photos")
-                    .Include("Photos.Author")
-                    .FirstOrDefault(pa => pa.Id == id);
-                if (album == null)
-                {
-                    return HttpNotFound();
-                }
-                var viewModel = Mapper.Map<PhotoAlbum, PhotoAlbumDetailsViewModel>(album);
-                foreach (var item in viewModel.PhotoViewModelList)
-                {
-                    item.AlbumId = id;
-                    item.PathToImage = "";//TODO:Тут доделать //LinkPrepare.YoutubeUrlToEmbedUrl(item.Url);
-                }
-                return View(viewModel);
+                return HttpNotFound();
             }
-
+            var viewModel = Mapper.Map<PhotoAlbum, PhotoAlbumDetailsViewModel>(album);
+            foreach (var item in viewModel.PhotoViewModelList)
+            {
+                item.AlbumId = id;
+                item.PathToImage = "";//TODO:Тут доделать //LinkPrepare.YoutubeUrlToEmbedUrl(item.Url);
+            }
+            return View(viewModel);
         }
 
         [Authorize(Roles = "Moderator")]
         public ActionResult Edit(int id)
         {
-            using (var db = new FCGagarinContext())
+
+            var model = _photoAlbumService.GetById(id);
+            if (model != null)
             {
-                var model = db.PhotoAlbums.Find(id);
-                if (model != null)
-                {
-                    var formModel = Mapper.Map<PhotoAlbum, PhotoAlbumFormModel>(model);
-                    return View(formModel);
-                }
-                else
-                {
-                    return HttpNotFound();
-                }
+                var formModel = Mapper.Map<PhotoAlbum, PhotoAlbumFormModel>(model);
+                return View(formModel);
             }
+            return HttpNotFound();
         }
 
         [Authorize(Roles = "Moderator")]
@@ -90,60 +79,38 @@ namespace FCGagarin.WebUI.Controllers
         {
             if (ModelState.IsValid)
             {
-                using (var db = new FCGagarinContext())
-                {
-                    var model = Mapper.Map<PhotoAlbumFormModel, PhotoAlbum>(formModel);
-                    db.Entry(model).State = System.Data.Entity.EntityState.Modified;
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
-                }
+                var model = Mapper.Map<PhotoAlbumFormModel, PhotoAlbum>(formModel);
+                _photoAlbumService.Update(model);
+                return RedirectToAction("Index");
             }
-            else
-            {
-                return View(formModel);
-            }
+            return View(formModel);
         }
 
         [Authorize(Roles = "Moderator")]
         public ActionResult Delete(int id)
         {
-            using (var db = new FCGagarinContext())
+            var model = _photoAlbumService.GetById(id);
+            if (model != null)
             {
-                var model = db.PhotoAlbums
-                    .Include("Photos")
-                    .Include("Photos.Author")
-                    .FirstOrDefault(x => x.Id == id);
-                if (model != null)
-                {
-                    var viewModel = Mapper.Map<PhotoAlbum, PhotoAlbumViewModel>(model);
-                    return View(viewModel);
-                }
-                else
-                {
-                    return HttpNotFound();
-                }
+                var viewModel = Mapper.Map<PhotoAlbum, PhotoAlbumViewModel>(model);
+                return View(viewModel);
             }
+            return HttpNotFound();
         }
+
         [Authorize(Roles = "Moderator")]
         [HttpPost]
         [ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            using (var db = new FCGagarinContext())
+            var model = _photoAlbumService.GetById(id);
+            if (model == null)
             {
-                var model = db.PhotoAlbums.Find(id);
-                if (model == null)
-                {
-                    return HttpNotFound();
-                }
-                var photos = db.Photos
-                    .Where(v => v.AlbumId == id)
-                    .AsEnumerable();
-                db.Photos.RemoveRange(photos);
-                db.PhotoAlbums.Remove(model);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                return HttpNotFound();
             }
+            //TODO:Kireev. реализовать в бд каскадное удаление для фотографий альбома
+            _photoAlbumService.Delete(model);
+            return RedirectToAction("Index");
         }
     }
 }

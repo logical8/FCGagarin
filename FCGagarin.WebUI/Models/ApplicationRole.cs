@@ -1,18 +1,18 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
 
-namespace FCGagarin.WebUI.Models
+namespace FCGagarin.PL.WebUI.Models
 {
-    public class ApplicationRole : IdentityRole
+    public sealed class ApplicationRole : IdentityRole
     {
-        public ApplicationRole() : base()
+        public ApplicationRole()
         {
             
         }
 
         public ApplicationRole(string name, string description): base(name)
         {
-            this.Description = description;
+            Description = description;
         }
-        public virtual string Description { get; set; }
+        public string Description { get; set; }
     }
 }
