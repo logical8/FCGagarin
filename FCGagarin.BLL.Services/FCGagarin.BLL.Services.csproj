@@ -55,11 +55,11 @@
     <Compile Include="UserProfileService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FCGagarin.BLL.DTO\FCGagarin.DAL.DTO.csproj">
+    <ProjectReference Include="..\FCGagarin.DAL.DTO\FCGagarin.DAL.DTO.csproj">
       <Project>{21854C6B-342F-488C-AD42-450A2F328E5D}</Project>
       <Name>FCGagarin.DAL.DTO</Name>
     </ProjectReference>
-    <ProjectReference Include="..\FCGagarin.BLL.Interfaces\FCGagarin.BLL.Services.Interfaces.csproj">
+    <ProjectReference Include="..\FCGagarin.BLL.Services.Interfaces\FCGagarin.BLL.Services.Interfaces.csproj">
       <Project>{912D48EB-8DC3-4022-8247-6B8F261C342C}</Project>
       <Name>FCGagarin.BLL.Services.Interfaces</Name>
     </ProjectReference>

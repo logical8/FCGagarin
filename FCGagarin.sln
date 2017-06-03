@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26430.6
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FCGagarin.PL.WebUI", "FCGagarin.WebUI\FCGagarin.PL.WebUI.csproj", "{91C0C0B0-46CD-4D43-9F7A-F1E8632557BB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FCGagarin.PL.WebUI", "FCGagarin.PL.WebUI\FCGagarin.PL.WebUI.csproj", "{91C0C0B0-46CD-4D43-9F7A-F1E8632557BB}"
 	ProjectSection(ProjectDependencies) = postProject
 		{B61AD44D-8E76-4AE0-872A-9D73A4DD8F37} = {B61AD44D-8E76-4AE0-872A-9D73A4DD8F37}
 		{0EC904B1-B1F0-4603-A5F8-33914CF21B70} = {0EC904B1-B1F0-4603-A5F8-33914CF21B70}
@@ -21,11 +21,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FCGagarin.DAL.Repositories"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FCGagarin.DAL.Repositories.Interfaces", "FCGagarin.DAL.Repositories.Interfaces\FCGagarin.DAL.Repositories.Interfaces.csproj", "{8F97F7BE-278B-488F-87AF-E583569B914C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FCGagarin.DAL.DTO", "FCGagarin.BLL.DTO\FCGagarin.DAL.DTO.csproj", "{21854C6B-342F-488C-AD42-450A2F328E5D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FCGagarin.DAL.DTO", "FCGagarin.DAL.DTO\FCGagarin.DAL.DTO.csproj", "{21854C6B-342F-488C-AD42-450A2F328E5D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FCGagarin.BLL.Services", "FCGagarin.BLL.Services\FCGagarin.BLL.Services.csproj", "{58F188B8-B42B-4D5D-915D-20710DA65AB7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FCGagarin.BLL.Services.Interfaces", "FCGagarin.BLL.Interfaces\FCGagarin.BLL.Services.Interfaces.csproj", "{912D48EB-8DC3-4022-8247-6B8F261C342C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FCGagarin.BLL.Services.Interfaces", "FCGagarin.BLL.Services.Interfaces\FCGagarin.BLL.Services.Interfaces.csproj", "{912D48EB-8DC3-4022-8247-6B8F261C342C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FCGagarin.BLL.Infrastructure", "FCGagarin.BLL.Infrastructure\FCGagarin.BLL.Infrastructure.csproj", "{9DEB9964-D65C-4A7E-B67A-1A0F1F0FF962}"
 EndProject

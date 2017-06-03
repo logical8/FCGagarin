@@ -481,7 +481,7 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FCGagarin.BLL.Interfaces\FCGagarin.BLL.Services.Interfaces.csproj">
+    <ProjectReference Include="..\FCGagarin.BLL.Services.Interfaces\FCGagarin.BLL.Services.Interfaces.csproj">
       <Project>{912D48EB-8DC3-4022-8247-6B8F261C342C}</Project>
       <Name>FCGagarin.BLL.Services.Interfaces</Name>
     </ProjectReference>

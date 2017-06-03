@@ -61,7 +61,7 @@
     <Compile Include="UserProfileRepository.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FCGagarin.BLL.DTO\FCGagarin.DAL.DTO.csproj">
+    <ProjectReference Include="..\FCGagarin.DAL.DTO\FCGagarin.DAL.DTO.csproj">
       <Project>{21854C6B-342F-488C-AD42-450A2F328E5D}</Project>
       <Name>FCGagarin.DAL.DTO</Name>
     </ProjectReference>
