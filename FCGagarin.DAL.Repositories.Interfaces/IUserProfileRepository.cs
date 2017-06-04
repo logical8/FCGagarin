@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using FCGagarin.DAL.DTO;
+﻿using FCGagarin.DAL.DTO;
+using FCGagarin.DAL.Entities;
 
 namespace FCGagarin.DAL.Repositories.Interfaces
 {
-    public interface IUserProfileRepository
+    public interface IUserProfileRepository : IGenericRepository<UserProfile>
     {
         UserProfileDTO GetUserProfile(string identityName);
 

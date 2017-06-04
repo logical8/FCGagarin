@@ -69,7 +69,15 @@ namespace FCGagarin.PL.WebUI.Controllers
 
         private List<ApplicationRoleViewModel> ConvertToRoleViewModelList(List<ApplicationRole> roleManagerRoles)
         {
-            throw new System.NotImplementedException();
+            var result = new List<ApplicationRoleViewModel>();
+            foreach (var applicationRole in roleManagerRoles)
+            {
+                result.Add(new ApplicationRoleViewModel
+                {
+                    Name = applicationRole.Name
+                });
+            }
+            return result;
         }
 
         [HttpPost]

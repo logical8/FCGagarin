@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
-using FCGagarin.DAL.EF;
 using FCGagarin.DAL.Entities.Abstract;
 using FCGagarin.DAL.Repositories.Interfaces;
 
@@ -11,10 +10,10 @@ namespace FCGagarin.DAL.Repositories
 {
     public abstract class GenericRepository<T> : IGenericRepository<T> where T :BaseEntity
     {
-        protected FCGagarinContext _entities;
+        protected DbContext _entities;
         protected readonly IDbSet<T> _dbSet;
 
-        protected GenericRepository(FCGagarinContext context)
+        protected GenericRepository(DbContext context)
         {
             _entities = context;
             _dbSet = context.Set<T>();

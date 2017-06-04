@@ -489,6 +489,10 @@
       <Project>{8E4D4199-6DB4-4444-8384-CA8CADAD4296}</Project>
       <Name>FCGagarin.BLL.Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\FCGagarin.BLL.Services\FCGagarin.BLL.Services.csproj">
+      <Project>{58F188B8-B42B-4D5D-915D-20710DA65AB7}</Project>
+      <Name>FCGagarin.BLL.Services</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FCGagarin.DAL.EF\FCGagarin.DAL.EF.csproj">
       <Project>{2F824976-F82F-4ACC-B7CF-4543FB37BC16}</Project>
       <Name>FCGagarin.DAL.EF</Name>
@@ -496,6 +500,10 @@
     <ProjectReference Include="..\FCGagarin.DAL.Entities\FCGagarin.DAL.Entities.csproj">
       <Project>{B9360A37-67FE-425D-8DF0-F18AAABB2FDB}</Project>
       <Name>FCGagarin.DAL.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FCGagarin.DAL.Repositories\FCGagarin.DAL.Repositories.csproj">
+      <Project>{27accb55-a601-480c-9286-53c434a296f2}</Project>
+      <Name>FCGagarin.DAL.Repositories</Name>
     </ProjectReference>
     <ProjectReference Include="..\FCGagarin.PL.ViewModels\FCGagarin.PL.ViewModels.csproj">
       <Project>{B61AD44D-8E76-4AE0-872A-9D73A4DD8F37}</Project>
@@ -505,6 +513,15 @@
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
@@ -541,6 +558,7 @@
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>
+  
   <Target Name="AfterBuild">
   </Target> -->
 </Project>

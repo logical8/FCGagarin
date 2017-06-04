@@ -1,24 +1,21 @@
 ﻿using System;
+using System.Data.Entity;
 using System.Linq;
 using FCGagarin.DAL.DTO;
 using FCGagarin.DAL.Repositories.Interfaces;
-using FCGagarin.DAL.EF;
 using FCGagarin.DAL.Entities;
 
 namespace FCGagarin.DAL.Repositories
 {
     public class UserProfileRepository : GenericRepository<UserProfile>, IUserProfileRepository
     {
-        private readonly FCGagarinContext _context;
-
-        public UserProfileRepository(FCGagarinContext context) : base(context)
+        public UserProfileRepository(DbContext context) : base(context)
         {
-            _context = context;
         }
 
         public UserProfileDTO GetUserProfile(string name)
         {
-            var userProfile = _context.UserProfiles.FirstOrDefault(x => x.Email == name);
+            var userProfile = _dbSet.FirstOrDefault(x => x.Email == name);
             return ConvertToUserProfileDTO(userProfile);
         }
 
@@ -35,7 +32,7 @@ namespace FCGagarin.DAL.Repositories
         public void CreateUserProfile(UserProfileDTO userProfileDTO)
         {
             var userProfile = ConvertToUserProfile(userProfileDTO);
-            _context.UserProfiles.Add(userProfile);
+            _dbSet.Add(userProfile);
         }
 
         private UserProfile ConvertToUserProfile(UserProfileDTO userProfileDTO)

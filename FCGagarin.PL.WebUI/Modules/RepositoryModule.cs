@@ -8,7 +8,7 @@ namespace FCGagarin.PL.WebUI.Modules
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterAssemblyTypes(AppDomain.CurrentDomain.GetAssemblies())
+            builder.RegisterAssemblyTypes(Assembly.Load("FCGagarin.DAL.Repositories"))
                    .Where(t => t.Name.EndsWith("Repository"))
                    .AsImplementedInterfaces()
                   .InstancePerLifetimeScope();
