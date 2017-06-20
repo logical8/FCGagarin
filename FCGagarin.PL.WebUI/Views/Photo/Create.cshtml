@@ -39,9 +39,9 @@
 
         @* TODO: закончить с массовой заливкой фотографий *@
 
-        <form action="/api/upload" enctype="multipart/form-data">
-            <div class="row fileupload-buttonbar">
-                <div class="panel panel-default">
+        @*<form action='@Url.Action("Upload", "Photo")' enctype="multipart/form-data">
+            <div class="row fileupload-buttonbar">*@
+                @*<div class="panel panel-default">
                     <div class="panel-body">
 
 
@@ -57,11 +57,16 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                    <div class="well hide" id="filelistholder">
+                </div>*@
+                    @*<div class="well hide" id="filelistholder">
                     </div>
             </div>
-        </form>
+        </form>*@
+
+
+
+
+        
 
 
 
@@ -69,20 +74,21 @@
 
 
 
-
-
-
-
-
-        <div class="form-group">
+        @*<div class="form-group">
             <div class="col-md-offset-4 col-md-8">
                 <button type="submit" class="btn btn-default btn-lg">
                     <i class="fa fa-check fa-lg"></i>
                 </button>
             </div>
-        </div>
+        </div>*@
     </div>
 }
+
+<div class="jumbotron">
+    <form action='@Url.Action("Upload", "Photo")' method="post" enctype="multipart/form-data" class="dropzone" id="dropzoneJsForm"></form>
+    <button id="submit-all">Submit All Files</button>
+</div>
+
 
 <div>
     @Html.ActionLink(" ", "Details", "PhotoAlbum", new { id = Model.AlbumId }, new { @class = "btn btn-default btn-lg fa fa-arrow-left fa-lg" })
@@ -91,37 +97,66 @@
 @section scripts
 {
     <script type="text/javascript">
-            $(function () {
-                $('#fileupload').fileupload({
-                    dataType: "json",
-                    url: "/api/upload",
-                    limitConcurrentUploads: 1,
-                    sequentialUploads: true,
-                    progressInterval: 100,
-                    maxChunkSize: 10000,
-                    add: function (e, data) {
-                        $('#filelistholder').removeClass('hide');
-                        data.context = $('<div />').text(data.files[0].name).appendTo('#filelistholder');
-                        $('</div><div class="progress"><div class="progress-bar" style="width:0%"></div></div>').appendTo(data.context);
-                        $('#btnUploadAll').click(function () {
-                            data.submit();
-                        });
-                    },
-                    done: function (e, data) {
-                        data.context.text(data.files[0].name + '... Completed');
-                        $('</div><div class="progress"><div class="progress-bar" style="width:100%"></div></div>').appendTo(data.context);
-                    },
-                    progressall: function (e, data) {
-                        var progress = parseInt(data.loaded / data.total * 100, 10);
-                        $('#overallbar').css('width', progress + '%');
-                    },
-                    progress: function (e, data) {
-                        var progress = parseInt(data.loaded / data.total * 100, 10);
-                        data.context.find('.progress-bar').css('width', progress + '%');
-                    }
-                });
+        @*$(function () {
+            $('#fileupload').fileupload({
+                dataType: "json",
+                url: '@Url.Action("Upload", "Photo")',
+                limitConcurrentUploads: 1,
+                sequentialUploads: true,
+                progressInterval: 100,
+                maxChunkSize: 10000,
+                add: function (e, data) {
+                    $('#filelistholder').removeClass('hide');
+                    data.context = $('<div />').text(data.files[0].name).appendTo('#filelistholder');
+                    $('</div><div class="progress"><div class="progress-bar" style="width:0%"></div></div>').appendTo(data.context);
+                    $('#btnUploadAll').click(function () {
+                        data.submit();
+                    });
+                },
+                done: function (e, data) {
+                    data.context.text(data.files[0].name + '... Completed');
+                    $('</div><div class="progress"><div class="progress-bar" style="width:100%"></div></div>').appendTo(data.context);
+                },
+                progressall: function (e, data) {
+                    var progress = parseInt(data.loaded / data.total * 100, 10);
+                    $('#overallbar').css('width', progress + '%');
+                },
+                progress: function (e, data) {
+                    var progress = parseInt(data.loaded / data.total * 100, 10);
+                    data.context.find('.progress-bar').css('width', progress + '%');
+                }
             });
-        </script>
+        });*@
+    
+    
+        ////File Upload response from the server
+        //Dropzone.options.dropzoneForm = {
+        //    init: function () {
+        //        this.on("complete", function (data) {
+        //            //var res = eval('(' + data.xhr.responseText + ')');
+        //            var res = JSON.parse(data.xhr.responseText);
+        //        });
+        //    }
+        //};
+        Dropzone.options.dropzoneJsForm = {
+
+            //prevents Dropzone from uploading dropped files immediately
+            autoProcessQueue: false,
+
+            init: function () {
+                var submitButton = document.querySelector("#submit-all");
+                var myDropzone = this; //closure
+
+                submitButton.addEventListener("click", function () {
+
+                    //tell Dropzone to process all queued files
+                    myDropzone.processQueue();
+                });
+
+            }
+        };
+        
+    </script>
 }
 
 

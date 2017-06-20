@@ -35,6 +35,10 @@ namespace FCGagarin.PL.WebUI
                       "~/Content/jquery.fileupload-ui.css",
                       "~/Content/site.css"));
 
+            bundles.Add(new StyleBundle("~/Content/dropzonescss").Include(
+                "~/Scripts/dropzone/basic.css",
+                "~/Scripts/dropzone/dropzone.css"));
+
             bundles.Add(new ScriptBundle("~/bundles/unobtrusive-ajax").Include(
                       "~/Scripts/jquery.unobtrusive-ajax.min.js"));
 
@@ -42,6 +46,9 @@ namespace FCGagarin.PL.WebUI
                       "~/Scripts/jquery-file-upload/jquery.ui.widget.js",
                       "~/Scripts/jquery-file-upload/jquery.fileupload.js",
                       "~/Scripts/jquery-file-upload/jquery.iframe-transport.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/dropzonescripts").Include(
+                "~/Scripts/dropzone/dropzone.js"));
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Web.Mvc;
 using AutoMapper;
 using FCGagarin.BLL.Services.Interfaces;
@@ -6,6 +7,8 @@ using FCGagarin.DAL.EF;
 using FCGagarin.DAL.Entities;
 using FCGagarin.PL.ViewModels;
 using FCGagarin.PL.WebUI.Extensions;
+using System.IO;
+using System.Web;
 
 namespace FCGagarin.PL.WebUI.Controllers
 {
@@ -120,6 +123,58 @@ namespace FCGagarin.PL.WebUI.Controllers
                 db.Photos.Remove(photo);
                 db.SaveChanges();
                 return RedirectToAction("Details", "PhotoAlbum", new { id = photo.AlbumId });
+            }
+        }
+
+        public ActionResult Upload()
+        {
+            {
+                bool isSavedSuccessfully = true;
+                string fName = "";
+                try
+                {
+                    foreach (string fileName in Request.Files)
+                    {
+                        HttpPostedFileBase file = Request.Files[fileName];
+                        //Save file content goes here
+                        fName = file.FileName;
+                        if (file != null && file.ContentLength > 0)
+                        {
+
+                            var originalDirectory =
+                                new DirectoryInfo($"{Server.MapPath(@"\")}Images\\WallImages");
+
+                            string pathString = System.IO.Path.Combine(originalDirectory.ToString(), "imagepath");
+
+                            var fileName1 = Path.GetFileName(file.FileName);
+
+                            bool isExists = System.IO.Directory.Exists(pathString);
+
+                            if (!isExists)
+                                System.IO.Directory.CreateDirectory(pathString);
+
+                            var path = $"{pathString}\\{file.FileName}";
+                            file.SaveAs(path);
+
+                        }
+
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    isSavedSuccessfully = false;
+                }
+
+
+                if (isSavedSuccessfully)
+                {
+                    return Json(new {Message = fName});
+                }
+                else
+                {
+                    return Json(new {Message = "Error in saving file"});
+                }
             }
         }
     }
