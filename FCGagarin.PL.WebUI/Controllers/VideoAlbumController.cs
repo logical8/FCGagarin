@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
 using AutoMapper;
 using FCGagarin.DAL.EF;
-using FCGagarin.PL.WebUI.Helpers;
 using FCGagarin.DAL.Entities;
 using FCGagarin.PL.ViewModels;
+using FCGagarin.PL.WebUI.Helpers;
 
 namespace FCGagarin.PL.WebUI.Controllers
 {
@@ -81,10 +82,7 @@ namespace FCGagarin.PL.WebUI.Controllers
                     var formModel = Mapper.Map<VideoAlbum, VideoAlbumFormModel>(model);
                     return View(formModel);
                 }
-                else
-                {
-                    return HttpNotFound();
-                }
+                return HttpNotFound();
             }
         }
 
@@ -97,15 +95,12 @@ namespace FCGagarin.PL.WebUI.Controllers
                 using (var db = new FCGagarinContext())
                 {
                     var model = Mapper.Map<VideoAlbumFormModel, VideoAlbum>(formModel);
-                    db.Entry(model).State = System.Data.Entity.EntityState.Modified;
+                    db.Entry(model).State = EntityState.Modified;
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }
             }
-            else
-            {
-                return View(formModel);
-            }
+            return View(formModel);
         }
 
         [Authorize(Roles = "Moderator")]
@@ -122,10 +117,7 @@ namespace FCGagarin.PL.WebUI.Controllers
                     var viewModel = Mapper.Map<VideoAlbum, VideoAlbumViewModel>(model);
                     return View(viewModel);
                 }
-                else
-                {
-                    return HttpNotFound();
-                }
+                return HttpNotFound();
             }
         }
         [Authorize(Roles = "Moderator")]

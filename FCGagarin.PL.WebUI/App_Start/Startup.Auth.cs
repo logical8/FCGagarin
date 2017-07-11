@@ -1,5 +1,4 @@
 ﻿using System;
-using FCGagarin.DAL.EF;
 using FCGagarin.PL.WebUI.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;

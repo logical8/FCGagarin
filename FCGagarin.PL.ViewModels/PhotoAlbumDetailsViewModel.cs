@@ -6,5 +6,6 @@ namespace FCGagarin.PL.ViewModels
     {
         public PhotoAlbumViewModel PhotoAlbumViewModel { get; set; }
         public List<PhotoViewModel> PhotoViewModelList { get; set; }
+        public FilesViewModel FilesViewModel { get; set; }
     }
 }

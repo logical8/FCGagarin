@@ -17,7 +17,7 @@ namespace FCGagarin.PL.WebUI.Controllers
         private const int PageSize = 10; 
         public ActionResult Index(int? id)
         {
-            int page = id ?? 0;
+            var page = id ?? 0;
 
             if (Request.IsAjaxRequest())
             {
@@ -35,7 +35,7 @@ namespace FCGagarin.PL.WebUI.Controllers
                 var model = Mapper.Map<IEnumerable<News>, IEnumerable<NewsViewModel>>(allNews);
                 foreach (var item in model)
                 {
-                    item.Text = LinkPrepare.RawTextToDB(item.Text);
+                    item.Text = LinkPrepare.RawTextToDb(item.Text);
                 }
                 return model.Skip(newsToSkip).Take(PageSize);
             }
@@ -58,7 +58,7 @@ namespace FCGagarin.PL.WebUI.Controllers
             if (ModelState.IsValid)
             {
                 string fileName = null;
-                string pathToImage = string.Empty;
+                var pathToImage = string.Empty;
                 if (formModel != null && formModel.Image != null && formModel.Image.ContentLength > 0)
                 {
                     fileName = Path.GetFileName(formModel.Image.FileName);
@@ -89,10 +89,7 @@ namespace FCGagarin.PL.WebUI.Controllers
                     var formModel = Mapper.Map<News, NewsFormModel>(model);
                     return View(formModel);
                 }
-                else
-                {
-                    return HttpNotFound();
-                }
+                return HttpNotFound();
             }
         }
 
@@ -105,15 +102,12 @@ namespace FCGagarin.PL.WebUI.Controllers
                 using (var db = new FCGagarinContext())
                 {
                     var model = Mapper.Map<NewsFormModel, News>(formModel);
-                    db.Entry(model).State = System.Data.Entity.EntityState.Modified;
+                    db.Entry(model).State = EntityState.Modified;
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }
             }
-            else
-            {
-                return View(formModel);
-            }
+            return View(formModel);
         }
 
         [Authorize(Roles = "Moderator")]
@@ -126,13 +120,10 @@ namespace FCGagarin.PL.WebUI.Controllers
                 if (model != null)
                 {
                     var viewModel = Mapper.Map<News, NewsViewModel>(model);
-                    viewModel.Text = LinkPrepare.RawTextToDB(viewModel.Text);
+                    viewModel.Text = LinkPrepare.RawTextToDb(viewModel.Text);
                     return View(viewModel);
                 }
-                else
-                {
-                    return HttpNotFound();
-                }
+                return HttpNotFound();
             }
         }
         [Authorize(Roles = "Moderator")]

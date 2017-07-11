@@ -1,4 +1,5 @@
-﻿using System.Web.Http;
+﻿using System.Web;
+using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
@@ -9,7 +10,7 @@ using FCGagarin.PL.WebUI.Modules;
 
 namespace FCGagarin.PL.WebUI
 {
-    public class MvcApplication : System.Web.HttpApplication
+    public class MvcApplication : HttpApplication
     {
         protected void Application_Start()
         {

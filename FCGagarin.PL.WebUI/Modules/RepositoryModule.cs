@@ -1,10 +1,10 @@
-﻿using System;
-using System.Reflection;
+﻿using System.Reflection;
 using Autofac;
+using Module = Autofac.Module;
 
 namespace FCGagarin.PL.WebUI.Modules
 {
-    public class RepositoryModule : Autofac.Module
+    public class RepositoryModule : Module
     {
         protected override void Load(ContainerBuilder builder)
         {

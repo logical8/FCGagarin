@@ -1,14 +1,15 @@
 ﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using FCGagarin.DAL.EF;
+using FCGagarin.DAL.Entities;
 using FCGagarin.PL.ViewModels;
 using FCGagarin.PL.WebUI.Extensions;
 using FCGagarin.PL.WebUI.Models;
 using Microsoft.AspNet.Identity.Owin;
-using FCGagarin.DAL.Entities;
 
 namespace FCGagarin.PL.WebUI.Controllers
 {
@@ -21,10 +22,10 @@ namespace FCGagarin.PL.WebUI.Controllers
 
         public ActionResult Index()
         {
-            List<UsersRolesViewModel> model = new List<UsersRolesViewModel>();
+            var model = new List<UsersRolesViewModel>();
             foreach (var item in UserManager.Users)
             {
-                UserProfile userProfile = item.GetUserProfile();
+                var userProfile = item.GetUserProfile();
                 model.Add(new UsersRolesViewModel
                 {
                     Id = userProfile.Id,
@@ -61,10 +62,7 @@ namespace FCGagarin.PL.WebUI.Controllers
                 };
                 return View(viewModel);
             }
-            else
-            {
-                return HttpNotFound();
-            }
+            return HttpNotFound();
         }
 
         private List<ApplicationRoleViewModel> ConvertToRoleViewModelList(List<ApplicationRole> roleManagerRoles)
@@ -85,7 +83,7 @@ namespace FCGagarin.PL.WebUI.Controllers
         {
             if (ModelState.IsValid)
             {
-                UserProfile userProfile = new UserProfile
+                var userProfile = new UserProfile
                 {
                     Id = model.Id,
                     DateOfBirth = model.DateOfBirth,
@@ -96,10 +94,10 @@ namespace FCGagarin.PL.WebUI.Controllers
                 };
                 using (var db = new FCGagarinContext())
                 {
-                    db.Entry(userProfile).State = System.Data.Entity.EntityState.Modified;
+                    db.Entry(userProfile).State = EntityState.Modified;
                     db.SaveChanges();
                 }
-                ApplicationUser appUser = await UserManager.FindByEmailAsync(userProfile.Email);
+                var appUser = await UserManager.FindByEmailAsync(userProfile.Email);
                 foreach (var role in RoleManager.Roles.ToList())
                 {
                     if (model.SelectedRoleIds.Contains(role.Id))

@@ -31,15 +31,12 @@ namespace FCGagarin.PL.WebUI.Extensions
         {
             using (var db = new FCGagarinContext())
             {
-                UserProfile userProfile = db.UserProfiles.FirstOrDefault(x => x.Email == identity.Name);
+                var userProfile = db.UserProfiles.FirstOrDefault(x => x.Email == identity.Name);
                 if (userProfile != null)
                 {
                     return userProfile;
                 }
-                else
-                {
-                    throw new Exception("Error in IdentityExtensions");
-                }
+                throw new Exception("Error in IdentityExtensions");
             }
         }
 
@@ -47,15 +44,12 @@ namespace FCGagarin.PL.WebUI.Extensions
         {
             using (var db = new FCGagarinContext())
             {
-                UserProfile userProfile = db.UserProfiles.FirstOrDefault(x => x.Email == applicationUser.Email);
+                var userProfile = db.UserProfiles.FirstOrDefault(x => x.Email == applicationUser.Email);
                 if (userProfile != null)
                 {
                     return userProfile;
                 }
-                else
-                {
-                    throw new Exception("Error in IdentityExtensions");
-                }
+                throw new Exception("Error in IdentityExtensions");
             }
         }
 

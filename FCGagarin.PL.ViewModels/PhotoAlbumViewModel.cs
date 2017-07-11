@@ -11,7 +11,8 @@ namespace FCGagarin.PL.ViewModels
         [Display(Name = "Название альбома")]
         public string Name { get; set; }
         [Display(Name = "Количество")]
-        public int NumberOfPhoto { get { return Photos.Count; } }
+        public int NumberOfPhoto => Photos.Count;
+
         [Display(Name = "Дата обновления")]
         public DateTime? LastUploadDate
         {

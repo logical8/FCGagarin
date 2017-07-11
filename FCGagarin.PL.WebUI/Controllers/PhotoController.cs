@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Web.Mvc;
 using AutoMapper;
@@ -7,8 +9,6 @@ using FCGagarin.DAL.EF;
 using FCGagarin.DAL.Entities;
 using FCGagarin.PL.ViewModels;
 using FCGagarin.PL.WebUI.Extensions;
-using System.IO;
-using System.Web;
 
 namespace FCGagarin.PL.WebUI.Controllers
 {
@@ -62,10 +62,7 @@ namespace FCGagarin.PL.WebUI.Controllers
                     var formModel = Mapper.Map<Photo, PhotoFormModel>(model);
                     return View(formModel);
                 }
-                else
-                {
-                    return HttpNotFound();
-                }
+                return HttpNotFound();
             }
         }
 
@@ -78,15 +75,12 @@ namespace FCGagarin.PL.WebUI.Controllers
                 using (var db = new FCGagarinContext())
                 {
                     var model = Mapper.Map<PhotoFormModel, Photo>(formModel);
-                    db.Entry(model).State = System.Data.Entity.EntityState.Modified;
+                    db.Entry(model).State = EntityState.Modified;
                     db.SaveChanges();
                     return RedirectToAction("Details", "PhotoAlbum", new { id = model.AlbumId });
                 }
             }
-            else
-            {
-                return View(formModel);
-            }
+            return View(formModel);
         }
 
         [Authorize(Roles = "Moderator")]
@@ -102,10 +96,7 @@ namespace FCGagarin.PL.WebUI.Controllers
                     var viewModel = Mapper.Map<Photo, PhotoViewModel>(model);
                     return View(viewModel);
                 }
-                else
-                {
-                    return HttpNotFound();
-                }
+                return HttpNotFound();
             }
         }
         [Authorize(Roles = "Moderator")]
@@ -129,13 +120,13 @@ namespace FCGagarin.PL.WebUI.Controllers
         public ActionResult Upload()
         {
             {
-                bool isSavedSuccessfully = true;
-                string fName = "";
+                var isSavedSuccessfully = true;
+                var fName = "";
                 try
                 {
                     foreach (string fileName in Request.Files)
                     {
-                        HttpPostedFileBase file = Request.Files[fileName];
+                        var file = Request.Files[fileName];
                         //Save file content goes here
                         fName = file.FileName;
                         if (file != null && file.ContentLength > 0)
@@ -144,14 +135,14 @@ namespace FCGagarin.PL.WebUI.Controllers
                             var originalDirectory =
                                 new DirectoryInfo($"{Server.MapPath(@"\")}Images\\WallImages");
 
-                            string pathString = System.IO.Path.Combine(originalDirectory.ToString(), "imagepath");
+                            var pathString = Path.Combine(originalDirectory.ToString(), "imagepath");
 
                             var fileName1 = Path.GetFileName(file.FileName);
 
-                            bool isExists = System.IO.Directory.Exists(pathString);
+                            var isExists = Directory.Exists(pathString);
 
                             if (!isExists)
-                                System.IO.Directory.CreateDirectory(pathString);
+                                Directory.CreateDirectory(pathString);
 
                             var path = $"{pathString}\\{file.FileName}";
                             file.SaveAs(path);
@@ -171,10 +162,7 @@ namespace FCGagarin.PL.WebUI.Controllers
                 {
                     return Json(new {Message = fName});
                 }
-                else
-                {
-                    return Json(new {Message = "Error in saving file"});
-                }
+                return Json(new {Message = "Error in saving file"});
             }
         }
     }

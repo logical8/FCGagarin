@@ -3,6 +3,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web;
 using System.Web.Http;
+using System.Web.Script.Serialization;
 
 namespace FCGagarin.PL.WebUI.Controllers.WebApi
 {
@@ -12,15 +13,15 @@ namespace FCGagarin.PL.WebUI.Controllers.WebApi
         [HttpPost]
         public HttpResponseMessage Upload()
         {
-            HttpPostedFile file = HttpContext.Current.Request.Files[0];
+            var file = HttpContext.Current.Request.Files[0];
             var fileName = Path.GetFileName(file.FileName);
             var path = Path.Combine(HttpContext.Current.Server.MapPath("~/Data/uploads/images_gallery"), fileName);
 
             if (File.Exists(path))
             {
-                Stream input = file.InputStream;
-                FileStream output = new FileStream(path, FileMode.Append);
-                byte[] buffer = new byte[8 * 1024];
+                var input = file.InputStream;
+                var output = new FileStream(path, FileMode.Append);
+                var buffer = new byte[8 * 1024];
                 int len;
                 while ((len = input.Read(buffer, 0, buffer.Length)) > 0)
                 {
@@ -33,7 +34,7 @@ namespace FCGagarin.PL.WebUI.Controllers.WebApi
             {
                 file.SaveAs(path);
             }
-            FileInfo file1 = new FileInfo(path);
+            var file1 = new FileInfo(path);
             if (file.ContentLength == file1.Length)
             {
 
@@ -42,7 +43,7 @@ namespace FCGagarin.PL.WebUI.Controllers.WebApi
 
             // Now we need to wire up a response so that the calling script understands what happened
             HttpContext.Current.Response.ContentType = "text/plain";
-            var serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
+            var serializer = new JavaScriptSerializer();
             var result = new { name = file.FileName };
 
             HttpContext.Current.Response.Write(serializer.Serialize(result));

@@ -3,7 +3,6 @@ using System.Web;
 using System.Web.Mvc;
 using FCGagarin.PL.ViewModels;
 using FCGagarin.PL.WebUI.Models;
-using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 
 namespace FCGagarin.PL.WebUI.Controllers
@@ -30,7 +29,7 @@ namespace FCGagarin.PL.WebUI.Controllers
         {
             if (ModelState.IsValid)
             {
-                IdentityResult result = await RoleManager.CreateAsync(new ApplicationRole
+                var result = await RoleManager.CreateAsync(new ApplicationRole
                 {
                     Name = model.Name,
                     Description = model.Description
@@ -40,17 +39,14 @@ namespace FCGagarin.PL.WebUI.Controllers
                 {
                     return RedirectToAction("Index");
                 }
-                else
-                {
-                    ModelState.AddModelError("", "Ошибка при создании роли");
-                }
+                ModelState.AddModelError("", "Ошибка при создании роли");
             }
             return View(model);
         }
 
         public async Task<ActionResult> Edit(string id)
         {
-            ApplicationRole role = await RoleManager.FindByIdAsync(id);
+            var role = await RoleManager.FindByIdAsync(id);
             if (role != null)
             {
                 return View(new EditRoleModel { Id = role.Id, Name = role.Name, Description = role.Description });
@@ -63,20 +59,17 @@ namespace FCGagarin.PL.WebUI.Controllers
         {
             if (ModelState.IsValid)
             {
-                ApplicationRole role = await RoleManager.FindByIdAsync(model.Id);
+                var role = await RoleManager.FindByIdAsync(model.Id);
                 if (role != null)
                 {
                     role.Description = model.Description;
                     role.Name = model.Name;
-                    IdentityResult result = await RoleManager.UpdateAsync(role);
+                    var result = await RoleManager.UpdateAsync(role);
                     if (result.Succeeded)
                     {
                         return RedirectToAction("Index");
                     }
-                    else
-                    {
-                        ModelState.AddModelError("", "Ошибка при редактировании роли");
-                    }
+                    ModelState.AddModelError("", "Ошибка при редактировании роли");
                 }
             }
             return View(model);
@@ -84,10 +77,10 @@ namespace FCGagarin.PL.WebUI.Controllers
 
         public async Task<ActionResult> Delete (string id)
         {
-            ApplicationRole role = await RoleManager.FindByIdAsync(id);
+            var role = await RoleManager.FindByIdAsync(id);
             if (role != null)
             {
-                IdentityResult result = await RoleManager.DeleteAsync(role);
+                var result = await RoleManager.DeleteAsync(role);
             }
             return RedirectToAction("Index");
         }

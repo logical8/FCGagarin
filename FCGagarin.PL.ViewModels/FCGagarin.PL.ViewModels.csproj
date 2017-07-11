@@ -85,6 +85,7 @@
   <ItemGroup>
     <Compile Include="AccountViewModels.cs" />
     <Compile Include="ApplicationRoleViewModel.cs" />
+    <Compile Include="FilesViewModel.cs" />
     <Compile Include="ManageViewModels.cs" />
     <Compile Include="NewsFormModel.cs" />
     <Compile Include="NewsItemViewModel.cs" />

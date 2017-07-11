@@ -1,9 +1,10 @@
 ﻿using System.Reflection;
 using Autofac;
+using Module = Autofac.Module;
 
 namespace FCGagarin.PL.WebUI.Modules
 {
-    public class ServiceModule : Autofac.Module
+    public class ServiceModule : Module
     {
         protected override void Load(ContainerBuilder builder)
         {

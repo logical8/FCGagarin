@@ -1,5 +1,4 @@
 using System.Data.Entity.Migrations;
-using FCGagarin.DAL.EF;
 using FCGagarin.PL.WebUI.Models;
 
 namespace FCGagarin.PL.WebUI.Migrations
