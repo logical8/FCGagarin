@@ -1,4 +1,4 @@
-@charset "UTF-8";
+﻿@charset "UTF-8";
 /*
  * blueimp Gallery CSS 2.11.1
  * https://github.com/blueimp/Gallery
@@ -81,10 +81,10 @@
        -o-transition: opacity 0.5s linear;
           transition: opacity 0.5s linear;
 }
-.blueimp-gallery > .slides > .slide-loading {
-  background: url(../img/loading.gif) center no-repeat;
-  background-size: 64px 64px;
-}
+    .blueimp-gallery > .slides > .slide-loading {
+        background: url(../img/loading.gif) center no-repeat;
+        background-size: 64px 64px;
+    }
 .blueimp-gallery > .slides > .slide-loading > .slide-content {
   opacity: 0;
 }

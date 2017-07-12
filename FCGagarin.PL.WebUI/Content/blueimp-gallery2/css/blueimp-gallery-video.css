@@ -1,4 +1,4 @@
-@charset "UTF-8";
+﻿@charset "UTF-8";
 /*
  * blueimp Gallery Video Factory CSS 1.3.0
  * https://github.com/blueimp/Gallery
@@ -68,8 +68,8 @@
   display: block;
 }
 .blueimp-gallery > .slides > .slide > .video-loading > a {
-  background: url(../img/loading.gif) center no-repeat;
-  background-size: 64px 64px;
+    background: url(../img/loading.gif) center no-repeat;
+    background-size: 64px 64px;
 }
 
 /* Replace PNGs with SVGs for capable browsers (excluding IE<9) */

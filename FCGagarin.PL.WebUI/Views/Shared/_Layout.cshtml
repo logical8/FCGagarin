@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
-    @Styles.Render("~/Content/dropzonescss")
+    @Styles.Render("~/Content/jquery-file-upload")
+    @*@Styles.Render("~/Content/dropzonescss")*@
     @Scripts.Render("~/bundles/modernizr")
     <script src="https://use.fontawesome.com/18dbca0590.js"></script>
 </head>
@@ -124,7 +125,7 @@
     @Scripts.Render("~/bundles/unobtrusive-ajax")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/jquery-file-upload")
-    @Scripts.Render("~/bundles/dropzonescripts")
+@*@Scripts.Render("~/bundles/dropzonescripts")*@
 
     @RenderSection("scripts", required: false)
 </body>
