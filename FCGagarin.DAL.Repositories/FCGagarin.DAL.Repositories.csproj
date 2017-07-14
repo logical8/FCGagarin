@@ -67,6 +67,7 @@
     <Compile Include="GenericRepository.cs" />
     <Compile Include="NewsRepository.cs" />
     <Compile Include="PhotoAlbumRepository.cs" />
+    <Compile Include="PhotoRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserProfileRepository.cs" />
   </ItemGroup>

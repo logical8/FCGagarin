@@ -2,6 +2,11 @@
 {
     public class FilesViewModel
     {
+        public FilesViewModel()
+        {
+            Files = new ViewDataUploadFilesResult[0];
+        }
+
         public ViewDataUploadFilesResult[] Files { get; set; }
     }
 

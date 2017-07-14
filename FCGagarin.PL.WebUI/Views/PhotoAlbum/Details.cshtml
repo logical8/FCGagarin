@@ -8,8 +8,12 @@
 {
     @Html.ActionLink(" ", "Create", "Photo", new { albumId = Model.PhotoAlbumViewModel.Id }, new { @class = "btn btn-default fa fa-plus fa-lg plus" }) //TODO: заменить класс .plus, который отодвигает кнопку xD
 }
+else
+{
 
-@if (Model.PhotoViewModelList.Count == 0)
+}
+
+@*@if (Model.PhotoViewModelList.Count == 0)
 {
     <div class="well">
         <div class="h4">
@@ -24,7 +28,7 @@ else
     {
         @Html.Partial("_PhotoSummary", pvm)
     }
-}
+}*@
 
 
 
@@ -33,15 +37,9 @@ else
     </div>*@
 
 
-
-
-@{
-    ViewBag.Title = "Show";
-}
 <!-- blueimp File Upload & Gallery styles -->
 @Styles.Render("~/Content/jQuery-File-Upload")
 
-<h2>Show</h2>
 <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls" data-filter=":even">
     <div class="slides"></div>
     <h3 class="title"></h3>
@@ -87,6 +85,9 @@ else
     @Html.ActionLink(" ", "Index", null, new { @class = "btn btn-default btn-lg fa fa-arrow-left fa-lg" })
 </div>
 
+@section scripts{
+    
+
 <script>
 
     document.getElementById('links').onclick = function (event) {
@@ -100,4 +101,4 @@ else
     };
 </script>
 @Scripts.Render("~/bundles/Blueimp-Gallerry2")
-
+}

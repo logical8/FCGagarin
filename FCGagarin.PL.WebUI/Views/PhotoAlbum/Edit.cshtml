@@ -13,8 +13,8 @@
         @Html.HiddenFor(model => model.Id)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-8">
                 @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
             </div>
@@ -33,42 +33,4 @@
 <div>
     @Html.ActionLink(" ", "Index", null, new { @class = "btn btn-default fa fa-arrow-left fa-lg" })
 </div>
-
-
-<!-- blueimp File Upload & Gallery styles -->
-@Styles.Render("~/Content/jQuery-File-Upload")
-
-
-<script>
-    var $form = null;
-    $(function () {
-
-        $form = $('#fileupload').fileupload({
-            dataType: 'json'
-        });
-
-    });
-    $('#fileupload').addClass('fileupload-processing');
- 
-
-
-    $.ajax({
-            type: 'GET',
-            contentType: "application/json; charset=utf-8",
-            url: '/FileUpload/GetFileList',
-            success: function (data) {
-
-
-                $('#fileupload').fileupload('option', 'done').call($('#fileupload'), $.Event('done'), { result: { files: data.files } })
-                $('#fileupload').removeClass('fileupload-processing');
-            }
-
-        }
-
-    );
-</script>
-
-@Html.Partial("_Files")
-
-@Scripts.Render("~/bundles/jQuery-File-Upload")
 

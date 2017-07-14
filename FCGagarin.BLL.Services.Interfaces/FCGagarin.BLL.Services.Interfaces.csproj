@@ -60,6 +60,7 @@
     <Compile Include="IEntityService.cs" />
     <Compile Include="INewsService.cs" />
     <Compile Include="IPhotoAlbumService.cs" />
+    <Compile Include="IPhotoService.cs" />
     <Compile Include="IService.cs" />
     <Compile Include="IUserProfileService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Web.Hosting;
@@ -14,10 +15,12 @@ namespace FCGagarin.PL.WebUI.Controllers
     public class PhotoAlbumController : Controller
     {
         private readonly IPhotoAlbumService _photoAlbumService;
+        private readonly IPhotoService _photoService;
 
-        public PhotoAlbumController(IPhotoAlbumService photoAlbumService)
+        public PhotoAlbumController(IPhotoAlbumService photoAlbumService, IPhotoService photoService)
         {
             _photoAlbumService = photoAlbumService;
+            _photoService = photoService;
         }
 
         FilesHelper _filesHelper;
@@ -92,25 +95,46 @@ namespace FCGagarin.PL.WebUI.Controllers
 
         public ActionResult Details(int id)
         {
-
             var album = _photoAlbumService.GetById(id);
             if (album == null)
             {
                 return HttpNotFound();
             }
+            
             var viewModel = Mapper.Map<PhotoAlbum, PhotoAlbumDetailsViewModel>(album);
-            foreach (var item in viewModel.PhotoViewModelList)
-            {
-                item.AlbumId = id;
-                item.PathToImage = "";//TODO:Тут доделать //LinkPrepare.YoutubeUrlToEmbedUrl(item.Url);
-            }
+            var photos = _photoService.GetPhotosByAlbumId(id);
+            viewModel.FilesViewModel = ConvertToFilesViewModel(photos, id);
+
             return View(viewModel);
+        }
+
+        private FilesViewModel ConvertToFilesViewModel(List<Photo> photos, int albumId)
+        {
+            _filesHelper = new FilesHelper(_deleteUrl, _deleteType, StorageRoot, _urlBase, _tempPath, _serverMapPath);
+            var fullPath = _photoAlbumService.GetFullPathToAlbum(albumId);// Path.Combine(_storageRoot);
+
+            var result = new List<ViewDataUploadFilesResult>();
+            if (Directory.Exists(fullPath))
+            {
+                var dir = new DirectoryInfo(fullPath);
+                foreach (var file in dir.GetFiles())
+                {
+                    var sizeInt = unchecked((int)file.Length);
+                    result.Add(_filesHelper.UploadResult(file.Name, sizeInt, file.FullName));
+                }
+
+            }
+
+            var model = new FilesViewModel
+            {
+                Files = result.ToArray()
+            };
+            return model;
         }
 
         [Authorize(Roles = "Moderator")]
         public ActionResult Edit(int id)
         {
-
             var model = _photoAlbumService.GetById(id);
             if (model != null)
             {
@@ -127,6 +151,7 @@ namespace FCGagarin.PL.WebUI.Controllers
             if (ModelState.IsValid)
             {
                 var model = Mapper.Map<PhotoAlbumFormModel, PhotoAlbum>(formModel);
+                //TODO:Kireev. Альбомы храним так: AlbumId - это папка с альбомом. Название альбома хранится в бд
                 _photoAlbumService.Update(model);
                 return RedirectToAction("Index");
             }
