@@ -4,44 +4,34 @@
     ViewBag.Title = string.Format("Фотоальбом \"{0}\"", Model.PhotoAlbumViewModel.Name);
 }
 
+@Styles.Render("~/Content/jquery-file-upload")
+
 @if (User.IsInRole("Moderator"))
 {
     @Html.ActionLink(" ", "Create", "Photo", new { albumId = Model.PhotoAlbumViewModel.Id }, new { @class = "btn btn-default fa fa-plus fa-lg plus" }) //TODO: заменить класс .plus, который отодвигает кнопку xD
 
-    
-    
     <script>
         //edit
-        
+
         var $form = null;
         $(function () {
-
             $form = $('#fileupload').fileupload({
                 dataType: 'json'
             });
-
-        });
-        $('#fileupload').addClass('fileupload-processing');
-
-
-
-        $.ajax({
+            $('#fileupload').addClass('fileupload-processing');
+            $.ajax({
                 type: 'GET',
                 contentType: "application/json; charset=utf-8",
                 url: '@Url.Action("GetFileList", "PhotoAlbum", new {id = Model.PhotoAlbumViewModel.Id})',
                 success: function (data) {
-
-
-                    $('#fileupload').fileupload('option', 'done').call($('#fileupload'), $.Event('done'), { result: { files: data.files } })
+                    $('#fileupload').fileupload('option', 'done').call($('#fileupload'), $.Event('done'), { result: { files: data.Files } })
                     $('#fileupload').removeClass('fileupload-processing');
                 }
-
-            }
-
-        );
+            });
+        });
     </script>
+
     @Html.Partial("_Files", new ViewDataDictionary { { "id", Model.PhotoAlbumViewModel.Id } })
-    @Scripts.Render("~/bundles/jquery-file-upload")
 }
 else
 {
@@ -73,46 +63,36 @@ else
             }
             else
             {
-                <div class="well">
                     <div class="h4">
                         Фото еще нет
                     </div>
-                </div>
             }
             <!--Your files goes here-->
         </div>
     </div>
 
-    @section scripts{
-        <script>
-            //only view
-            document.getElementById('links').onclick = function (event) {
-                event = event || window.event;
-                var target = event.target || event.srcElement,
-                    link = target.src ? target.parentNode : target,
-                    options = { index: link, event: event },
-                    links = this.getElementsByTagName('a');
-                blueimp.Gallery(links, options);
-            };
-        </script>
-    }
-
-
+    <script>
+        //only view
+        document.getElementById('links').onclick = function (event) {
+            event = event || window.event;
+            var target = event.target || event.srcElement,
+                link = target.src ? target.parentNode : target,
+                options = { index: link, event: event },
+                links = this.getElementsByTagName('a');
+            blueimp.Gallery(links, options);
+        };
+    </script>
 }
-
-
 
 @*<div class="pager">
         @Html.PageLinks(Model.PagingInfo, x => Url.Action("Index", new { page = x }))
     </div>*@
 
-
-
-
-
 <div>
     @Html.ActionLink(" ", "Index", null, new { @class = "btn btn-default btn-lg fa fa-arrow-left fa-lg" })
 </div>
+
+@Scripts.Render("~/bundles/jquery-file-upload")
 
 
 

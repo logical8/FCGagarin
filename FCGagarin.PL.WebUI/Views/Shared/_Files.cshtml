@@ -67,7 +67,7 @@
             <span class="preview"></span>
         </td>
         <td>
-            <p class="name">{%=file.name%}</p>
+            <p class="name">{%=file.Name%}</p>
             <strong class="error text-danger"></strong>
         </td>
         <td>
@@ -97,17 +97,17 @@
     <tr class="template-download fade">
         <td>
             <span class="preview">
-                {% if (file.thumbnailUrl) { %}
-                <a href="{%=file.url%}" title="{%=file.name%}" download="{%=file.name%}" data-gallery><img src="{%=file.thumbnailUrl%}"></a>
+                {% if (file.ThumbnailUrl) { %}
+                <a href="{%=file.Url%}" title="{%=file.Name%}" download="{%=file.Name%}" data-gallery><img src="{%=file.ThumbnailUrl%}"></a>
                 {% } %}
             </span>
         </td>
         <td>
             <p class="name">
-                {% if (file.url) { %}
-                <a href="{%=file.url%}" title="{%=file.name%}" download="{%=file.name%}" {%=file.thumbnailUrl?'data-gallery':''%}>{%=file.name%}</a>
+                {% if (file.Url) { %}
+                <a href="{%=file.Url%}" title="{%=file.Name%}" download="{%=file.Name%}" {%=file.ThumbnailUrl?'data-gallery':''%}>{%=file.Name%}</a>
                 {% } else { %}
-                <span>{%=file.name%}</span>
+                <span>{%=file.Name%}</span>
                 {% } %}
             </p>
             {% if (file.error) { %}
@@ -115,11 +115,11 @@
             {% } %}
         </td>
         <td>
-            <span class="size">{%=o.formatFileSize(file.size)%}</span>
+            <span class="size">{%=o.formatFileSize(file.Size)%}</span>
         </td>
         <td>
-            {% if (file.deleteUrl) { %}
-            <button class="btn btn-danger delete" data-type="{%=file.deleteType%}" data-url="{%=file.deleteUrl%}" {% if (file.deletewithcredentials) { %} data-xhr-fields='{"withCredentials":true}' {% } %}>
+            {% if (file.DeleteUrl) { %}
+            <button class="btn btn-danger delete" data-type="{%=file.DeleteType%}" data-url="{%=file.DeleteUrl%}" {% if (file.deletewithcredentials) { %} data-xhr-fields='{"withCredentials":true}' {% } %}>
                 <i class="glyphicon glyphicon-trash"></i>
                 <span>Delete</span>
             </button>

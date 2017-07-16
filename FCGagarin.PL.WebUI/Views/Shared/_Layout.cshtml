@@ -5,15 +5,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewBag.Title</title>
+
     @Styles.Render("~/Content/css")
-    @Styles.Render("~/Content/jquery-file-upload")
-    @*@Styles.Render("~/Content/dropzonescss")*@
-    
-    
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
-    <script src="https://use.fontawesome.com/18dbca0590.js"></script>
-    
+
 </head>
 <body>
     <div id="page">
@@ -35,12 +31,12 @@
                         <ul class="nav navbar-nav">
                             <li>@Html.ActionLink("Новости", "Index", "News")</li>
                             @*<li role="presentation" class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="test">Новости</a>
-                                <ul class="dropdown-menu">
-                                    <li>@Html.ActionLink("Новости", "News", "News")</li>
-                                    <li>@Html.ActionLink("Анонсы", "Announcements", "News")</li>
-                                </ul>
-                            </li>*@
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="test">Новости</a>
+                                    <ul class="dropdown-menu">
+                                        <li>@Html.ActionLink("Новости", "News", "News")</li>
+                                        <li>@Html.ActionLink("Анонсы", "Announcements", "News")</li>
+                                    </ul>
+                                </li>*@
                             <li role="presentation" class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Информация</a>
                                 <ul class="dropdown-menu">
@@ -125,14 +121,12 @@
         </div>
     </div>
 
-    
-   
 
-@Scripts.Render("~/bundles/bootstrap")
-@Scripts.Render("~/bundles/jqueryui")
-@Scripts.Render("~/bundles/unobtrusive-ajax")
 
-@*@Scripts.Render("~/bundles/dropzonescripts")*@
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jqueryui")
+    <script src="https://use.fontawesome.com/18dbca0590.js"></script>
+    @Scripts.Render("~/bundles/unobtrusive-ajax")
 
     @RenderSection("scripts", required: false)
 </body>
