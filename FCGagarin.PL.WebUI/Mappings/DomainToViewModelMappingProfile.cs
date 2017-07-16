@@ -31,8 +31,7 @@ namespace FCGagarin.PL.WebUI.Mappings
             CreateMap<PhotoAlbum, PhotoAlbumViewModel>();
             CreateMap<PhotoAlbum, PhotoAlbumFormModel>();
             CreateMap<PhotoAlbum, PhotoAlbumDetailsViewModel>()
-                .ForMember(padbm => padbm.PhotoAlbumViewModel, opt => opt.MapFrom(source => source))
-                .ForMember(padbm => padbm.PhotoViewModelList, opt => opt.MapFrom(source => source.Photos));
+                .ForMember(padbm => padbm.PhotoAlbumViewModel, opt => opt.MapFrom(source => source));
 
             CreateMap<Photo, PhotoViewModel>().ForMember(x => x.Author, opt => opt.MapFrom(source => source.Author.ToString()));
             CreateMap<Photo, PhotoFormModel>().ForMember(x => x.AlbumName, opt => opt.MapFrom(source => source.Album.Name));

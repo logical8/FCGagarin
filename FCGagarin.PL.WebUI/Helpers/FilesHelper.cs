@@ -59,7 +59,7 @@ namespace FCGagarin.PL.WebUI.Helpers
             Debug.WriteLine(File.Exists(fullPath));
             var thumbPath = "/" + file + "80x80.jpg";
             var partThumb1 = Path.Combine(_storageRoot, albumId.ToString(), "thumbs");
-            var partThumb2 = Path.Combine(partThumb1, file + "80x80.jpg");
+            var partThumb2 = Path.Combine(partThumb1, Path.GetFileNameWithoutExtension(file) + "80x80.jpg");
 
             Debug.WriteLine(partThumb2);
             Debug.WriteLine(File.Exists(partThumb2));
@@ -263,14 +263,15 @@ namespace FCGagarin.PL.WebUI.Helpers
     }
     public class JsonFiles
     {
-        public ViewDataUploadFilesResult[] Files;
+        public ViewDataUploadFilesResult[] files { get; set; }
         public string TempFolder { get; set; }
+
         public JsonFiles(List<ViewDataUploadFilesResult> filesList)
         {
-            Files = new ViewDataUploadFilesResult[filesList.Count];
+            files = new ViewDataUploadFilesResult[filesList.Count];
             for (var i = 0; i < filesList.Count; i++)
             {
-                Files[i] = filesList.ElementAt(i);
+                files[i] = filesList.ElementAt(i);
             }
 
         }

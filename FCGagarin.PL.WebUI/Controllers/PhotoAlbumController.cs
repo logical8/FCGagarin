@@ -68,8 +68,22 @@ namespace FCGagarin.PL.WebUI.Controllers
         {
             var allAlbums = _photoAlbumService.GetAll();
             var model = Mapper.Map<IEnumerable<PhotoAlbum>, IEnumerable<PhotoAlbumViewModel>>(allAlbums);
-
+            foreach (var photoAlbumViewModel in model)
+            {
+                photoAlbumViewModel.NumberOfPhoto = GetNumberOfPhoto(photoAlbumViewModel.Id);
+            }
+            
             return View(model);
+        }
+
+        private int GetNumberOfPhoto(int albumId)
+        {
+            var pathToAlbum = GetPathToAlbum(albumId);
+            if (Directory.Exists(pathToAlbum))
+            {
+                return Directory.GetFiles(GetPathToAlbum(albumId), "*", SearchOption.TopDirectoryOnly).Length;
+            }
+            return 0;
         }
 
         [Authorize(Roles = "Moderator")]
@@ -126,7 +140,7 @@ namespace FCGagarin.PL.WebUI.Controllers
 
             var model = new FilesViewModel
             {
-                Files = result.ToArray()
+                files = result.ToArray()
             };
             return model;
         }
@@ -179,9 +193,18 @@ namespace FCGagarin.PL.WebUI.Controllers
             {
                 return HttpNotFound();
             }
-            //TODO:Kireev. реализовать в бд каскадное удаление для фотографий альбома
+
+            //удаляем все файлы вместе с папкой альбома
+            var pathToAlbum = GetPathToAlbum(id);
+            Directory.Delete(pathToAlbum, true);
+            //удаляем альбом из бд
             _photoAlbumService.Delete(model);
             return RedirectToAction("Index");
+        }
+
+        private string GetPathToAlbum(int albumId)
+        {
+            return Path.Combine(StorageRoot, albumId.ToString());
         }
     }
 }

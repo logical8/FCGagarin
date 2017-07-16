@@ -4,10 +4,10 @@
     {
         public FilesViewModel()
         {
-            Files = new ViewDataUploadFilesResult[0];
+            files = new ViewDataUploadFilesResult[0];
         }
 
-        public ViewDataUploadFilesResult[] Files { get; set; }
+        public ViewDataUploadFilesResult[] files { get; set; }
     }
 
     public class ViewDataUploadFilesResult

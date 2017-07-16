@@ -8,23 +8,14 @@ namespace FCGagarin.PL.ViewModels
     public class PhotoAlbumViewModel
     {
         public int Id { get; set; }
+
         [Display(Name = "Название альбома")]
         public string Name { get; set; }
+
         [Display(Name = "Количество")]
-        public int NumberOfPhoto => Photos.Count;
+        public int NumberOfPhoto { get; set; }
 
         [Display(Name = "Дата обновления")]
-        public DateTime? LastUploadDate
-        {
-            get
-            {
-                if (Photos.Count != 0)
-                {
-                    return Photos.Select(v => v.UploadDate).Max();
-                }
-                return null;
-            }
-        }
-        public ICollection<PhotoViewModel> Photos { get; set; }
+        public DateTime? LastUploadDate { get; set; }
     }
 }

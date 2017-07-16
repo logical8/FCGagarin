@@ -8,7 +8,7 @@
 
 @if (User.IsInRole("Moderator"))
 {
-    @Html.ActionLink(" ", "Create", "Photo", new { albumId = Model.PhotoAlbumViewModel.Id }, new { @class = "btn btn-default fa fa-plus fa-lg plus" }) //TODO: заменить класс .plus, который отодвигает кнопку xD
+    @*@Html.ActionLink(" ", "Create", "Photo", new { albumId = Model.PhotoAlbumViewModel.Id }, new { @class = "btn btn-default fa fa-plus fa-lg plus" }) //TODO: заменить класс .plus, который отодвигает кнопку xD*@
 
     <script>
         //edit
@@ -24,7 +24,9 @@
                 contentType: "application/json; charset=utf-8",
                 url: '@Url.Action("GetFileList", "PhotoAlbum", new {id = Model.PhotoAlbumViewModel.Id})',
                 success: function (data) {
-                    $('#fileupload').fileupload('option', 'done').call($('#fileupload'), $.Event('done'), { result: { files: data.Files } })
+                    $('#fileupload').fileupload('option', 'done').call($('#fileupload'),
+                        $.Event('done'),
+                        { result: { files: data.files } });
                     $('#fileupload').removeClass('fileupload-processing');
                 }
             });
@@ -47,9 +49,9 @@ else
 
     <div id="links">
         <div class="img-thumbnail">
-            @if (Model.FilesViewModel.Files != null && Model.FilesViewModel.Files.Length != 0)
+            @if (Model.FilesViewModel.files != null && Model.FilesViewModel.files.Length != 0)
             {
-                foreach (var file in Model.FilesViewModel.Files)
+                foreach (var file in Model.FilesViewModel.files)
                 {
                     if (file.Type.Equals("video/mp4"))
                     {
