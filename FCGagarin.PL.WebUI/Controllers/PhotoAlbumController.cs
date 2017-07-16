@@ -29,39 +29,38 @@ namespace FCGagarin.PL.WebUI.Controllers
         private string StorageRoot => Path.Combine(HostingEnvironment.MapPath(_serverMapPath));
 
         private readonly string _urlBase = "/Files/somefiles/";
-        readonly string _deleteUrl = "/FileUpload/DeleteFile/?file=";
+        readonly string _deleteUrl = "/PhotoAlbum/DeleteFile/";
         readonly string _deleteType = "GET";
 
-        public PhotoAlbumController()
-        {
-            _filesHelper = new FilesHelper(_deleteUrl, _deleteType, StorageRoot, _urlBase, _tempPath, _serverMapPath);
-        }
+        
 
         [HttpPost]
-        public JsonResult Upload()
+        public JsonResult Upload(int id)
         {
             _filesHelper = new FilesHelper(_deleteUrl, _deleteType, StorageRoot, _urlBase, _tempPath, _serverMapPath);
             var resultList = new List<ViewDataUploadFilesResult>();
 
             var currentContext = HttpContext;
 
-            _filesHelper.UploadAndShowResults(currentContext, resultList);
+            _filesHelper.UploadAndShowResults(currentContext, resultList, id);
             JsonFiles files = new JsonFiles(resultList);
 
             bool isEmpty = !resultList.Any();
             return isEmpty ? Json("Error ") : Json(files);
         }
 
-        public JsonResult GetFileList()
+        public JsonResult GetFileList(int id)
         {
-            var list = _filesHelper.GetFileList();
+            _filesHelper = new FilesHelper(_deleteUrl, _deleteType, StorageRoot, _urlBase, _tempPath, _serverMapPath);
+            var list = _filesHelper.GetFileList(id);
             return Json(list, JsonRequestBehavior.AllowGet);
         }
 
         [HttpGet]
-        public JsonResult DeleteFile(string file)
+        public JsonResult DeleteFile(string file, int id)
         {
-            _filesHelper.DeleteFile(file);
+            _filesHelper = new FilesHelper(_deleteUrl, _deleteType, StorageRoot, _urlBase, _tempPath, _serverMapPath);
+            _filesHelper.DeleteFile(file, id);
             return Json("OK", JsonRequestBehavior.AllowGet);
         }
 
@@ -102,27 +101,27 @@ namespace FCGagarin.PL.WebUI.Controllers
             }
             
             var viewModel = Mapper.Map<PhotoAlbum, PhotoAlbumDetailsViewModel>(album);
-            var photos = _photoService.GetPhotosByAlbumId(id);
-            viewModel.FilesViewModel = ConvertToFilesViewModel(photos, id);
+            
+            viewModel.FilesViewModel = ConvertToFilesViewModel(id);
 
             return View(viewModel);
         }
 
-        private FilesViewModel ConvertToFilesViewModel(List<Photo> photos, int albumId)
+        private FilesViewModel ConvertToFilesViewModel(int albumId)
         {
             _filesHelper = new FilesHelper(_deleteUrl, _deleteType, StorageRoot, _urlBase, _tempPath, _serverMapPath);
-            var fullPath = _photoAlbumService.GetFullPathToAlbum(albumId);// Path.Combine(_storageRoot);
+
+            var fullPathToAlbum = _photoAlbumService.GetFullPathToAlbum(albumId);
 
             var result = new List<ViewDataUploadFilesResult>();
-            if (Directory.Exists(fullPath))
+            if (Directory.Exists(fullPathToAlbum))
             {
-                var dir = new DirectoryInfo(fullPath);
+                var dir = new DirectoryInfo(fullPathToAlbum);
                 foreach (var file in dir.GetFiles())
                 {
                     var sizeInt = unchecked((int)file.Length);
-                    result.Add(_filesHelper.UploadResult(file.Name, sizeInt, file.FullName));
+                    result.Add(_filesHelper.UploadResult(file.Name, sizeInt, file.FullName, albumId));
                 }
-
             }
 
             var model = new FilesViewModel

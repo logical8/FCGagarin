@@ -10,5 +10,6 @@ namespace FCGagarin.BLL.Services.Interfaces
     public interface IPhotoService : IEntityService<Photo>
     {
         List<Photo> GetPhotosByAlbumId(int albumId);
+        Photo GetById(int id);
     }
 }

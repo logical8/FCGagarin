@@ -7,28 +7,98 @@
 @if (User.IsInRole("Moderator"))
 {
     @Html.ActionLink(" ", "Create", "Photo", new { albumId = Model.PhotoAlbumViewModel.Id }, new { @class = "btn btn-default fa fa-plus fa-lg plus" }) //TODO: заменить класс .plus, который отодвигает кнопку xD
+
+    
+    
+    <script>
+        //edit
+        
+        var $form = null;
+        $(function () {
+
+            $form = $('#fileupload').fileupload({
+                dataType: 'json'
+            });
+
+        });
+        $('#fileupload').addClass('fileupload-processing');
+
+
+
+        $.ajax({
+                type: 'GET',
+                contentType: "application/json; charset=utf-8",
+                url: '@Url.Action("GetFileList", "PhotoAlbum", new {id = Model.PhotoAlbumViewModel.Id})',
+                success: function (data) {
+
+
+                    $('#fileupload').fileupload('option', 'done').call($('#fileupload'), $.Event('done'), { result: { files: data.files } })
+                    $('#fileupload').removeClass('fileupload-processing');
+                }
+
+            }
+
+        );
+    </script>
+    @Html.Partial("_Files", new ViewDataDictionary { { "id", Model.PhotoAlbumViewModel.Id } })
+    @Scripts.Render("~/bundles/jquery-file-upload")
 }
 else
 {
+    <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls" data-filter=":even">
+        <div class="slides"></div>
+        <h3 class="title"></h3>
+        <a class="prev">‹</a>
+        <a class="next">›</a>
+        <a class="close">×</a>
+        <a class="play-pause"></a>
+        <ol class="indicator"></ol>
+    </div>
 
-}
-
-@*@if (Model.PhotoViewModelList.Count == 0)
-{
-    <div class="well">
-        <div class="h4">
-            Фото еще нет
+    <div id="links">
+        <div class="img-thumbnail">
+            @if (Model.FilesViewModel.Files != null && Model.FilesViewModel.Files.Length != 0)
+            {
+                foreach (var file in Model.FilesViewModel.Files)
+                {
+                    if (file.Type.Equals("video/mp4"))
+                    {
+                        <a href="@file.Url" title="@file.Name" type="video/mp4" data-description="This is a movie."><img src="@file.ThumbnailUrl" alt="@file.Name"></a>
+                    }
+                    else
+                    {
+                        <a href="@file.Url" title="@file.Name" data-description="This is a image."><img src="@file.ThumbnailUrl" alt="@file.Name"></a>
+                    }
+                }
+            }
+            else
+            {
+                <div class="well">
+                    <div class="h4">
+                        Фото еще нет
+                    </div>
+                </div>
+            }
+            <!--Your files goes here-->
         </div>
     </div>
 
-}
-else
-{
-    foreach (var pvm in Model.PhotoViewModelList.OrderByDescending(pvm => pvm.UploadDate))
-    {
-        @Html.Partial("_PhotoSummary", pvm)
+    @section scripts{
+        <script>
+            //only view
+            document.getElementById('links').onclick = function (event) {
+                event = event || window.event;
+                var target = event.target || event.srcElement,
+                    link = target.src ? target.parentNode : target,
+                    options = { index: link, event: event },
+                    links = this.getElementsByTagName('a');
+                blueimp.Gallery(links, options);
+            };
+        </script>
     }
-}*@
+
+
+}
 
 
 
@@ -37,68 +107,12 @@ else
     </div>*@
 
 
-<!-- blueimp File Upload & Gallery styles -->
-@Styles.Render("~/Content/jQuery-File-Upload")
-
-<div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls" data-filter=":even">
-    <div class="slides"></div>
-    <h3 class="title"></h3>
-    <a class="prev">‹</a>
-    <a class="next">›</a>
-    <a class="close">×</a>
-    <a class="play-pause"></a>
-    <ol class="indicator"></ol>
-</div>
-<div id="links">
-
-    @if (@Model.FilesViewModel.Files != null && @Model.FilesViewModel.Files.Length!=0)
-    {
-        foreach (var file in @Model.FilesViewModel.Files)
-        {
-
-            if (file.Type.Equals("video/mp4"))
-            {
-             
-                <a href="@file.Url" title="@file.Name" type="video/mp4" data-description="This is a movie."><img src="@file.ThumbnailUrl" alt="@file.Name"></a>
 
 
-            }
-            else
-            {
-                <a href="@file.Url" title="@file.Name" data-description="This is a image."><img src="@file.ThumbnailUrl" alt="@file.Name"></a>
-            }
-
-        }
-    }
-    else
-    {
-        <div class="well">
-            <div class="h4">
-                Фото еще нет
-            </div>
-        </div>
-    }
-    <!--Your files goes here-->
-</div>
 
 <div>
     @Html.ActionLink(" ", "Index", null, new { @class = "btn btn-default btn-lg fa fa-arrow-left fa-lg" })
 </div>
 
-@section scripts{
-    
 
-<script>
 
-    document.getElementById('links').onclick = function (event) {
-        event = event || window.event;
-        var target = event.target || event.srcElement,
-            link = target.src ? target.parentNode : target,
-            options = { index: link, event: event },
-            links = this.getElementsByTagName('a');
-        blueimp.Gallery(links, options);
-
-    };
-</script>
-@Scripts.Render("~/bundles/Blueimp-Gallerry2")
-}

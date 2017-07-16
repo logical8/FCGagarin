@@ -17,63 +17,17 @@ namespace FCGagarin.PL.WebUI.Controllers
 {
     public class PhotoController : Controller
     {
-        private readonly IPhotoAlbumService _photoAlbumService;
+        private readonly IPhotoService _photoService;
 
-        public PhotoController(IPhotoAlbumService photoAlbumService)
+        public PhotoController(IPhotoService photoService)
         {
-            _photoAlbumService = photoAlbumService;
+            _photoService = photoService;
         }
-
-        FilesHelper _filesHelper;
-        readonly string _tempPath = "~/somefiles/";
-        readonly string _serverMapPath = "~/Files/somefiles/";
-        private string StorageRoot => Path.Combine(HostingEnvironment.MapPath(_serverMapPath));
-
-        private readonly string _urlBase = "/Files/somefiles/";
-        readonly string _deleteUrl = "/FileUpload/DeleteFile/?file=";
-        readonly string _deleteType = "GET";
-
-        public PhotoController()
-        {
-            _filesHelper = new FilesHelper(_deleteUrl, _deleteType, StorageRoot, _urlBase, _tempPath, _serverMapPath);
-        }
-
-        [HttpPost]
-        public JsonResult Upload()
-        {
-            _filesHelper = new FilesHelper(_deleteUrl, _deleteType, StorageRoot, _urlBase, _tempPath, _serverMapPath);
-            var resultList = new List<ViewDataUploadFilesResult>();
-
-            var currentContext = HttpContext;
-
-            _filesHelper.UploadAndShowResults(currentContext, resultList);
-            JsonFiles files = new JsonFiles(resultList);
-
-            bool isEmpty = !resultList.Any();
-            return isEmpty ? Json("Error ") : Json(files);
-        }
-
-        public JsonResult GetFileList()
-        {
-            var list = _filesHelper.GetFileList();
-            return Json(list, JsonRequestBehavior.AllowGet);
-        }
-
-        [HttpGet]
-        public JsonResult DeleteFile(string file)
-        {
-            _filesHelper.DeleteFile(file);
-            return Json("OK", JsonRequestBehavior.AllowGet);
-        }
-
-
-        ///////////////////////////////////////////////////////////////////////////////////////
-
 
         public ActionResult Index()
         {
-            var allAlbums = _photoAlbumService.GetAll();
-            var model = Mapper.Map<IEnumerable<PhotoAlbum>, IEnumerable<PhotoAlbumViewModel>>(allAlbums);
+            var allAlbums = _photoService.GetAll();
+            var model = Mapper.Map<IEnumerable<Photo>, IEnumerable<PhotoViewModel>>(allAlbums);
 
             return View(model);
         }
@@ -86,12 +40,12 @@ namespace FCGagarin.PL.WebUI.Controllers
 
         [Authorize(Roles = "Moderator")]
         [HttpPost]
-        public ActionResult Create(PhotoAlbumFormModel formModel)
+        public ActionResult Create(PhotoFormModel formModel)
         {
             if (ModelState.IsValid)
             {
-                var newAlbum = Mapper.Map<PhotoAlbumFormModel, PhotoAlbum>(formModel);
-                _photoAlbumService.Create(newAlbum);
+                var newAlbum = Mapper.Map<PhotoFormModel, Photo>(formModel);
+                _photoService.Create(newAlbum);
                 return RedirectToAction("Index");
             }
 
@@ -100,38 +54,23 @@ namespace FCGagarin.PL.WebUI.Controllers
 
         public ActionResult Details(int id)
         {
-            var album = _photoAlbumService.GetById(id);
+            var album = _photoService.GetById(id);
             if (album == null)
             {
                 return HttpNotFound();
             }
-            var viewModel = Mapper.Map<PhotoAlbum, PhotoAlbumDetailsViewModel>(album);
 
-            JsonFiles listOfFiles = _filesHelper.GetFileList();
-
-            viewModel.FilesViewModel = new FilesViewModel
-            {
-                Files = listOfFiles.Files
-            };
-
-            //не уверен, что это нужно
-            foreach (var item in viewModel.PhotoViewModelList)
-            {
-                item.AlbumId = id;
-                item.PathToImage = "";//TODO:Тут доделать //LinkPrepare.YoutubeUrlToEmbedUrl(item.Url);
-            }
-
-            return View(viewModel);
+            return View();
         }
 
         [Authorize(Roles = "Moderator")]
         public ActionResult Edit(int id)
         {
 
-            var model = _photoAlbumService.GetById(id);
+            var model = _photoService.GetById(id);
             if (model != null)
             {
-                var formModel = Mapper.Map<PhotoAlbum, PhotoAlbumFormModel>(model);
+                var formModel = Mapper.Map<Photo, PhotoFormModel>(model);
                 return View(formModel);
             }
             return HttpNotFound();
@@ -139,12 +78,12 @@ namespace FCGagarin.PL.WebUI.Controllers
 
         [Authorize(Roles = "Moderator")]
         [HttpPost]
-        public ActionResult Edit(PhotoAlbumFormModel formModel)
+        public ActionResult Edit(PhotoFormModel formModel)
         {
             if (ModelState.IsValid)
             {
-                var model = Mapper.Map<PhotoAlbumFormModel, PhotoAlbum>(formModel);
-                _photoAlbumService.Update(model);
+                var model = Mapper.Map<PhotoFormModel, Photo>(formModel);
+                _photoService.Update(model);
                 return RedirectToAction("Index");
             }
             return View(formModel);
@@ -153,10 +92,10 @@ namespace FCGagarin.PL.WebUI.Controllers
         [Authorize(Roles = "Moderator")]
         public ActionResult Delete(int id)
         {
-            var model = _photoAlbumService.GetById(id);
+            var model = _photoService.GetById(id);
             if (model != null)
             {
-                var viewModel = Mapper.Map<PhotoAlbum, PhotoAlbumViewModel>(model);
+                var viewModel = Mapper.Map<Photo, PhotoViewModel>(model);
                 return View(viewModel);
             }
             return HttpNotFound();
@@ -167,13 +106,13 @@ namespace FCGagarin.PL.WebUI.Controllers
         [ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            var model = _photoAlbumService.GetById(id);
+            var model = _photoService.GetById(id);
             if (model == null)
             {
                 return HttpNotFound();
             }
             //TODO:Kireev. реализовать в бд каскадное удаление для фотографий альбома
-            _photoAlbumService.Delete(model);
+            _photoService.Delete(model);
             return RedirectToAction("Index");
         }
 

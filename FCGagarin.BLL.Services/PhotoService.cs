@@ -26,5 +26,10 @@ namespace FCGagarin.BLL.Services
         {
             throw new NotImplementedException();
         }
+
+        public Photo GetById(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

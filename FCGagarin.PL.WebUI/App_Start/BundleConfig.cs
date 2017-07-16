@@ -10,6 +10,9 @@ namespace FCGagarin.PL.WebUI
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
+                "~/Scripts/jquery-ui-{version}.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
 
@@ -49,52 +52,86 @@ namespace FCGagarin.PL.WebUI
             bundles.Add(new ScriptBundle("~/bundles/unobtrusive-ajax").Include(
                       "~/Scripts/jquery.unobtrusive-ajax.min.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/jquery-file-upload").Include(
+            //bundles.Add(new ScriptBundle("~/bundles/jquery-file-upload").Include(
                       
 
 
-                //                //<!-- The Templates plugin is included to render the upload/download listings -->
-                                "~/Scripts/jQuery.FileUpload/vendor/jquery.ui.widget.js",
-                                "~/Scripts/jQuery.FileUpload/tmpl.min.js",
-                                ////<!-- The Load Image plugin is included for the preview images and image resizing functionality -->
-                                                "~/Scripts/jQuery.FileUpload/load-image.all.min.js",
-                                ////<!-- The Canvas to Blob plugin is included for image resizing functionality -->
-                                                "~/Scripts/jQuery.FileUpload/canvas-to-blob.min.js",
-                                "~/Scripts/file-upload/jquery.blueimp-gallery.min.js",
-                                ////<!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
-                                                "~/Scripts/jQuery.FileUpload/jquery.iframe-transport.js",
-                                ////<!-- The basic File Upload plugin -->
-                                                "~/Scripts/jQuery.FileUpload/jquery.fileupload.js",
-                                ////<!-- The File Upload processing plugin -->
-                                                "~/Scripts/jQuery.FileUpload/jquery.fileupload-process.js",
-                                ////<!-- The File Upload image preview & resize plugin -->
-                                                "~/Scripts/jQuery.FileUpload/jquery.fileupload-image.js",
-                                ////<!-- The File Upload audio preview plugin -->
-                                //                "~/Scripts/jQuery.FileUpload/jquery.fileupload-audio.js",
-                                ////<!-- The File Upload video preview plugin -->
-                                //                "~/Scripts/jQuery.FileUpload/jquery.fileupload-video.js",
-                                ////<!-- The File Upload validation plugin -->
-                                                "~/Scripts/jQuery.FileUpload/jquery.fileupload-validate.js",
-                                ////!-- The File Upload user interface plugin -->
-                                                "~/Scripts/jQuery.FileUpload/jquery.fileupload-ui.js",
-                                ////Blueimp Gallery 2 
-                                                "~/Scripts/blueimp-gallery2/js/blueimp-gallery.js",
-                                                "~/Scripts/blueimp-gallery2/js/blueimp-gallery-video.js",
-                                                "~/Scripts/blueimp-gallery2/js/blueimp-gallery-indicator.js",
-                                                "~/Scripts/blueimp-gallery2/js/jquery.blueimp-gallery.js"
+            //    //                //<!-- The Templates plugin is included to render the upload/download listings -->
+            //                    "~/Scripts/jQuery.FileUpload/vendor/jquery.ui.widget.js",
+            //                    "~/Scripts/jQuery.FileUpload/tmpl.min.js",
+            //                    ////<!-- The Load Image plugin is included for the preview images and image resizing functionality -->
+            //                                    "~/Scripts/jQuery.FileUpload/load-image.all.min.js",
+            //                    ////<!-- The Canvas to Blob plugin is included for image resizing functionality -->
+            //                                    "~/Scripts/jQuery.FileUpload/canvas-to-blob.min.js",
+            //                    "~/Scripts/file-upload/jquery.blueimp-gallery.min.js",
+            //                    ////<!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
+            //                                    "~/Scripts/jQuery.FileUpload/jquery.iframe-transport.js",
+            //                    ////<!-- The basic File Upload plugin -->
+            //                                    "~/Scripts/jQuery.FileUpload/jquery.fileupload.js",
+            //                    ////<!-- The File Upload processing plugin -->
+            //                                    "~/Scripts/jQuery.FileUpload/jquery.fileupload-process.js",
+            //                    ////<!-- The File Upload image preview & resize plugin -->
+            //                                    "~/Scripts/jQuery.FileUpload/jquery.fileupload-image.js",
+            //                    ////<!-- The File Upload audio preview plugin -->
+            //                    //                "~/Scripts/jQuery.FileUpload/jquery.fileupload-audio.js",
+            //                    ////<!-- The File Upload video preview plugin -->
+            //                    //                "~/Scripts/jQuery.FileUpload/jquery.fileupload-video.js",
+            //                    ////<!-- The File Upload validation plugin -->
+            //                                    "~/Scripts/jQuery.FileUpload/jquery.fileupload-validate.js",
+            //                    ////!-- The File Upload user interface plugin -->
+            //                                    "~/Scripts/jQuery.FileUpload/jquery.fileupload-ui.js",
+            //                    ////Blueimp Gallery 2 
+            //                                    "~/Scripts/blueimp-gallery2/js/blueimp-gallery.js",
+            //                                    "~/Scripts/blueimp-gallery2/js/blueimp-gallery-video.js",
+            //                                    "~/Scripts/blueimp-gallery2/js/blueimp-gallery-indicator.js",
+            //                                    "~/Scripts/blueimp-gallery2/js/jquery.blueimp-gallery.js"
 
-                                //            ));
-                                //            bundles.Add(new ScriptBundle("~/bundles/Blueimp-Gallerry2").Include(//Blueimp Gallery 2 
-                                //                "~/Scripts/blueimp-gallery2/js/blueimp-gallery.js",
-                                //                "~/Scripts/blueimp-gallery2/js/blueimp-gallery-video.js",
-                                //                "~/Scripts/blueimp-gallery2/js/blueimp-gallery-indicator.js",
-                                //                "~/Scripts/blueimp-gallery2/js/jquery.blueimp-gallery.js"
+            //                    //            ));
+            //                    //            bundles.Add(new ScriptBundle("~/bundles/Blueimp-Gallerry2").Include(//Blueimp Gallery 2 
+            //                    //                "~/Scripts/blueimp-gallery2/js/blueimp-gallery.js",
+            //                    //                "~/Scripts/blueimp-gallery2/js/blueimp-gallery-video.js",
+            //                    //                "~/Scripts/blueimp-gallery2/js/blueimp-gallery-indicator.js",
+            //                    //                "~/Scripts/blueimp-gallery2/js/jquery.blueimp-gallery.js"
 
 
-                                //"~/Scripts/jquery-file-upload/jquery.ui.widget.js",
-                                //"~/Scripts/jquery-file-upload/jquery.fileupload.js",
-                                //"~/Scripts/jquery-file-upload/jquery.iframe-transport.js"
-                      ));
+            //                    //"~/Scripts/jquery-file-upload/jquery.ui.widget.js",
+            //                    //"~/Scripts/jquery-file-upload/jquery.fileupload.js",
+            //                    //"~/Scripts/jquery-file-upload/jquery.iframe-transport.js"
+            //          ));
+
+
+            bundles.Add(new ScriptBundle("~/bundles/jquery-file-upload").Include(
+                //<!-- The Templates plugin is included to render the upload/download listings -->
+                "~/Scripts/jQuery.FileUpload/vendor/jquery.ui.widget.js",
+                "~/Scripts/jQuery.FileUpload/tmpl.min.js",
+//<!-- The Load Image plugin is included for the preview images and image resizing functionality -->
+                "~/Scripts/jQuery.FileUpload/load-image.all.min.js",
+//<!-- The Canvas to Blob plugin is included for image resizing functionality -->
+                "~/Scripts/jQuery.FileUpload/canvas-to-blob.min.js",
+//"~/Scripts/file-upload/jquery.blueimp-gallery.min.js",
+//<!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
+                "~/Scripts/jQuery.FileUpload/jquery.iframe-transport.js",
+//<!-- The basic File Upload plugin -->
+                "~/Scripts/jQuery.FileUpload/jquery.fileupload.js",
+//<!-- The File Upload processing plugin -->
+                "~/Scripts/jQuery.FileUpload/jquery.fileupload-process.js",
+//<!-- The File Upload image preview & resize plugin -->
+                "~/Scripts/jQuery.FileUpload/jquery.fileupload-image.js",
+//<!-- The File Upload audio preview plugin -->
+                "~/Scripts/jQuery.FileUpload/jquery.fileupload-audio.js",
+//<!-- The File Upload video preview plugin -->
+                "~/Scripts/jQuery.FileUpload/jquery.fileupload-video.js",
+//<!-- The File Upload validation plugin -->
+                "~/Scripts/jQuery.FileUpload/jquery.fileupload-validate.js",
+//!-- The File Upload user interface plugin -->
+                "~/Scripts/jQuery.FileUpload/jquery.fileupload-ui.js",
+//Blueimp Gallery 2 
+                "~/Scripts/blueimp-gallery2/js/blueimp-gallery.js",
+                "~/Scripts/blueimp-gallery2/js/blueimp-gallery-video.js",
+                "~/Scripts/blueimp-gallery2/js/blueimp-gallery-indicator.js",
+                "~/Scripts/blueimp-gallery2/js/jquery.blueimp-gallery.js"
+
+            ));
 
             //bundles.Add(new ScriptBundle("~/bundles/dropzonescripts").Include(
             //    "~/Scripts/dropzone/dropzone.js"));

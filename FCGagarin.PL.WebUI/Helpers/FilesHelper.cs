@@ -48,17 +48,17 @@ namespace FCGagarin.PL.WebUI.Helpers
             }
         }
 
-        public string DeleteFile(string file)
+        public string DeleteFile(string file, int albumId)
         {
             Debug.WriteLine("DeleteFile");
             //    var req = HttpContext.Current;
             Debug.WriteLine(file);
 
-            var fullPath = Path.Combine(_storageRoot, file);
+            var fullPath = Path.Combine(_storageRoot, albumId.ToString(), file);
             Debug.WriteLine(fullPath);
             Debug.WriteLine(File.Exists(fullPath));
             var thumbPath = "/" + file + "80x80.jpg";
-            var partThumb1 = Path.Combine(_storageRoot, "thumbs");
+            var partThumb1 = Path.Combine(_storageRoot, albumId.ToString(), "thumbs");
             var partThumb2 = Path.Combine(partThumb1, file + "80x80.jpg");
 
             Debug.WriteLine(partThumb2);
@@ -77,19 +77,19 @@ namespace FCGagarin.PL.WebUI.Helpers
             var failMessage = "Error Delete";
             return failMessage;
         }
-        public JsonFiles GetFileList()
+        public JsonFiles GetFileList(int id)
         {
 
             var r = new List<ViewDataUploadFilesResult>();
 
-            var fullPath = Path.Combine(_storageRoot);
+            var fullPath = Path.Combine(_storageRoot, id.ToString());
             if (Directory.Exists(fullPath))
             {
                 var dir = new DirectoryInfo(fullPath);
                 foreach (var file in dir.GetFiles())
                 {
                     var sizeInt = unchecked((int)file.Length);
-                    r.Add(UploadResult(file.Name, sizeInt, file.FullName));
+                    r.Add(UploadResult(file.Name, sizeInt, file.FullName, id));
                 }
 
             }
@@ -98,12 +98,12 @@ namespace FCGagarin.PL.WebUI.Helpers
             return files;
         }
 
-        public void UploadAndShowResults(HttpContextBase contentBase, List<ViewDataUploadFilesResult> resultList)
+        public void UploadAndShowResults(HttpContextBase contentBase, List<ViewDataUploadFilesResult> resultList, int id)
         {
             var httpRequest = contentBase.Request;
             Debug.WriteLine(Directory.Exists(_tempPath));
 
-            var fullPath = Path.Combine(_storageRoot);
+            var fullPath = Path.Combine(_storageRoot, id.ToString());
             Directory.CreateDirectory(fullPath);
             // Create new folder for thumbs
             Directory.CreateDirectory(fullPath + "/thumbs/");
@@ -119,25 +119,25 @@ namespace FCGagarin.PL.WebUI.Helpers
                 if (string.IsNullOrEmpty(headers["X-File-Name"]))
                 {
 
-                    UploadWholeFile(contentBase, resultList);
+                    UploadWholeFile(contentBase, resultList, id);
                 }
                 else
                 {
 
-                    UploadPartialFile(headers["X-File-Name"], contentBase, resultList);
+                    UploadPartialFile(headers["X-File-Name"], contentBase, resultList, id);
                 }
             }
         }
 
 
-        private void UploadWholeFile(HttpContextBase requestContext, List<ViewDataUploadFilesResult> statuses)
+        private void UploadWholeFile(HttpContextBase requestContext, List<ViewDataUploadFilesResult> statuses, int albumId)
         {
 
             var request = requestContext.Request;
             for (var i = 0; i < request.Files.Count; i++)
             {
                 var file = request.Files[i];
-                var pathOnServer = Path.Combine(_storageRoot);
+                var pathOnServer = Path.Combine(_storageRoot, albumId.ToString());
                 var fullPath = Path.Combine(pathOnServer, Path.GetFileName(file.FileName));
                 file.SaveAs(fullPath);
 
@@ -164,19 +164,19 @@ namespace FCGagarin.PL.WebUI.Helpers
 
                     }
                 }
-                statuses.Add(UploadResult(file.FileName, file.ContentLength, file.FileName));
+                statuses.Add(UploadResult(file.FileName, file.ContentLength, file.FileName, albumId));
             }
         }
 
 
 
-        private void UploadPartialFile(string fileName, HttpContextBase requestContext, List<ViewDataUploadFilesResult> statuses)
+        private void UploadPartialFile(string fileName, HttpContextBase requestContext, List<ViewDataUploadFilesResult> statuses, int albumId)
         {
             var request = requestContext.Request;
             if (request.Files.Count != 1) throw new HttpRequestValidationException("Attempt to upload chunked file containing more than one fragment per request");
             var file = request.Files[0];
             var inputStream = file.InputStream;
-            var patchOnServer = Path.Combine(_storageRoot);
+            var patchOnServer = Path.Combine(_storageRoot, albumId.ToString());
             var fullName = Path.Combine(patchOnServer, Path.GetFileName(file.FileName));
             var thumbfullPath = Path.Combine(fullName, Path.GetFileName(file.FileName + "80x80.jpg"));
             var handler = new ImageHandler();
@@ -196,9 +196,9 @@ namespace FCGagarin.PL.WebUI.Helpers
                 fs.Flush();
                 fs.Close();
             }
-            statuses.Add(UploadResult(file.FileName, file.ContentLength, file.FileName));
+            statuses.Add(UploadResult(file.FileName, file.ContentLength, file.FileName, albumId));
         }
-        public ViewDataUploadFilesResult UploadResult(string fileName, int fileSize, string fileFullPath)
+        public ViewDataUploadFilesResult UploadResult(string fileName, int fileSize, string fileFullPath, int albumId)
         {
             var getType = MimeMapping.GetMimeMapping(fileFullPath);
             var result = new ViewDataUploadFilesResult
@@ -206,15 +206,15 @@ namespace FCGagarin.PL.WebUI.Helpers
                 Name = fileName,
                 Size = fileSize,
                 Type = getType,
-                Url = _urlBase + fileName,
-                DeleteUrl = _deleteUrl + fileName,
-                ThumbnailUrl = CheckThumb(getType, fileName),
+                Url = _urlBase + albumId + '/' + fileName,
+                DeleteUrl = _deleteUrl + "?id=" + albumId + "&file=" + fileName,
+                ThumbnailUrl = CheckThumb(getType, fileName, albumId),
                 DeleteType = _deleteType
             };
             return result;
         }
 
-        public string CheckThumb(string type, string fileName)
+        public string CheckThumb(string type, string fileName, int albumId)
         {
             var splited = type.Split('/');
             if (splited.Length == 2)
@@ -222,7 +222,7 @@ namespace FCGagarin.PL.WebUI.Helpers
                 var extansion = splited[1].ToLower();
                 if (extansion.Equals("jpeg") || extansion.Equals("jpg") || extansion.Equals("png") || extansion.Equals("gif"))
                 {
-                    var thumbnailUrl = _urlBase + "thumbs/" + Path.GetFileNameWithoutExtension(fileName) + "80x80.jpg";
+                    var thumbnailUrl = _urlBase + albumId + "/" + "thumbs/" + Path.GetFileNameWithoutExtension(fileName) + "80x80.jpg";
                     return thumbnailUrl;
                 }
                 else
@@ -240,7 +240,7 @@ namespace FCGagarin.PL.WebUI.Helpers
                     return thumbnailUrl;
                 }
             }
-            return _urlBase + "/thumbs/" + Path.GetFileNameWithoutExtension(fileName) + "80x80.jpg";
+            return _urlBase + albumId + "/" + "/thumbs/" + Path.GetFileNameWithoutExtension(fileName) + "80x80.jpg";
         }
         public List<string> FilesList()
         {

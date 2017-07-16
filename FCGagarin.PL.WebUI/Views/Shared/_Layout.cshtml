@@ -8,8 +8,12 @@
     @Styles.Render("~/Content/css")
     @Styles.Render("~/Content/jquery-file-upload")
     @*@Styles.Render("~/Content/dropzonescss")*@
+    
+    
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
     <script src="https://use.fontawesome.com/18dbca0590.js"></script>
+    
 </head>
 <body>
     <div id="page">
@@ -121,10 +125,13 @@
         </div>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/unobtrusive-ajax")
-    @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/jquery-file-upload")
+    
+   
+
+@Scripts.Render("~/bundles/bootstrap")
+@Scripts.Render("~/bundles/jqueryui")
+@Scripts.Render("~/bundles/unobtrusive-ajax")
+
 @*@Scripts.Render("~/bundles/dropzonescripts")*@
 
     @RenderSection("scripts", required: false)

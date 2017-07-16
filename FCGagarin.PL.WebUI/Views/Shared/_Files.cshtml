@@ -1,5 +1,5 @@
 ﻿
-<form id="fileupload" method="POST" enctype="multipart/form-data" data-url="@Url.Action("Upload","PhotoAlbum")">
+<form id="fileupload" method="POST" enctype="multipart/form-data" data-url="@Url.Action("Upload","PhotoAlbum", new {id = ViewBag.Id})">
     <div class="row fileupload-buttonbar">
         <div class="col-lg-9">
             <!-- The fileinput-button span is used to style the file input field as button -->
@@ -33,7 +33,7 @@
             <!-- The extended global progress state -->
             <div class="progress-extended">&nbsp;</div>
         </div>
-    </div>
+   </div>
     <!-- The global progress state -->
     <div class="col-lg-3 fileupload-progress fade">
         <!-- The global progress bar -->
@@ -75,12 +75,12 @@
             <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="progress-bar progress-bar-success" style="width:0%;"></div></div>
         </td>
         <td>
-            @*{% if (!i && !o.options.autoUpload) { %}
+            {% if (!i && !o.options.autoUpload) { %}
             <button class="btn btn-primary start" disabled>
                 <i class="glyphicon glyphicon-upload"></i>
                 <span>Start</span>
             </button>
-            {% } %}*@
+            {% } %}
             {% if (!i) { %}
             <button class="btn btn-warning cancel">
                 <i class="glyphicon glyphicon-ban-circle"></i>
