@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Web.Hosting;
@@ -15,20 +14,18 @@ namespace FCGagarin.PL.WebUI.Controllers
     public class PhotoAlbumController : Controller
     {
         private readonly IPhotoAlbumService _photoAlbumService;
-        private readonly IPhotoService _photoService;
 
         public PhotoAlbumController(IPhotoAlbumService photoAlbumService, IPhotoService photoService)
         {
             _photoAlbumService = photoAlbumService;
-            _photoService = photoService;
         }
 
         FilesHelper _filesHelper;
-        readonly string _tempPath = "~/somefiles/";
-        readonly string _serverMapPath = "~/Files/somefiles/";
+        readonly string _tempPath = "~/albums/";
+        readonly string _serverMapPath = "~/Data/uploads/albums/";
         private string StorageRoot => Path.Combine(HostingEnvironment.MapPath(_serverMapPath));
 
-        private readonly string _urlBase = "/Files/somefiles/";
+        private readonly string _urlBase = "/Data/uploads/albums/";
         readonly string _deleteUrl = "/PhotoAlbum/DeleteFile/";
         readonly string _deleteType = "GET";
 
