@@ -11,12 +11,12 @@ namespace Parser.Controllers
     public class ValuesController : ApiController
     {
         // GET api/values
-        public string Get()
+        public string[] Get()
         {
             var url = "http://lfl.ru/club915";
             var web = new HtmlWeb();
             var doc = web.Load(url);
-            return doc.DocumentNode.InnerHtml; //new string[] { "value1", "value2" };
+            return doc.DocumentNode.SelectNodes("//div[@class='team_block']").Select(d=>d.InnerHtml).ToArray(); //new string[] { "value1", "value2" };
         }
 
         // GET api/values/5
