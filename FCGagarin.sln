@@ -51,6 +51,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FCGagarin.BLL.Presenters.In
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Parser", "Parser\Parser.csproj", "{1CCCB4CD-76E6-4391-8B5D-2C49FEB1E989}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FCGagarin.PL.Admin", "FCGagarin.PL.Admin\FCGagarin.PL.Admin.csproj", "{9E4FF711-2328-42C3-A0D2-573B70F1D615}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -113,6 +115,10 @@ Global
 		{1CCCB4CD-76E6-4391-8B5D-2C49FEB1E989}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1CCCB4CD-76E6-4391-8B5D-2C49FEB1E989}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1CCCB4CD-76E6-4391-8B5D-2C49FEB1E989}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E4FF711-2328-42C3-A0D2-573B70F1D615}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E4FF711-2328-42C3-A0D2-573B70F1D615}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E4FF711-2328-42C3-A0D2-573B70F1D615}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E4FF711-2328-42C3-A0D2-573B70F1D615}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -132,6 +138,7 @@ Global
 		{6F143DDB-763D-4EF4-83DD-46D3233929D7} = {A11E469E-A5A8-4FD2-AEEF-0E4C814F2ED1}
 		{0EC904B1-B1F0-4603-A5F8-33914CF21B70} = {A11E469E-A5A8-4FD2-AEEF-0E4C814F2ED1}
 		{1CCCB4CD-76E6-4391-8B5D-2C49FEB1E989} = {758049A6-F83A-4CA4-90A2-5C29BA7CDECF}
+		{9E4FF711-2328-42C3-A0D2-573B70F1D615} = {758049A6-F83A-4CA4-90A2-5C29BA7CDECF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4AF893FA-5F53-4CDF-9DF6-9D31241DB092}
