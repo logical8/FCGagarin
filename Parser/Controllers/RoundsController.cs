@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Web.Http;
@@ -7,20 +6,14 @@ using HtmlAgilityPack;
 
 namespace Parser.Controllers
 {
-    public class ValuesController : ApiController
+    public class RoundsController : ApiController
     {
-        // GET api/values
+        [Route("Rounds/{club}/{season}", Name = "ClubAndSeason")]
         public List<Round> Get(int club, int season)
         {
             var url = $"http://lfl.ru/moscow8x8/calendar?club_id={club}&matches=all&sort=timeasc&season_id={season}";
             var web = new WebClient();
             var str = web.DownloadString(url);
-            //doc.DocumentNode.SelectNodes("//table[@class='round_table calendar calendar_result  league_tournament_calendar_table']").Select(d=>d.).ToArray(); //new string[] { "value1", "value2" };
-
-            //var query = from table in doc.DocumentNode.SelectNodes("//table[@class='round_table calendar calendar_result  league_tournament_calendar_table']")
-            //    from row in table.SelectNodes("tr")
-            //    from cell in row.SelectNodes("th|td")
-            //    select new TestClass { Row = row?.InnerText ?? "", CellText = cell?.InnerText ?? ""};
 
             var doc = new HtmlDocument();
             doc.LoadHtml(str);
@@ -30,39 +23,39 @@ namespace Parser.Controllers
                     "//table[@class='round_table calendar calendar_result  league_tournament_calendar_table']/tbody")
                 from row in table.SelectNodes("tr")
                 from cell in row.SelectNodes("th|td")
-                select new TestClass { Row = row?.InnerText ?? "", CellText = cell?.InnerText.Trim() ?? "" };
+                select new { CellText = cell?.InnerText.Trim() ?? "" };
 
             var i = 0;
             var result = new List<Round>();
             var round = new Round();
-            foreach (var testClass in query)
+            foreach (var cell in query)
             {
                 switch (i)
                 {
                     case 0:
                         round = new Round();
-                        round.Number = testClass.CellText;
+                        round.Number = cell.CellText;
                         break;
                     case 1:
-                        round.Date = testClass.CellText;
+                        round.Date = cell.CellText;
                         break;
                     case 2:
-                        round.Time = testClass.CellText;
+                        round.Time = cell.CellText;
                         break;
                     case 3:
-                        round.Home = testClass.CellText;
+                        round.Home = cell.CellText;
                         break;
                     case 4:
-                        round.Score = testClass.CellText;
+                        round.Score = cell.CellText;
                         break;
                     case 5:
-                        round.Guest = testClass.CellText;
+                        round.Guest = cell.CellText;
                         break;
                     case 6:
-                        round.Arena = testClass.CellText;
+                        round.Arena = cell.CellText;
                         break;
                     case 7:
-                        round.Tournament = testClass.CellText;
+                        round.Tournament = cell.CellText;
                         result.Add(round);
                         i = -1;
                         break;
@@ -72,27 +65,44 @@ namespace Parser.Controllers
             return result;
         }
 
-        // GET api/values/5
+        // GET: api/Rounds/5
         public string Get(int id)
         {
             return "value";
         }
 
-        // POST api/values
+        // POST: api/Rounds
         public void Post([FromBody]string value)
         {
         }
 
-        // PUT api/values/5
+        // PUT: api/Rounds/5
         public void Put(int id, [FromBody]string value)
         {
         }
 
-        // DELETE api/values/5
+        // DELETE: api/Rounds/5
         public void Delete(int id)
         {
         }
     }
 
-    
+    internal class TestClass
+    {
+        public string Row { get; set; }
+        public string CellText { get; set; }
+    }
+
+
+    public class Round
+    {
+        public string Number { get; set; }
+        public string Date { get; set; }
+        public string Time { get; set; }
+        public string Home { get; set; }
+        public string Score { get; set; }
+        public string Guest { get; set; }
+        public string Arena { get; set; }
+        public string Tournament { get; set; }
+    }
 }

@@ -7,7 +7,7 @@ namespace FCGagarin.PL.Admin.JobManager
     {
         public void CheckSiteReccuring(string url)
         {
-            RecurringJob.AddOrUpdate<CheckSiteWorksJob>(x => x.Process(url), Cron.Minutely);
+            RecurringJob.AddOrUpdate<CheckSiteWorksJob>(x => x.Process(url), Cron.MinuteInterval(10));
         }
     }
 }
