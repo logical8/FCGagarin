@@ -4,9 +4,8 @@ using FCGagarin.DAL.Entities.Abstract;
 
 namespace FCGagarin.DAL.Entities
 {
-    public class UserProfile : BaseEntity
+    public class UserProfile : EntityInt
     {
-        public int Id { get; set; }
         public string Email { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }

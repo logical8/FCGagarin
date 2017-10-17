@@ -53,6 +53,7 @@
     <Compile Include="INewsRepository.cs" />
     <Compile Include="IPhotoAlbumRepository.cs" />
     <Compile Include="IPhotoRepository.cs" />
+    <Compile Include="IRoundRepository.cs" />
     <Compile Include="IUserProfileRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -19,7 +19,11 @@ namespace FCGagarin.DAL.EF
         public DbSet<Training> Trainings { get; set; }
         public DbSet<Photo> Photos { get; set; }
         public DbSet<Video> Videos { get; set; }
-        public DbSet<PhotoAlbum> PhotoAlbums { get; set; }
+        public DbSet<Arena> Arenas { get; set; }
+        public DbSet<Round> Rounds { get; set; }
+        public DbSet<Score> Scores { get; set; }
+        public DbSet<Team> Teams { get; set; }
+        public DbSet<Tournament> Tournaments { get; set; }
         public DbSet<VideoAlbum> VideoAlbums { get; set; }
 
         public override int SaveChanges()

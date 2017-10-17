@@ -1,15 +1,15 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using FCGagarin.DAL.Entities.Abstract;
 
 namespace FCGagarin.DAL.Entities
 {
-    public class Video
+    public class Video : EntityInt
     {
         public Video()
         {
             UploadDate = DateTime.Now;
         }
-        public int Id { get; set; }
         [Required]
         public string Name { get; set; }
         [Required]

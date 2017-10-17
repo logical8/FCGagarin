@@ -9,7 +9,7 @@
     @Html.ActionLink(" ", "Create", null, new { @class = "btn btn-default fa fa-plus fa-lg plus" }) //TODO: заменить класс .plus, который отодвигает кнопку xD
 }
 
-@if (Model.Count() == 0)
+@if (!Model.Any())
 {
     <div class="well">
         <div class="h4">

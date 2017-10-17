@@ -1,11 +1,11 @@
 ﻿using System;
+using FCGagarin.DAL.Entities.Abstract;
 
 namespace FCGagarin.DAL.Entities
 {
 
-    public class Training
+    public class Training : EntityInt
     {
-        public int Id { get; set; }
         public virtual DateTime Date
         {
             get;

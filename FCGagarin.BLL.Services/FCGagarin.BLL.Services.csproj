@@ -47,9 +47,15 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="MoreLinq, Version=2.8.21218.0, Culture=neutral, PublicKeyToken=384d532d7e88985d, processorArchitecture=MSIL">
+      <HintPath>..\packages\morelinq.2.8.0\lib\net40\MoreLinq.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.4.0\lib\net461\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -63,6 +69,7 @@
     <Compile Include="PhotoAlbumService.cs" />
     <Compile Include="PhotoService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoundService.cs" />
     <Compile Include="UserProfileService.cs" />
   </ItemGroup>
   <ItemGroup>

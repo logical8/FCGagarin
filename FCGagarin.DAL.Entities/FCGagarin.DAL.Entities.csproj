@@ -56,10 +56,15 @@
     <Compile Include="Abstract\BaseEntity.cs" />
     <Compile Include="Abstract\IAuditableEntity.cs" />
     <Compile Include="Abstract\IEntity.cs" />
+    <Compile Include="Arena.cs" />
     <Compile Include="News.cs" />
     <Compile Include="Photo.cs" />
     <Compile Include="PhotoAlbum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Round.cs" />
+    <Compile Include="Score.cs" />
+    <Compile Include="Team.cs" />
+    <Compile Include="Tournament.cs" />
     <Compile Include="Training.cs" />
     <Compile Include="UserProfile.cs" />
     <Compile Include="Video.cs" />

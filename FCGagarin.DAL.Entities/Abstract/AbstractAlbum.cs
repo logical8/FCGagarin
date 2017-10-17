@@ -1,8 +1,7 @@
 ﻿namespace FCGagarin.DAL.Entities.Abstract
 {
-    public abstract class AbstractAlbum : BaseEntity
+    public abstract class AbstractAlbum : EntityInt
     {
-        public int Id { get; set; }
         public string Name { get; set; }
     }
 }

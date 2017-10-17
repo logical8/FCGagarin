@@ -5,6 +5,6 @@ namespace FCGagarin.DAL.Entities
 {
     public class VideoAlbum : AbstractAlbum
     {
-        public ICollection<Video> Videos { get; set; }
+        public virtual ICollection<Video> Videos { get; set; }
     }
 }
