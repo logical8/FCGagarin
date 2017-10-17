@@ -2,6 +2,6 @@
 {
     public interface IJobManager
     {
-        void CheckSiteReccuring(string url);
+        void CheckSiteReccuring();
     }
 }

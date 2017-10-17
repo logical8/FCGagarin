@@ -4,14 +4,14 @@ namespace FCGagarin.PL.Admin.Jobs
 {
     public interface ICheckSiteWorksJob
     {
-        void Process(string url);
+        void Process();
     }
 
     public class CheckSiteWorksJob : ICheckSiteWorksJob
     {
-        public void Process(string url)
+        public void Process()
         {
-            CheckSiteWorks(url);
+            CheckSiteWorks("http://fcgagarin.ru");
         }
 
         public void CheckSiteWorks(string url)

@@ -74,7 +74,7 @@ namespace FCGagarin.PL.Admin
             });
 
             var jobManager = new HangfireJobManager();
-            jobManager.CheckSiteReccuring("http://fcgagarin.ru");
+            jobManager.CheckSiteReccuring();
         }
     }
 }
