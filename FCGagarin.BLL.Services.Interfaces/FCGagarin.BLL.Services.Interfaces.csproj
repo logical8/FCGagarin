@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="EntityService.cs" />
     <Compile Include="IEntityService.cs" />
+    <Compile Include="IImportService.cs" />
     <Compile Include="INewsService.cs" />
     <Compile Include="IPhotoAlbumService.cs" />
     <Compile Include="IPhotoService.cs" />
@@ -70,6 +71,10 @@
     <ProjectReference Include="..\FCGagarin.BLL.Models\FCGagarin.BLL.Models.csproj">
       <Project>{8E4D4199-6DB4-4444-8384-CA8CADAD4296}</Project>
       <Name>FCGagarin.BLL.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FCGagarin.DAL.DTO\FCGagarin.DAL.DTO.csproj">
+      <Project>{21854C6B-342F-488C-AD42-450A2F328E5D}</Project>
+      <Name>FCGagarin.DAL.DTO</Name>
     </ProjectReference>
     <ProjectReference Include="..\FCGagarin.DAL.EF\FCGagarin.DAL.EF.csproj">
       <Project>{2F824976-F82F-4ACC-B7CF-4543FB37BC16}</Project>

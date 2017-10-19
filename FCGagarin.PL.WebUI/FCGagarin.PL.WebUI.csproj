@@ -118,9 +118,8 @@
       <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.1.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
@@ -218,6 +217,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ChildController.cs" />
     <Compile Include="Controllers\PhotoAlbumController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\PhotoController.cs" />
@@ -245,6 +245,7 @@
     <Compile Include="Models\ApplicationRole.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Modules\EFModule.cs" />
+    <Compile Include="Modules\PresenterModule.cs" />
     <Compile Include="Modules\RepositoryModule.cs" />
     <Compile Include="Modules\ServiceModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -823,6 +824,7 @@
     <Content Include="Views\Photo\Delete.cshtml" />
     <Content Include="Views\Shared\_PhotoSummary.cshtml" />
     <Content Include="Views\Shared\_Files.cshtml" />
+    <Content Include="Views\Child\ShortResults.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -835,6 +837,14 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\FCGagarin.BLL.Presenters.Interfaces\FCGagarin.BLL.Presenters.Interfaces.csproj">
+      <Project>{0EC904B1-B1F0-4603-A5F8-33914CF21B70}</Project>
+      <Name>FCGagarin.BLL.Presenters.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FCGagarin.BLL.Presenters\FCGagarin.BLL.Presenters.csproj">
+      <Project>{6f143ddb-763d-4ef4-83dd-46d3233929d7}</Project>
+      <Name>FCGagarin.BLL.Presenters</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FCGagarin.BLL.Services.Interfaces\FCGagarin.BLL.Services.Interfaces.csproj">
       <Project>{912D48EB-8DC3-4022-8247-6B8F261C342C}</Project>
       <Name>FCGagarin.BLL.Services.Interfaces</Name>

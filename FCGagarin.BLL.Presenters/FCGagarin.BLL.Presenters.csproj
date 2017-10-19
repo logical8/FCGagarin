@@ -52,11 +52,20 @@
   <ItemGroup>
     <Compile Include="NewsPresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoundPresenter.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FCGagarin.BLL.Presenters.Interfaces\FCGagarin.BLL.Presenters.Interfaces.csproj">
       <Project>{0EC904B1-B1F0-4603-A5F8-33914CF21B70}</Project>
       <Name>FCGagarin.BLL.Presenters.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FCGagarin.BLL.Services.Interfaces\FCGagarin.BLL.Services.Interfaces.csproj">
+      <Project>{912D48EB-8DC3-4022-8247-6B8F261C342C}</Project>
+      <Name>FCGagarin.BLL.Services.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FCGagarin.DAL.Entities\FCGagarin.DAL.Entities.csproj">
+      <Project>{B9360A37-67FE-425D-8DF0-F18AAABB2FDB}</Project>
+      <Name>FCGagarin.DAL.Entities</Name>
     </ProjectReference>
     <ProjectReference Include="..\FCGagarin.PL.ViewModels\FCGagarin.PL.ViewModels.csproj">
       <Project>{b61ad44d-8e76-4ae0-872a-9d73a4dd8f37}</Project>

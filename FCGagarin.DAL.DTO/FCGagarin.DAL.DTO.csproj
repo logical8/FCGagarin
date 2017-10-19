@@ -53,6 +53,7 @@
     <Compile Include="PhotoItemDTO.cs" />
     <Compile Include="PhotoAlbumDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoundDTO.cs" />
     <Compile Include="TrainingDTO.cs" />
     <Compile Include="UserProfileDTO.cs" />
     <Compile Include="VideoItemDTO.cs" />

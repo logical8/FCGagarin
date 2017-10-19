@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using FCGagarin.DAL.DTO;
 using FCGagarin.DAL.Entities;
 
 namespace FCGagarin.BLL.Services.Interfaces
@@ -8,5 +9,6 @@ namespace FCGagarin.BLL.Services.Interfaces
         Round GetById(int id);
         Round GetPreviousRound();
         Round GetNextRound();
+        void SaveOrUpdate(IEnumerable<RoundDTO> rounds);
     }
 }

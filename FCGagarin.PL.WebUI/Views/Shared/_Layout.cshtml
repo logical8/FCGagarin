@@ -79,15 +79,7 @@
             <section id="sidebar" class="col-md-3 hidden-sm hidden-xs">
                 @*<img src="~/Content/Images/fcgagarin.jpg" alt="FCGagarin" class="col-md-12 img-thumbnail" />*@
                 <img src="~/Content/Images/FCG.png" alt="FCGagarin_logo" class="img-responsive" />
-                <h3>Краткая сводка</h3>
-                <div class="panel panel-default">
-                    <div class="panel-heading">Panel 1</div>
-                    <div class="panel-body"></div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">Panel 2</div>
-                    <div class="panel-body"></div>
-                </div>
+                @Html.Action("ShortResults", "Child")
             </section>
         </section>
         @*<footer class="footer">

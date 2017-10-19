@@ -87,6 +87,7 @@
     <Compile Include="ApplicationRoleViewModel.cs" />
     <Compile Include="FilesViewModel.cs" />
     <Compile Include="ManageViewModels.cs" />
+    <Compile Include="NearestRoundsViewModel.cs" />
     <Compile Include="NewsFormModel.cs" />
     <Compile Include="NewsItemViewModel.cs" />
     <Compile Include="NewsViewModel.cs" />
@@ -97,6 +98,7 @@
     <Compile Include="PhotoViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoleModels.cs" />
+    <Compile Include="RoundViewModel.cs" />
     <Compile Include="UsersRolesFormModel.cs" />
     <Compile Include="UsersRolesViewModel.cs" />
     <Compile Include="VideoAlbumDetailsViewModel.cs" />

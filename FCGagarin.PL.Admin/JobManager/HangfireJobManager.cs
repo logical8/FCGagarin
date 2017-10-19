@@ -6,9 +6,14 @@ namespace FCGagarin.PL.Admin.JobManager
 {
     public class HangfireJobManager : IJobManager
     {
-        public void CheckSiteReccuring()
+        public void ImportRoundsRecurring()
         {
-            RecurringJob.AddOrUpdate<CheckSiteWorksJob>(x => x.Process(), Cron.MinuteInterval(new Random().Next(10)));
+            RecurringJob.AddOrUpdate<ImportRoundsJob>(x=>x.Process(), Cron.Hourly);
+        }
+
+        public void CheckSiteRecurring()
+        {
+            RecurringJob.AddOrUpdate<CheckSiteWorksJob>(x => x.Process(), Cron.Minutely);
         }
     }
 }

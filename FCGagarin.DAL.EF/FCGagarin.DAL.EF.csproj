@@ -67,14 +67,6 @@
     <Compile Include="Context.cs" />
     <Compile Include="FCGagarinContext.cs" />
     <Compile Include="IContext.cs" />
-    <Compile Include="Migrations\201710172032114_Initial.cs" />
-    <Compile Include="Migrations\201710172032114_Initial.Designer.cs">
-      <DependentUpon>201710172032114_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710172034312_Initial1.cs" />
-    <Compile Include="Migrations\201710172034312_Initial1.Designer.cs">
-      <DependentUpon>201710172034312_Initial1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -87,14 +79,6 @@
       <Project>{b9360a37-67fe-425d-8df0-f18aaabb2fdb}</Project>
       <Name>FCGagarin.DAL.Entities</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201710172032114_Initial.resx">
-      <DependentUpon>201710172032114_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710172034312_Initial1.resx">
-      <DependentUpon>201710172034312_Initial1.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

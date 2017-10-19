@@ -1,0 +1,43 @@
+﻿@model FCGagarin.PL.ViewModels.NearestRoundsViewModel
+
+@{
+    ViewBag.Title = "List";
+    Layout = null;
+}
+
+<h3>Краткая сводка</h3>
+
+<div class="panel panel-default">
+    <div class="panel-heading">Предыдущий матч</div>
+    <div class="panel-body">
+        @if (Model.PreviousRounds.Any())
+        {
+
+            foreach (var round in Model.PreviousRounds)
+            {
+                <div>@round.Number</div>
+                <div>@round.Date, @round.DayOfWeek</div>
+                <h4>@round.Home @round.Score @round.Guest</h4>
+                <div>@round.Arena</div>
+                <div>@round.Tournament</div>
+            }
+        }
+    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading">Следующий матч</div>
+    <div class="panel-body">
+        @if (Model.NextRounds.Any())
+        {
+
+            foreach (var round in Model.NextRounds)
+            {
+                <div>@round.Number</div>
+                <div>@round.Date, @round.DayOfWeek</div>
+                <h4>@round.Home @round.Score @round.Guest</h4>
+                <div>@round.Arena</div>
+                <div>@round.Tournament</div>
+            }
+        }
+    </div>
+</div>

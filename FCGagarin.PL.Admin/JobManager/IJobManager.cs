@@ -2,6 +2,8 @@
 {
     public interface IJobManager
     {
-        void CheckSiteReccuring();
+        void ImportRoundsRecurring();
+
+        void CheckSiteRecurring();
     }
 }
