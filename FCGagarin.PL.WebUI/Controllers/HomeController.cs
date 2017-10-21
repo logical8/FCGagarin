@@ -5,7 +5,7 @@ namespace FCGagarin.PL.WebUI.Controllers
 {
     public class HomeController : Controller
     {
-        private IImportService _importService;
+        private readonly IImportService _importService;
 
         public HomeController(IImportService importService)
         {

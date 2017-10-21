@@ -35,9 +35,9 @@ namespace FCGagarin.DAL.Repositories
             _entities.Entry(entity).State = EntityState.Modified;
         }
 
-        public IEnumerable<T> FindBy(Expression<Func<T, bool>> predicate)
+        public IQueryable<T> FindBy(Expression<Func<T, bool>> predicate)
         {
-            var query = _dbSet.Where(predicate).AsEnumerable();
+            var query = _dbSet.Where(predicate);
             return query;
         }
 

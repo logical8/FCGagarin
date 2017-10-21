@@ -16,10 +16,10 @@
             foreach (var round in Model.PreviousRounds)
             {
                 <div>@round.Number</div>
-                <div>@round.Date, @round.DayOfWeek</div>
+                <div>@round.Tournament</div>
+                <div>@round.Date</div>
                 <h4>@round.Home @round.Score @round.Guest</h4>
                 <div>@round.Arena</div>
-                <div>@round.Tournament</div>
             }
         }
     </div>
@@ -33,10 +33,11 @@
             foreach (var round in Model.NextRounds)
             {
                 <div>@round.Number</div>
-                <div>@round.Date, @round.DayOfWeek</div>
+                <div>@round.Tournament</div>
+                <div>@round.Date</div>
                 <h4>@round.Home @round.Score @round.Guest</h4>
                 <div>@round.Arena</div>
-                <div>@round.Tournament</div>
+                
             }
         }
     </div>

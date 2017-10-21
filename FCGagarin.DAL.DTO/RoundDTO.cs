@@ -10,6 +10,7 @@ namespace FCGagarin.DAL.DTO
         public string Number { get; set; }
         public string Score { get; set; }
         public string Date { get; set; }
+        public string Time { get; set; }
         public string Tournament { get; set; }
     }
 }

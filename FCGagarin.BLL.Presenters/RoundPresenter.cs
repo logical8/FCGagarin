@@ -25,13 +25,12 @@ namespace FCGagarin.BLL.Presenters
                 viewModel.PreviousRounds.Add(new RoundViewModel
                 {
                     Number = prevRound.Number,
-                    Date = prevRound.Date?.ToShortDateString(),
-                    Guest = prevRound.Guest.Name,
-                    Home = prevRound.Home.Name,
-                    Arena = prevRound.Arena.Name,
-                    Tournament = prevRound.Tournament.Name,
-                    DayOfWeek = prevRound.Date?.DayOfWeek.ToString(),
-                    Score = prevRound.Score.ToString()
+                    Date = prevRound.Date == null ?  null : $"{prevRound.Date:d MMM yyyy, dddd, HH:mm}",
+                    Guest = prevRound.Guest?.Name,
+                    Home = prevRound.Home?.Name,
+                    Arena = prevRound.Arena?.Name,
+                    Tournament = prevRound.Tournament?.Name,
+                    Score = prevRound.Score?.ToString()
                 });
             }
             if (nextRound != null)
@@ -39,13 +38,12 @@ namespace FCGagarin.BLL.Presenters
                 viewModel.NextRounds.Add(new RoundViewModel
                 {
                     Number = nextRound.Number,
-                    Date = nextRound.Date?.ToShortDateString(),
-                    Guest = nextRound.Guest.Name,
-                    Home = nextRound.Home.Name,
-                    Arena = nextRound.Arena.Name,
-                    Tournament = nextRound.Tournament.Name,
-                    DayOfWeek = nextRound.Date?.DayOfWeek.ToString(),
-                    Score = nextRound.Score.ToString()
+                    Date = nextRound.Date == null ? null : $"{nextRound.Date:d MMM yyyy, dddd, HH:mm}",
+                    Guest = nextRound.Guest?.Name,
+                    Home = nextRound.Home?.Name,
+                    Arena = nextRound.Arena?.Name,
+                    Tournament = nextRound.Tournament?.Name,
+                    Score = nextRound.Score?.ToString() ?? "- : -"
                 });
             }
 

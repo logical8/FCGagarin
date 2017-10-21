@@ -13,7 +13,7 @@ namespace FCGagarin.BLL.Services
     public class ImportService : IImportService
     {
         readonly HttpClient client = new HttpClient();
-        private IRoundService _roundService;
+        private readonly IRoundService _roundService;
 
         public ImportService(IRoundService roundService)
         {
